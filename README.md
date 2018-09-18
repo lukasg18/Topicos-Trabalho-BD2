@@ -52,10 +52,11 @@ Será utilizado das informações de medicações e de dados de consumo médio p
 
 ### 4	RASCUNHOS BÁSICOS DA INTERFACE (MOCKUPS)<br>
 
-Sugestão: https://balsamiq.com/products/mockups/<br>
+![PDF Subsistema para Atendente do posto](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Prot%C3%B3tipo%20PS%20-%20Atendente%20App%20Desktop%202.pdf)
+![Alt text](https://raw.githubusercontent.com/lukasg18/Topicos-Trabalho-BD2/master/Atendente_posto.png)
 
-![Alt text](https://github.com/discipbd2/topicos-trabalho/blob/master/balsamiq.png?raw=true "Title")
-
+Subsistema para solicitação de Medicamentos realizado pela População
+![Alt text](https://raw.githubusercontent.com/lukasg18/Topicos-Trabalho-BD2/master/Atendimento_populacao.png)
 
 ### 5	MODELO CONCEITUAL<br>
 #### 5.1 NOTACAO ENTIDADE RELACIONAMENTO

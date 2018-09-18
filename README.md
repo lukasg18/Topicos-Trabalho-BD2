@@ -52,7 +52,7 @@ Será utilizado das informações de medicações e de dados de consumo médio p
 
 ### 4	RASCUNHOS BÁSICOS DA INTERFACE (MOCKUPS)<br>
 
-![PDF Subsistema para Atendente do posto](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Prot%C3%B3tipo%20PS%20-%20Atendente%20App%20Desktop%202.pdf)
+[PDF Subsistema para Atendente do posto](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Prot%C3%B3tipo%20PS%20-%20Atendente%20App%20Desktop%202.pdf)
 ![Alt text](https://raw.githubusercontent.com/lukasg18/Topicos-Trabalho-BD2/master/Atendente_posto.png)
 
 Subsistema para solicitação de Medicamentos realizado pela População

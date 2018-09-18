@@ -63,6 +63,13 @@ Será utilizado das informações de medicações e de dados de consumo médio p
 ![Alt text](https://raw.githubusercontent.com/lukasg18/Topicos-Trabalho-BD2/master/Modelo%20Conceitual.png)
     
 #### 5.2 NOTACAO UML (Caso esteja fazendo a disciplina de Projeto)
+
+Subsistema para solicitação de Medicamentos realizado pela População
+![Alt text](https://raw.githubusercontent.com/lukasg18/Topicos-Trabalho-BD2/master/Diagrama%20de%20Classe%20do%20Projeto%20-%20Subsistema%20atendimentoPopulacao.png)
+
+Subsistema para Atendente do posto
+![Alt text](https://raw.githubusercontent.com/lukasg18/Topicos-Trabalho-BD2/master/Diagrama%20de%20Classe%20do%20Projeto%20-%20Subsistema%20controleEstoque.png)
+
 ## Data de Entrega: (23/08/2018) 
 (Apresentação para o professor em sala de aula)
 

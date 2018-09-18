@@ -36,10 +36,10 @@ DICA:
 # Sumário
 
 ### 1	COMPONENTES<br>
-* Harã Heique
-* Jennifer Amaral
-* Lucas Gomes
-* Luiz Henrique
+* Harã Heique: heikacademicos@hotmail.com
+* Jennifer Amaral: jennifergamaral@gmail.com
+* Lucas Gomes: lukas.gomes2010@gmail.com
+* Luiz Henrique: luiz.lk.lima@gmail.com
 
 ### 2	INTRODUÇÃO E MOTIVAÇAO<br>
 Os motivos da escolha do sistema proposto são da população não ter a necessidade de ir até o posto sem ter a certeza da obtenção do medicamento, o que consequentemente evitaria filas enormes para a solicitação. Com isso facilitaria a solicitação de medicamentos pela população local, além de ajudar os atendentes internos que trabalham nos postos de controlar e administrar o sistema de forma mais eficiente.

@@ -124,7 +124,7 @@ CREATE TABLE Medicamento_Categoria_possui (
     FK_Medicamento_idMedicamento SERIAL
 );
 
-CREATE TABLE Medicamento_Laboratorio_esta em (
+CREATE TABLE Medicamento_Laboratorio_esta_em (
     FK_Laboratorio_idLaboratorio SERIAL,
     FK_Medicamento_idMedicamento SERIAL
 );
@@ -253,11 +253,11 @@ ALTER TABLE Medicamento_Categoria_possui ADD CONSTRAINT FK_Medicamento_Categoria
     FOREIGN KEY (FK_Medicamento_idMedicamento)
     REFERENCES Medicamento (idMedicamento);
  
-ALTER TABLE Medicamento_Laboratorio_esta em ADD CONSTRAINT FK_Medicamento_Laboratorio_esta em_0
+ALTER TABLE Medicamento_Laboratorio_esta_em ADD CONSTRAINT FK_Medicamento_Laboratorio_esta_em_0
     FOREIGN KEY (FK_Laboratorio_idLaboratorio)
     REFERENCES Laboratorio (idLaboratorio);
  
-ALTER TABLE Medicamento_Laboratorio_esta em ADD CONSTRAINT FK_Medicamento_Laboratorio_esta em_1
+ALTER TABLE Medicamento_Laboratorio_esta_em ADD CONSTRAINT FK_Medicamento_Laboratorio_esta_em_1
     FOREIGN KEY (FK_Medicamento_idMedicamento)
     REFERENCES Medicamento (idMedicamento);
  

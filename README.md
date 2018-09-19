@@ -94,6 +94,8 @@ Subsistema para Atendente do posto
 ### 7	MODELO FÍSICO<br>
 [Link modelo físico](https://raw.githubusercontent.com/lukasg18/Topicos-Trabalho-BD2/master/modeloFisico.sql)
 
+    /* Modelo Físico: */
+
     CREATE TABLE Medicamento (
         nome VARCHAR(80),
         idMedicamento SERIAL PRIMARY KEY,
@@ -218,7 +220,7 @@ Subsistema para Atendente do posto
         FK_Medicamento_idMedicamento SERIAL
     );
 
-    CREATE TABLE Medicamento_Laboratorio_esta em (
+    CREATE TABLE Medicamento_Laboratorio_esta_em (
         FK_Laboratorio_idLaboratorio SERIAL,
         FK_Medicamento_idMedicamento SERIAL
     );
@@ -347,11 +349,11 @@ Subsistema para Atendente do posto
         FOREIGN KEY (FK_Medicamento_idMedicamento)
         REFERENCES Medicamento (idMedicamento);
 
-    ALTER TABLE Medicamento_Laboratorio_esta em ADD CONSTRAINT FK_Medicamento_Laboratorio_esta em_0
+    ALTER TABLE Medicamento_Laboratorio_esta_em ADD CONSTRAINT FK_Medicamento_Laboratorio_esta_em_0
         FOREIGN KEY (FK_Laboratorio_idLaboratorio)
         REFERENCES Laboratorio (idLaboratorio);
 
-    ALTER TABLE Medicamento_Laboratorio_esta em ADD CONSTRAINT FK_Medicamento_Laboratorio_esta em_1
+    ALTER TABLE Medicamento_Laboratorio_esta_em ADD CONSTRAINT FK_Medicamento_Laboratorio_esta_em_1
         FOREIGN KEY (FK_Medicamento_idMedicamento)
         REFERENCES Medicamento (idMedicamento);
 

@@ -1,33 +1,31 @@
 CREATE TABLE public."Medicamento_Categoria" (
-    "medicamentoIdMedicamento" integer NOT NULL,
-    "categoriaIdCategoria" integer NOT NULL
+    "idMedicamento" integer NOT NULL,
+    "idCategoria" integer NOT NULL
 );
 
+
 CREATE TABLE public."Medicamento_Laboratorio" (
-    "medicamentoIdMedicamento" integer NOT NULL,
-    "laboratorioIdLaboratorio" integer NOT NULL
+    "idMedicamento" integer NOT NULL,
+    "idLaboratorio" integer NOT NULL
 );
 
 CREATE TABLE public."Medicamento_Solicitacao" (
-    "medicamentoIdMedicamento" integer NOT NULL,
-    "solicitacaoIdSolicitacao" integer NOT NULL
+    "idMedicamento" integer NOT NULL,
+    "idSolicitacao" integer NOT NULL
 );
 
 CREATE TABLE public.atendente (
-    id integer NOT NULL,
-    nome character varying(100) NOT NULL,
-    data_nascimento timestamp without time zone NOT NULL,
-    cpf character varying(12) NOT NULL,
+    "idAtendente" integer NOT NULL,
     numero_registro integer NOT NULL,
-    rg character varying(20) NOT NULL,
-    "postoIdPosto" integer,
-    "controleIdControle" integer
+    "idPosto" integer,
+    "idControle" integer,
+    "idPessoa" integer
 );
 
 CREATE TABLE public.bairro (
     "idBairro" integer NOT NULL,
     nome character varying(30) NOT NULL,
-    "municipioIdMunicipio" integer
+    "idMunicipio" integer
 );
 
 CREATE TABLE public.categoria (
@@ -40,8 +38,18 @@ CREATE TABLE public.controle (
     quantidade integer NOT NULL,
     "codigoBarras" integer NOT NULL,
     data_hora timestamp without time zone NOT NULL,
-    "tipoControleIdTipoControle" integer,
-    "medicamentoPostoIdMedicamentoPosto" integer
+    "idTipoControle" integer,
+    "idMedicamentoPosto" integer
+);
+
+CREATE TABLE public.depedente (
+    id integer NOT NULL,
+    nome character varying(100) NOT NULL,
+    data_nascimento timestamp without time zone NOT NULL,
+    cpf character varying(12) NOT NULL,
+    rg integer NOT NULL,
+    "idTitular" integer,
+    "idPessoa" integer
 );
 
 CREATE TABLE public.estado (
@@ -69,28 +77,28 @@ CREATE TABLE public.lote (
     quantidade integer NOT NULL,
     "dataVencimento" timestamp without time zone NOT NULL,
     numero integer NOT NULL,
-    "medicamentoPostoIdMedicamentoPosto" integer
+    "idMedicamentoPosto" integer
 );
 
 CREATE TABLE public.medicamento (
     "idMedicamento" integer NOT NULL,
     nome character varying(80) NOT NULL,
     bula character varying(200) NOT NULL,
-    "estadoMedicamentoIdEstadoMedicamento" integer,
-    "recebimentoMedicamentoIdRecebimento" integer
+    "idEstadoMedicamento" integer,
+    "idRecebimentoMedicamento" integer
 );
 
 CREATE TABLE public.medicamento_posto (
     "idMedicamentoPosto" integer NOT NULL,
-    "postoIdPosto" integer,
-    "medicamentoIdMedicamento" integer,
-    "loteIdLote" integer
+    "idPosto" integer,
+    "idMedicamento" integer,
+    "idLote" integer
 );
 
 CREATE TABLE public.municipio (
     "idMunicipio" integer NOT NULL,
     nome character varying(80) NOT NULL,
-    "estadoIdEstado" integer
+    "idEstado" integer
 );
 
 CREATE TABLE public.pessoa (
@@ -98,8 +106,8 @@ CREATE TABLE public.pessoa (
     nome character varying(100) NOT NULL,
     data_nascimento timestamp without time zone NOT NULL,
     cpf character varying(12) NOT NULL,
-    "titularId" integer,
-    "sexoIdSexo" integer
+    rg integer NOT NULL,
+    "idSexo" integer
 );
 
 CREATE TABLE public.posto (
@@ -109,36 +117,34 @@ CREATE TABLE public.posto (
     numero integer NOT NULL,
     "coordGeoLong" character varying(20) NOT NULL,
     "coordGeoLat" character varying(20) NOT NULL,
-    "bairroIdBairro" integer
+    "idBairro" integer
 );
 
 CREATE TABLE public.recebimento (
     "idRecebimento" integer NOT NULL,
     "quantidadeMedicamentos" integer NOT NULL,
     data_hora timestamp without time zone NOT NULL,
-    "pessoaId" integer,
-    "titularId" integer
+    "idPessoa" integer
 );
 
 CREATE TABLE public.recebimento_medicamento (
-    "idRecebimento" integer NOT NULL,
+    "idRecebimentoMedicamento" integer NOT NULL,
     "quantidadeMedicamentos" integer NOT NULL,
     data_hora timestamp without time zone NOT NULL,
-    "atedenteId" integer,
-    "recebimentoIdRecebimento" integer
+    "idAtendente" integer,
+    "idRecebimento" integer
 );
 
-
 CREATE TABLE public.sexo (
-    id_sexo integer NOT NULL,
+    "idSexo" integer NOT NULL,
     tipo character varying(10) NOT NULL
 );
 
 CREATE TABLE public.solicitacao (
     "idSolicitacao" integer NOT NULL,
     data_hora timestamp without time zone NOT NULL,
-    "estadoSolicitacaoIdEstadoSolicitacao" integer,
-    "titularId" integer
+    "idEstadoSolicitacao" integer,
+    "idTitular" integer
 );
 
 CREATE TABLE public.tipo_controle (
@@ -146,21 +152,17 @@ CREATE TABLE public.tipo_controle (
 );
 
 CREATE TABLE public.titular (
-    id integer NOT NULL,
-    nome character varying(100) NOT NULL,
-    data_nascimento timestamp without time zone NOT NULL,
-    cpf character varying(12) NOT NULL,
+    "idTitular" integer NOT NULL,
     "numero_SUS" integer NOT NULL,
-    rg integer NOT NULL
+    "idPessoa" integer
 );
 
-
-ALTER TABLE ONLY public.titular
-    ADD CONSTRAINT "PK_17a47f8d3e52e735ab39702880b" PRIMARY KEY (id);
+ALTER TABLE ONLY public.atendente
+    ADD CONSTRAINT "PK_047e5e1ef9e589024076f6a85fd" PRIMARY KEY ("idAtendente");
 
 
 --
--- TOC entry 2200 (class 2606 OID 26126)
+-- TOC entry 2213 (class 2606 OID 26712)
 -- Name: PK_183e2a97fc87bf9fde51308fd2e; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -169,7 +171,16 @@ ALTER TABLE ONLY public.recebimento
 
 
 --
--- TOC entry 2170 (class 2606 OID 26006)
+-- TOC entry 2183 (class 2606 OID 26592)
+-- Name: PK_185ecaade5c014ed3b0d61d096b; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.sexo
+    ADD CONSTRAINT "PK_185ecaade5c014ed3b0d61d096b" PRIMARY KEY ("idSexo");
+
+
+--
+-- TOC entry 2177 (class 2606 OID 26568)
 -- Name: PK_1ea30abea1e1617f161924c33eb; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -178,7 +189,7 @@ ALTER TABLE ONLY public.solicitacao
 
 
 --
--- TOC entry 2192 (class 2606 OID 26094)
+-- TOC entry 2205 (class 2606 OID 26680)
 -- Name: PK_346e0166e819419b545f6e60ecd; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -187,7 +198,7 @@ ALTER TABLE ONLY public.medicamento_posto
 
 
 --
--- TOC entry 2178 (class 2606 OID 26038)
+-- TOC entry 2191 (class 2606 OID 26624)
 -- Name: PK_3ec6e8865a74b47499a298b59e0; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -196,7 +207,7 @@ ALTER TABLE ONLY public.laboratorio
 
 
 --
--- TOC entry 2180 (class 2606 OID 26046)
+-- TOC entry 2193 (class 2606 OID 26632)
 -- Name: PK_477e91f3922a7b98a2a036d62cd; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -205,7 +216,7 @@ ALTER TABLE ONLY public.categoria
 
 
 --
--- TOC entry 2182 (class 2606 OID 26054)
+-- TOC entry 2195 (class 2606 OID 26640)
 -- Name: PK_613472a14875390d66c94d97104; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -214,16 +225,16 @@ ALTER TABLE ONLY public.estado_medicamento
 
 
 --
--- TOC entry 2196 (class 2606 OID 26110)
--- Name: PK_695420d3280fdd5b0270622775f; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 2211 (class 2606 OID 26704)
+-- Name: PK_67d63c6e5d3f99cc91bbf40b0d8; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.atendente
-    ADD CONSTRAINT "PK_695420d3280fdd5b0270622775f" PRIMARY KEY (id);
+ALTER TABLE ONLY public.recebimento_medicamento
+    ADD CONSTRAINT "PK_67d63c6e5d3f99cc91bbf40b0d8" PRIMARY KEY ("idRecebimentoMedicamento");
 
 
 --
--- TOC entry 2168 (class 2606 OID 25998)
+-- TOC entry 2175 (class 2606 OID 26560)
 -- Name: PK_733c8b1c458f84241e314dc5c65; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -232,7 +243,16 @@ ALTER TABLE ONLY public.estado_solicitacao
 
 
 --
--- TOC entry 2194 (class 2606 OID 26102)
+-- TOC entry 2221 (class 2606 OID 26887)
+-- Name: PK_8fa3a602f6da3d1e48c1e8075b8; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Medicamento_Solicitacao"
+    ADD CONSTRAINT "PK_8fa3a602f6da3d1e48c1e8075b8" PRIMARY KEY ("idMedicamento", "idSolicitacao");
+
+
+--
+-- TOC entry 2207 (class 2606 OID 26688)
 -- Name: PK_951c400e4d50fd54f00b92c3bb1; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -241,7 +261,7 @@ ALTER TABLE ONLY public.posto
 
 
 --
--- TOC entry 2176 (class 2606 OID 26030)
+-- TOC entry 2189 (class 2606 OID 26616)
 -- Name: PK_95e218378cc8819aa39cf99919d; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -250,16 +270,16 @@ ALTER TABLE ONLY public.bairro
 
 
 --
--- TOC entry 2208 (class 2606 OID 26155)
--- Name: PK_a48ae4f9df96e345949e25443b2; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 2181 (class 2606 OID 26584)
+-- Name: PK_aabb105ab1e1dd437a7cc53542b; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public."Medicamento_Laboratorio"
-    ADD CONSTRAINT "PK_a48ae4f9df96e345949e25443b2" PRIMARY KEY ("medicamentoIdMedicamento", "laboratorioIdLaboratorio");
+ALTER TABLE ONLY public.titular
+    ADD CONSTRAINT "PK_aabb105ab1e1dd437a7cc53542b" PRIMARY KEY ("idTitular");
 
 
 --
--- TOC entry 2172 (class 2606 OID 26014)
+-- TOC entry 2185 (class 2606 OID 26600)
 -- Name: PK_b241aab02622741e8d03e871ada; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -268,7 +288,7 @@ ALTER TABLE ONLY public.estado
 
 
 --
--- TOC entry 2206 (class 2606 OID 26150)
+-- TOC entry 2215 (class 2606 OID 26720)
 -- Name: PK_bb879ac36994545a5a917a09ba5; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -277,7 +297,7 @@ ALTER TABLE ONLY public.pessoa
 
 
 --
--- TOC entry 2184 (class 2606 OID 26062)
+-- TOC entry 2197 (class 2606 OID 26648)
 -- Name: PK_bcf1d0917b42f29db9155021321; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -286,7 +306,7 @@ ALTER TABLE ONLY public.medicamento
 
 
 --
--- TOC entry 2190 (class 2606 OID 26086)
+-- TOC entry 2203 (class 2606 OID 26672)
 -- Name: PK_bf8daf4d5b21fe93238ab13b377; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -295,16 +315,7 @@ ALTER TABLE ONLY public.controle
 
 
 --
--- TOC entry 2198 (class 2606 OID 26118)
--- Name: PK_cb87e6d8e53fbb5ad5a6d72057f; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.recebimento_medicamento
-    ADD CONSTRAINT "PK_cb87e6d8e53fbb5ad5a6d72057f" PRIMARY KEY ("idRecebimento");
-
-
---
--- TOC entry 2174 (class 2606 OID 26022)
+-- TOC entry 2187 (class 2606 OID 26608)
 -- Name: PK_d510a7de2b2c1b93c004449a765; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -313,7 +324,7 @@ ALTER TABLE ONLY public.municipio
 
 
 --
--- TOC entry 2186 (class 2606 OID 26070)
+-- TOC entry 2199 (class 2606 OID 26656)
 -- Name: PK_d5181dc5ec69ce4937527cf6a05; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -322,25 +333,7 @@ ALTER TABLE ONLY public.lote
 
 
 --
--- TOC entry 2212 (class 2606 OID 26165)
--- Name: PK_d8b6c88b3005737849ec9ef25e9; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public."Medicamento_Solicitacao"
-    ADD CONSTRAINT "PK_d8b6c88b3005737849ec9ef25e9" PRIMARY KEY ("medicamentoIdMedicamento", "solicitacaoIdSolicitacao");
-
-
---
--- TOC entry 2204 (class 2606 OID 26142)
--- Name: PK_d9405c325ee4fbffcbe8f83ee37; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.sexo
-    ADD CONSTRAINT "PK_d9405c325ee4fbffcbe8f83ee37" PRIMARY KEY (id_sexo);
-
-
---
--- TOC entry 2188 (class 2606 OID 26078)
+-- TOC entry 2201 (class 2606 OID 26664)
 -- Name: PK_dcdf3a4e5cf930e4e6e3122a277; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -349,252 +342,288 @@ ALTER TABLE ONLY public.tipo_controle
 
 
 --
--- TOC entry 2210 (class 2606 OID 26160)
--- Name: PK_fd518b34e3d743151329cb4a8cf; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 2219 (class 2606 OID 26909)
+-- Name: PK_e84caec7d0749d508c1b1990010; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public."Medicamento_Categoria"
-    ADD CONSTRAINT "PK_fd518b34e3d743151329cb4a8cf" PRIMARY KEY ("medicamentoIdMedicamento", "categoriaIdCategoria");
+    ADD CONSTRAINT "PK_e84caec7d0749d508c1b1990010" PRIMARY KEY ("idMedicamento", "idCategoria");
 
 
 --
--- TOC entry 2231 (class 2606 OID 26256)
--- Name: FK_00abfcae567f96c0e2107b82bed; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 2179 (class 2606 OID 26576)
+-- Name: PK_e8d1c1611d7429d91bbf7f90e49; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.recebimento
-    ADD CONSTRAINT "FK_00abfcae567f96c0e2107b82bed" FOREIGN KEY ("titularId") REFERENCES public.titular(id);
-
-
---
--- TOC entry 2218 (class 2606 OID 26191)
--- Name: FK_14c55ec51da084d2c99171dbcf2; Type: FK CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.medicamento
-    ADD CONSTRAINT "FK_14c55ec51da084d2c99171dbcf2" FOREIGN KEY ("recebimentoMedicamentoIdRecebimento") REFERENCES public.recebimento_medicamento("idRecebimento");
+ALTER TABLE ONLY public.depedente
+    ADD CONSTRAINT "PK_e8d1c1611d7429d91bbf7f90e49" PRIMARY KEY (id);
 
 
 --
--- TOC entry 2221 (class 2606 OID 26206)
--- Name: FK_1808309ac2bdd3b42444e816242; Type: FK CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.controle
-    ADD CONSTRAINT "FK_1808309ac2bdd3b42444e816242" FOREIGN KEY ("medicamentoPostoIdMedicamentoPosto") REFERENCES public.medicamento_posto("idMedicamentoPosto");
-
-
---
--- TOC entry 2223 (class 2606 OID 26216)
--- Name: FK_19388db293da3dbd9a8673ee90b; Type: FK CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.medicamento_posto
-    ADD CONSTRAINT "FK_19388db293da3dbd9a8673ee90b" FOREIGN KEY ("medicamentoIdMedicamento") REFERENCES public.medicamento("idMedicamento");
-
-
---
--- TOC entry 2233 (class 2606 OID 26266)
--- Name: FK_19448d9959b32dc614ce2dd70fd; Type: FK CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.pessoa
-    ADD CONSTRAINT "FK_19448d9959b32dc614ce2dd70fd" FOREIGN KEY ("sexoIdSexo") REFERENCES public.sexo(id_sexo);
-
-
---
--- TOC entry 2239 (class 2606 OID 26296)
--- Name: FK_1f1e0f7afe0558188b62d29c038; Type: FK CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public."Medicamento_Solicitacao"
-    ADD CONSTRAINT "FK_1f1e0f7afe0558188b62d29c038" FOREIGN KEY ("solicitacaoIdSolicitacao") REFERENCES public.solicitacao("idSolicitacao") ON DELETE CASCADE;
-
-
---
--- TOC entry 2230 (class 2606 OID 26251)
--- Name: FK_307bb1dcc300ea2a83ef65a3cdb; Type: FK CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.recebimento
-    ADD CONSTRAINT "FK_307bb1dcc300ea2a83ef65a3cdb" FOREIGN KEY ("pessoaId") REFERENCES public.pessoa(id);
-
-
---
--- TOC entry 2224 (class 2606 OID 26221)
--- Name: FK_31c0dc608d28f80f59748fdd10c; Type: FK CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.medicamento_posto
-    ADD CONSTRAINT "FK_31c0dc608d28f80f59748fdd10c" FOREIGN KEY ("loteIdLote") REFERENCES public.lote("idLote");
-
-
---
--- TOC entry 2214 (class 2606 OID 26171)
--- Name: FK_339a02417d43cdf673f2ece9738; Type: FK CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.solicitacao
-    ADD CONSTRAINT "FK_339a02417d43cdf673f2ece9738" FOREIGN KEY ("titularId") REFERENCES public.titular(id);
-
-
---
--- TOC entry 2226 (class 2606 OID 26231)
--- Name: FK_35199ddca7478d340b04dfab9c7; Type: FK CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.atendente
-    ADD CONSTRAINT "FK_35199ddca7478d340b04dfab9c7" FOREIGN KEY ("postoIdPosto") REFERENCES public.posto("idPosto");
-
-
---
--- TOC entry 2232 (class 2606 OID 26261)
--- Name: FK_45e3ac61378f59226dc4091709d; Type: FK CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.pessoa
-    ADD CONSTRAINT "FK_45e3ac61378f59226dc4091709d" FOREIGN KEY ("titularId") REFERENCES public.titular(id);
-
-
---
--- TOC entry 2217 (class 2606 OID 26186)
--- Name: FK_4e1fc58b660419c267361765f40; Type: FK CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.medicamento
-    ADD CONSTRAINT "FK_4e1fc58b660419c267361765f40" FOREIGN KEY ("estadoMedicamentoIdEstadoMedicamento") REFERENCES public.estado_medicamento("idEstadoMedicamento");
-
-
---
--- TOC entry 2234 (class 2606 OID 26271)
--- Name: FK_4fa9d3691553f9af395acbe9013; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 2217 (class 2606 OID 26905)
+-- Name: PK_fb2270c21dddeb51e640f3f2ced; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public."Medicamento_Laboratorio"
-    ADD CONSTRAINT "FK_4fa9d3691553f9af395acbe9013" FOREIGN KEY ("medicamentoIdMedicamento") REFERENCES public.medicamento("idMedicamento") ON DELETE CASCADE;
+    ADD CONSTRAINT "PK_fb2270c21dddeb51e640f3f2ced" PRIMARY KEY ("idMedicamento", "idLaboratorio");
 
 
 --
--- TOC entry 2216 (class 2606 OID 26181)
--- Name: FK_5b0755e03593b8a48da9e2d60a0; Type: FK CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.bairro
-    ADD CONSTRAINT "FK_5b0755e03593b8a48da9e2d60a0" FOREIGN KEY ("municipioIdMunicipio") REFERENCES public.municipio("idMunicipio");
-
-
---
--- TOC entry 2238 (class 2606 OID 26291)
--- Name: FK_622a5d1f8e6ae87d8ffb09a5085; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 2249 (class 2606 OID 26888)
+-- Name: FK_112b76c1d121d967537c4f773c2; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public."Medicamento_Solicitacao"
-    ADD CONSTRAINT "FK_622a5d1f8e6ae87d8ffb09a5085" FOREIGN KEY ("medicamentoIdMedicamento") REFERENCES public.medicamento("idMedicamento") ON DELETE CASCADE;
+    ADD CONSTRAINT "FK_112b76c1d121d967537c4f773c2" FOREIGN KEY ("idMedicamento") REFERENCES public.medicamento("idMedicamento") ON DELETE CASCADE;
 
 
 --
--- TOC entry 2220 (class 2606 OID 26201)
--- Name: FK_71c2ec99bc522269d7aa2e07a88; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 2224 (class 2606 OID 26746)
+-- Name: FK_14e43dd1898a4e5f2425cf395e6; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.depedente
+    ADD CONSTRAINT "FK_14e43dd1898a4e5f2425cf395e6" FOREIGN KEY ("idTitular") REFERENCES public.titular("idTitular");
+
+
+--
+-- TOC entry 2250 (class 2606 OID 26893)
+-- Name: FK_166b267ce848696cb361fae65fe; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Medicamento_Solicitacao"
+    ADD CONSTRAINT "FK_166b267ce848696cb361fae65fe" FOREIGN KEY ("idSolicitacao") REFERENCES public.solicitacao("idSolicitacao") ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2232 (class 2606 OID 26786)
+-- Name: FK_24dd7e75561f9c8b1e9f87314c2; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.controle
-    ADD CONSTRAINT "FK_71c2ec99bc522269d7aa2e07a88" FOREIGN KEY ("tipoControleIdTipoControle") REFERENCES public.tipo_controle("idTipoControle");
+    ADD CONSTRAINT "FK_24dd7e75561f9c8b1e9f87314c2" FOREIGN KEY ("idTipoControle") REFERENCES public.tipo_controle("idTipoControle");
 
 
 --
--- TOC entry 2215 (class 2606 OID 26176)
--- Name: FK_768a707d408935484eafbd3bc3c; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 2244 (class 2606 OID 26846)
+-- Name: FK_2fdd94c6218074933927bdb9466; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.municipio
-    ADD CONSTRAINT "FK_768a707d408935484eafbd3bc3c" FOREIGN KEY ("estadoIdEstado") REFERENCES public.estado("idEstado");
+ALTER TABLE ONLY public.pessoa
+    ADD CONSTRAINT "FK_2fdd94c6218074933927bdb9466" FOREIGN KEY ("idSexo") REFERENCES public.sexo("idSexo");
 
 
 --
--- TOC entry 2227 (class 2606 OID 26236)
--- Name: FK_7c23bbedbaaddef13c5b63345c4; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 2229 (class 2606 OID 26771)
+-- Name: FK_3012f51258ac1377dea0cd560c0; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.medicamento
+    ADD CONSTRAINT "FK_3012f51258ac1377dea0cd560c0" FOREIGN KEY ("idEstadoMedicamento") REFERENCES public.estado_medicamento("idEstadoMedicamento");
+
+
+--
+-- TOC entry 2225 (class 2606 OID 26751)
+-- Name: FK_3ad9105260c84ed58140d59af02; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.depedente
+    ADD CONSTRAINT "FK_3ad9105260c84ed58140d59af02" FOREIGN KEY ("idPessoa") REFERENCES public.pessoa(id);
+
+
+--
+-- TOC entry 2247 (class 2606 OID 26920)
+-- Name: FK_5155ff23f1378ebb595c21a33b8; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Medicamento_Categoria"
+    ADD CONSTRAINT "FK_5155ff23f1378ebb595c21a33b8" FOREIGN KEY ("idMedicamento") REFERENCES public.medicamento("idMedicamento") ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2239 (class 2606 OID 26821)
+-- Name: FK_517b1a1e04528f46a9b83c61e4b; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.atendente
-    ADD CONSTRAINT "FK_7c23bbedbaaddef13c5b63345c4" FOREIGN KEY ("controleIdControle") REFERENCES public.controle("idControle");
+    ADD CONSTRAINT "FK_517b1a1e04528f46a9b83c61e4b" FOREIGN KEY ("idControle") REFERENCES public.controle("idControle");
 
 
 --
--- TOC entry 2235 (class 2606 OID 26276)
--- Name: FK_84ac9f70c43e620672e877e13fa; Type: FK CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public."Medicamento_Laboratorio"
-    ADD CONSTRAINT "FK_84ac9f70c43e620672e877e13fa" FOREIGN KEY ("laboratorioIdLaboratorio") REFERENCES public.laboratorio("idLaboratorio") ON DELETE CASCADE;
-
-
---
--- TOC entry 2236 (class 2606 OID 26281)
--- Name: FK_981c981d9237819ec1223eeed2b; Type: FK CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public."Medicamento_Categoria"
-    ADD CONSTRAINT "FK_981c981d9237819ec1223eeed2b" FOREIGN KEY ("medicamentoIdMedicamento") REFERENCES public.medicamento("idMedicamento") ON DELETE CASCADE;
-
-
---
--- TOC entry 2219 (class 2606 OID 26196)
--- Name: FK_a1ffcd0b739d528eb3800dd8500; Type: FK CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.lote
-    ADD CONSTRAINT "FK_a1ffcd0b739d528eb3800dd8500" FOREIGN KEY ("medicamentoPostoIdMedicamentoPosto") REFERENCES public.medicamento_posto("idMedicamentoPosto");
-
-
---
--- TOC entry 2237 (class 2606 OID 26286)
--- Name: FK_a6f055bb1802e8f95a9aef5ca2d; Type: FK CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public."Medicamento_Categoria"
-    ADD CONSTRAINT "FK_a6f055bb1802e8f95a9aef5ca2d" FOREIGN KEY ("categoriaIdCategoria") REFERENCES public.categoria("idCategoria") ON DELETE CASCADE;
-
-
---
--- TOC entry 2229 (class 2606 OID 26246)
--- Name: FK_a71e89b12d9e0bd3803b7ba5129; Type: FK CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.recebimento_medicamento
-    ADD CONSTRAINT "FK_a71e89b12d9e0bd3803b7ba5129" FOREIGN KEY ("recebimentoIdRecebimento") REFERENCES public.recebimento("idRecebimento");
-
-
---
--- TOC entry 2213 (class 2606 OID 26166)
--- Name: FK_b938895ecfe3741d96b4d847d6e; Type: FK CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.solicitacao
-    ADD CONSTRAINT "FK_b938895ecfe3741d96b4d847d6e" FOREIGN KEY ("estadoSolicitacaoIdEstadoSolicitacao") REFERENCES public.estado_solicitacao("idEstadoSolicitacao");
-
-
---
--- TOC entry 2228 (class 2606 OID 26241)
--- Name: FK_dc13d563d3e12e1c870cac3e83b; Type: FK CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.recebimento_medicamento
-    ADD CONSTRAINT "FK_dc13d563d3e12e1c870cac3e83b" FOREIGN KEY ("atedenteId") REFERENCES public.atendente(id);
-
-
---
--- TOC entry 2225 (class 2606 OID 26226)
--- Name: FK_e786411690f02097b73e8be731b; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 2237 (class 2606 OID 26811)
+-- Name: FK_5f071a723a1c31f17da02b5c258; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.posto
-    ADD CONSTRAINT "FK_e786411690f02097b73e8be731b" FOREIGN KEY ("bairroIdBairro") REFERENCES public.bairro("idBairro");
+    ADD CONSTRAINT "FK_5f071a723a1c31f17da02b5c258" FOREIGN KEY ("idBairro") REFERENCES public.bairro("idBairro");
 
 
 --
--- TOC entry 2222 (class 2606 OID 26211)
--- Name: FK_ec1d4b0e6099481ab76718937db; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 2227 (class 2606 OID 26761)
+-- Name: FK_6523ec81c05ab07375927c32739; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.municipio
+    ADD CONSTRAINT "FK_6523ec81c05ab07375927c32739" FOREIGN KEY ("idEstado") REFERENCES public.estado("idEstado");
+
+
+--
+-- TOC entry 2222 (class 2606 OID 26736)
+-- Name: FK_660b56639042b8263593ca9f313; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.solicitacao
+    ADD CONSTRAINT "FK_660b56639042b8263593ca9f313" FOREIGN KEY ("idEstadoSolicitacao") REFERENCES public.estado_solicitacao("idEstadoSolicitacao");
+
+
+--
+-- TOC entry 2243 (class 2606 OID 26841)
+-- Name: FK_6cb50726019f0db418590a5d266; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.recebimento
+    ADD CONSTRAINT "FK_6cb50726019f0db418590a5d266" FOREIGN KEY ("idPessoa") REFERENCES public.pessoa(id);
+
+
+--
+-- TOC entry 2226 (class 2606 OID 26756)
+-- Name: FK_70caba7e5af8f8322697a9d4de8; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.titular
+    ADD CONSTRAINT "FK_70caba7e5af8f8322697a9d4de8" FOREIGN KEY ("idPessoa") REFERENCES public.pessoa(id);
+
+
+--
+-- TOC entry 2240 (class 2606 OID 26826)
+-- Name: FK_842f2d3d36e34add53e9e7401e2; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.atendente
+    ADD CONSTRAINT "FK_842f2d3d36e34add53e9e7401e2" FOREIGN KEY ("idPessoa") REFERENCES public.pessoa(id);
+
+
+--
+-- TOC entry 2246 (class 2606 OID 26915)
+-- Name: FK_8717de229ddfebb2b23232da8d0; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Medicamento_Laboratorio"
+    ADD CONSTRAINT "FK_8717de229ddfebb2b23232da8d0" FOREIGN KEY ("idLaboratorio") REFERENCES public.laboratorio("idLaboratorio") ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2235 (class 2606 OID 26801)
+-- Name: FK_8d2af46514530652469a590681f; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.medicamento_posto
-    ADD CONSTRAINT "FK_ec1d4b0e6099481ab76718937db" FOREIGN KEY ("postoIdPosto") REFERENCES public.posto("idPosto");
+    ADD CONSTRAINT "FK_8d2af46514530652469a590681f" FOREIGN KEY ("idMedicamento") REFERENCES public.medicamento("idMedicamento");
+
+
+--
+-- TOC entry 2245 (class 2606 OID 26910)
+-- Name: FK_8d976377355b346454bc7943fd6; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Medicamento_Laboratorio"
+    ADD CONSTRAINT "FK_8d976377355b346454bc7943fd6" FOREIGN KEY ("idMedicamento") REFERENCES public.medicamento("idMedicamento") ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2248 (class 2606 OID 26925)
+-- Name: FK_95ae3bdad991d76569acd753a3b; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Medicamento_Categoria"
+    ADD CONSTRAINT "FK_95ae3bdad991d76569acd753a3b" FOREIGN KEY ("idCategoria") REFERENCES public.categoria("idCategoria") ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2233 (class 2606 OID 26791)
+-- Name: FK_a857347ce8930d639b0df6ca248; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.controle
+    ADD CONSTRAINT "FK_a857347ce8930d639b0df6ca248" FOREIGN KEY ("idMedicamentoPosto") REFERENCES public.medicamento_posto("idMedicamentoPosto");
+
+
+--
+-- TOC entry 2228 (class 2606 OID 26766)
+-- Name: FK_aa99249764da549829ff3c72615; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.bairro
+    ADD CONSTRAINT "FK_aa99249764da549829ff3c72615" FOREIGN KEY ("idMunicipio") REFERENCES public.municipio("idMunicipio");
+
+
+--
+-- TOC entry 2234 (class 2606 OID 26796)
+-- Name: FK_ae65af188a8e5d9e203f624ef6f; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.medicamento_posto
+    ADD CONSTRAINT "FK_ae65af188a8e5d9e203f624ef6f" FOREIGN KEY ("idPosto") REFERENCES public.posto("idPosto");
+
+
+--
+-- TOC entry 2238 (class 2606 OID 26816)
+-- Name: FK_b88a970cd7bb312c1c670a424e8; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.atendente
+    ADD CONSTRAINT "FK_b88a970cd7bb312c1c670a424e8" FOREIGN KEY ("idPosto") REFERENCES public.posto("idPosto");
+
+
+--
+-- TOC entry 2230 (class 2606 OID 26776)
+-- Name: FK_c1024416a7feb22a1c1f41ebd65; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.medicamento
+    ADD CONSTRAINT "FK_c1024416a7feb22a1c1f41ebd65" FOREIGN KEY ("idRecebimentoMedicamento") REFERENCES public.recebimento_medicamento("idRecebimentoMedicamento");
+
+
+--
+-- TOC entry 2241 (class 2606 OID 26831)
+-- Name: FK_c4f4ee02539993196aae2ca33fe; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.recebimento_medicamento
+    ADD CONSTRAINT "FK_c4f4ee02539993196aae2ca33fe" FOREIGN KEY ("idAtendente") REFERENCES public.atendente("idAtendente");
+
+
+--
+-- TOC entry 2231 (class 2606 OID 26781)
+-- Name: FK_cac4a32907078152eeb18f1d01d; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.lote
+    ADD CONSTRAINT "FK_cac4a32907078152eeb18f1d01d" FOREIGN KEY ("idMedicamentoPosto") REFERENCES public.medicamento_posto("idMedicamentoPosto");
+
+
+--
+-- TOC entry 2242 (class 2606 OID 26836)
+-- Name: FK_cb87e6d8e53fbb5ad5a6d72057f; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.recebimento_medicamento
+    ADD CONSTRAINT "FK_cb87e6d8e53fbb5ad5a6d72057f" FOREIGN KEY ("idRecebimento") REFERENCES public.recebimento("idRecebimento");
+
+
+--
+-- TOC entry 2223 (class 2606 OID 26741)
+-- Name: FK_dca580c0e1979f1565dbe7f1136; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.solicitacao
+    ADD CONSTRAINT "FK_dca580c0e1979f1565dbe7f1136" FOREIGN KEY ("idTitular") REFERENCES public.titular("idTitular");
+
+
+--
+-- TOC entry 2236 (class 2606 OID 26806)
+-- Name: FK_f2f65e4114006bde0f6a359b693; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.medicamento_posto
+    ADD CONSTRAINT "FK_f2f65e4114006bde0f6a359b693" FOREIGN KEY ("idLote") REFERENCES public.lote("idLote");

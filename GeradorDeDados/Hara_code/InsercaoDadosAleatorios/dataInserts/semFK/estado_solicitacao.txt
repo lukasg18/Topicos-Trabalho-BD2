@@ -1,0 +1,3 @@
+Atendido
+Expirado
+Comunicado

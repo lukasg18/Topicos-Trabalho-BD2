@@ -60,7 +60,7 @@ Será utilizado das informações de medicações e de dados de consumo médio p
 
 ### 5	MODELO CONCEITUAL<br>
 #### 5.1 NOTACAO ENTIDADE RELACIONAMENTO
-![Alt text](https://raw.githubusercontent.com/lukasg18/Topicos-Trabalho-BD2/master/Imagens/Modelo%20Conceitual.png)
+![Alt text](https://raw.githubusercontent.com/lukasg18/Topicos-Trabalho-BD2/master/Imagens/Modelo-Conceitual.png)
     
 #### 5.2 NOTACAO UML (Caso esteja fazendo a disciplina de Projeto)
 

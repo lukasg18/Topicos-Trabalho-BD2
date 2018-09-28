@@ -147,7 +147,8 @@ CREATE TABLE public.solicitacao (
 );
 
 CREATE TABLE public.tipo_controle (
-    "idtipoControle" integer NOT NULL
+    "idtipoControle" integer NOT NULL,
+     nome character varying(30) NOT NULL
 );
 
 CREATE TABLE public.titular (

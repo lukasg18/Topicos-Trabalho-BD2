@@ -1,0 +1,4 @@
+1;Unidade Mista de Saúde Dr. Cesar Augostini;Angelo Palauro Atras;Perto da Creche dos menor de Fundão;29185054;21;-19.938225;-40.40167599999999
+2;PSS Posto de Saúde de Fundão;Avenida César Pegoretti;Próximo ao Santo do pai Santo;29185000;25;-17.32541232;-50.54424342123
+3;Posto de Saúde de Timbuí;Angelo Palauro;Próximo ao Timbuíuni;29185021;675;-13.54332434;-52.5434324123
+4;Unidade de Saúde de Praia Grande;Rio Grande do Norte;Próximo ao Carro Branco;29185001;497;-31.544356;-53.5412333321

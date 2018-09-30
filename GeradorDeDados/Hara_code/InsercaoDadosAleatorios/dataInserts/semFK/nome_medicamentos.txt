@@ -1,0 +1,207 @@
+ABACAVIR
+ACETATO DE MEDROXIPROGESTERONA 
+ACETAZOLAMIDA
+ACICLOVIR E ACICLOVIR SÓDICO
+ÁCIDO ACETILSALICÍLICO
+ÁCIDO FÓLICO
+ACIDO VALPROICO (OU VALPROATO DE SODIO)
+ALBENDAZOL
+ALENDRONATO DE SÓDIO
+ALOPURINOL
+AMIODARONA, CLORIDRATO DE
+AMITRIPTILINA, CLORIDRATO DE
+AMOXICILINA
+AMOXICILINA COM CLAVULANATO DE POTÁSSIO
+ANLODIPINO
+ATENOLOL
+AZITROMICINA
+Abacavir
+Abatacepte
+Abciximabe
+Acarbose
+Acebrofilina
+Aceclofenaco
+Aceponato de Metilprednisolona
+Acetado de Atosibano
+Acetato De Alfatocoferol
+Bacillus Cereus
+Bacillus Clausii
+Bacitracina
+Baclofeno
+Bacopa Monnieri
+Baryta Carbonica + Atropa Belladona
+Basiliximabe
+Belatacepte
+Belimumabe
+Belladonna
+Bemiparina Sódica
+Bendamustina
+Benfotiamina
+Benzbromarona
+Benzilpenicilina Benzatina
+Benzilpenicilina Potássica
+Capecitabina
+Capsaicina
+Captopril
+Captopril
+Carbamazepina
+Carbidopa
+Carbocisteína
+Carbonato De Cálcio
+Carbonato de Lodenafila
+Carbonato de Lítio
+Carbonato de Sevelâmero
+Carboplatina
+Carboximaltose Férrica
+Dacarbazina
+Daclatasvir
+Dactinomicina
+Dalteparina Sódica
+Danazol
+Dantroleno Sódico
+Dapagliflozina
+Dapoxetina
+Dapsona
+Daptomicina
+Daratumumabe
+Darunavir
+Dasatinibe
+Daunorrubicina Liposomal
+Decanoato de Haloperidol
+Decanoato de Nandrolona
+Decitabina
+Deferasirox
+Deferiprona
+Deflazacorte
+Deltafolitropina
+Deltametrina
+Denosumabe
+Ebastina
+Eculizumabe
+Edoxabana
+Efavirenz
+Elbasvir
+Eletrólitos
+Elotuzumabe
+Eltrombopague Olamina
+Embonato de Pirvínio
+Empagliflozina
+Enflurano
+Enfuvirtida
+Enoxaparina Sódica
+Entacapona
+Entecavir
+Entricitabina
+Enxofre
+Enzalutamida
+Equinacea Purpurea
+Ergocalciferol
+Eritromicina
+Eritropoetina Humana
+Ertapeném Sódico
+Escina
+Esilato de Nintedanibe
+Esomeprazol Magnésico
+Esomeprazol Sódico
+Famotidina
+Fampridina
+Fanciclovir
+Felodipino
+Femprocumona
+Fendizoato de Cloperastina
+Fenilbutazona Cálcica
+Fenitoína
+Fenobarbital
+Fenofibrato
+Fenol
+Fenoprofeno Cálcico
+Fenoximetilpenicilina Potássica
+Fentanila
+Gabapentina
+Gadobutrol
+Gadodiamida
+Gadopentato de Dimeglumina
+Gadoteridol
+Gadoversetamida
+Gadoxetato Dissódico
+Galsulfase
+Ganciclovir
+Ganirelix
+Gatifloxacino
+Halotano
+Hamamelis Virginiana
+Harpagophytum Procumbens
+Hedera Helix
+Hemifumarato de Alisquireno
+Hemifumarato de Quetiapina
+Hemitartarato de Eliglustate
+Hemitartarato de Metaraminol
+Hemitartarato de Norepinefrina
+Hemitartarato de Rivastigmina
+Hemitartarato de Zolpidem
+Heparina
+Heparina Sódica
+Heparina Sódica + Nicotinato de Benzila
+Hexacetonida de Triancinolona
+Hexafluoreto de Enxofre
+Hexamidina + Tetracaína
+Hialuronato de Sódio
+Hialuronidase
+Hialuronidase + Betametasona
+Hidralazina
+Hidrato de Calcipotriol + Dipropionato de Betametasona
+Hidroclorotiazida
+Ibandronato de Sódio
+Ibrutinibe
+Ibuprofeno
+Ibuprofeno + Arginina
+Icodextrina
+Idarucizumabe
+Idoxuridina
+Idursulfase
+Ifosfamida
+Iloprosta
+Imiglucerase
+Imipeném + Cilastatina Sódica
+Imiquimode
+Imunoglobulina
+Imunoglobulina G
+Imunoglobulina Humana
+Imunoglobulina Humana Anti-Hepatite B
+Imunoglobulina antitimócito
+Indapamida
+Indinavir
+Secuquinumabe
+Senna Alexandrina Mill
+Senna Alexandrina Mill + Associações
+Senna alexandrina Miller + Cassia fistula L.
+Serenoa Repens
+Serenoa Serrulata + Vitaminas + Zinco
+Sevoflurano
+Silimarina + Racemetionina
+Silodosina
+Siltuximabe
+Silybum Marianum L. Gaerth
+Simeprevir Sódico
+Simeticona
+Simeticona + Metilbrometo de Homatropina
+Sinvastatina
+Sirolimo
+Xilometazolina
+Zafirlucaste
+Zanamivir
+Zidovudina
+Zinco
+Zolmitriptano
+Zopiclona
+Zuclopentixol
+Tacrolimo
+Tacrolimo Monoidratado
+Tadalafila
+Tafamidis Meglumina
+Tafluprosta
+Talidomida
+Tanacetum Parthenium
+Tartarato de Metoprolol
+Tartarato de Vareniclina
+Tartarato de Vinorelbina

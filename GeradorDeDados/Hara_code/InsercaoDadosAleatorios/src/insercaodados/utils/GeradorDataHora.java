@@ -1,6 +1,7 @@
 package insercaodados.utils;
 
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
@@ -28,5 +29,17 @@ public class GeradorDataHora {
         Date data = gerarData(2010, 2020);
         DateFormat f2 = DateFormat.getDateInstance(DateFormat.MEDIUM, new Locale("pt", "BR"));
         System.out.println("Data e hora brasileira: "+f2.format(data));
+        
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        String dataHoraFormatadaPostgreSql = sdf.format(new Date()).replace('/', '-');
+        
+        System.out.println(dataHoraFormatadaPostgreSql);
+        
+        Calendar dataSemanaPassada = Calendar.getInstance();
+        dataSemanaPassada.add(Calendar.DATE, -7);
+        SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        String dataHoraFormatadaPostgreSql2 = sdf2.format(dataSemanaPassada.getTime()).replace('/', '-');
+        
+        System.out.println(dataHoraFormatadaPostgreSql2);
     }
 }

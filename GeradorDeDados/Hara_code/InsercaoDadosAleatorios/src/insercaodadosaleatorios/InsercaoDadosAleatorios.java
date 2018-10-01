@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
 import java.util.logging.Level;
@@ -49,6 +50,12 @@ public class InsercaoDadosAleatorios {
     private static MinMaxValueID idMaxMinPosto;
     private static MinMaxValueID idMaxMinPessoaAtentende;
     private static MinMaxValueID idMaxMinMedicamento;
+    private static MinMaxValueID idMaxMinCategoria;
+    private static MinMaxValueID idMaxMinLaboratorio;
+    private static MinMaxValueID idMaxMinMedicamentoPosto;
+    private static MinMaxValueID idMaxMinSolicitacaoComunicado;
+    private static MinMaxValueID idMaxMinSolicitacaoExpirado;
+    private static MinMaxValueID idMaxMinSolicitacaoMedicamentoPosto;
 
     public static void main(String[] args) throws IOException {
         
@@ -76,6 +83,12 @@ public class InsercaoDadosAleatorios {
             insertPosto(gravarArqComFK, NOMEARQUIVOSLEITURA[10]);
             insertAtendente(gravarArqComFK);
             insertMedicamento(gravarArqSemFK, NOMEARQUIVOSLEITURA[11]);
+            insertMedicamentoCategoria(gravarArqComFK);
+            insertMedicamentoLaboratorio(gravarArqComFK);
+            insertMedicamentoPosto(gravarArqComFK);
+            insertSolicitacaoComunicado(gravarArqComFK);
+            insertSolicitacaoExpirado(gravarArqComFK);
+            insertSolicitacaoMedicamentoPosto(gravarArqComFK);
             
             fileWithForeignKey.close();
             fileWithoutForeignKey.close();
@@ -107,9 +120,12 @@ public class InsercaoDadosAleatorios {
             CategoriaInsert categoria = new CategoriaInsert();
             String tableName = "categoria";
             
+            int idValue = 1;
+            idMaxMinCategoria = new MinMaxValueID();
+            idMaxMinCategoria.idMinValue = idValue;
+            
             // Coloca os dados no arquivo .sql
             String linha = bufferReader.readLine();
-            int idValue = 1;
             while (linha != null) {
                categoria.idCategoria = idValue++;
                categoria.tipo = linha;
@@ -119,6 +135,7 @@ public class InsercaoDadosAleatorios {
                
                linha = bufferReader.readLine();
             }
+            idMaxMinCategoria.idMaxValue = idValue-1;
             
             fileReader.close();
         }
@@ -235,9 +252,12 @@ public class InsercaoDadosAleatorios {
             LaboratorioInsert laboratorio = new LaboratorioInsert();
             String tableName = "laboratorio";
             
+            int idValue = 1;
+            idMaxMinLaboratorio = new MinMaxValueID();
+            idMaxMinLaboratorio.idMinValue = idValue;
+            
             // Coloca os dados no arquivo .sql
             String linha = bufferReader.readLine();
-            int idValue = 1;
             while (linha != null) {
                laboratorio.idLaboratorio = idValue++;
                laboratorio.nome = linha;
@@ -247,6 +267,7 @@ public class InsercaoDadosAleatorios {
                
                linha = bufferReader.readLine();
             }
+            idMaxMinLaboratorio.idMaxValue = idValue-1;
             
             fileReader.close();
         }
@@ -511,6 +532,7 @@ public class InsercaoDadosAleatorios {
         idMaxMinPosto.idMaxValue = idValue-1; // Recebe o maior valor do id
     }
     
+    // Usa o idPessoa e idPosto
     public static void insertAtendente(PrintWriter arqEscrita) {
         PessoaAtendenteInsert atendente = new PessoaAtendenteInsert();
         String tableName = "atendente";
@@ -557,6 +579,178 @@ public class InsercaoDadosAleatorios {
         }
 
         idMaxMinMedicamento.idMaxValue = idValue-1; // Recebe o maior valor do id
+    }
+    
+    // Usa o idMedicamento e idCategoria
+    public static void insertMedicamentoCategoria(PrintWriter arqEscrita) {
+        int numCategoriasMedicamento;
+        MedicamentoCategoriaInsert medicamento_categoria = new MedicamentoCategoriaInsert();
+        String tableName = "medicamento_categoria";
+        
+        for (int idMed = idMaxMinMedicamento.idMinValue; idMed <= idMaxMinMedicamento.idMaxValue; idMed++) {
+            medicamento_categoria.fkIdMedicamento = idMed;
+            
+            // Medicamento tem no mínimo uma categoria no máx n
+            numCategoriasMedicamento = 1 + GENERATOR.nextInt(2);
+            List<Integer> idUsados = new ArrayList();
+            for (int i = 0; i < numCategoriasMedicamento; i++) {
+                
+                do {
+                    medicamento_categoria.fkIdCategoria = idMaxMinCategoria.idMinValue + GENERATOR.nextInt(idMaxMinCategoria.idMaxValue);
+                } while(idUsados.contains(medicamento_categoria.fkIdCategoria));
+                idUsados.add(medicamento_categoria.fkIdCategoria);
+                
+                // Insere a query no arquivo sql de saída
+                medicamento_categoria.createInsertQueryPostgreSql(tableName, "idmedicamento", "idcategoria");
+                arqEscrita.println(medicamento_categoria.getSqlInsert());
+            }
+        }
+    }
+    
+    // Usa o idMedicamento e idLaboratorio
+    public static void insertMedicamentoLaboratorio(PrintWriter arqEscrita) {
+        int numLaboratoriosMedicamento;
+        MedicamentoLaboratorioInsert medicamento_laboratorio = new MedicamentoLaboratorioInsert();
+        String tableName = "medicamento_laboratorio";
+        
+        for (int idMed = idMaxMinMedicamento.idMinValue; idMed <= idMaxMinMedicamento.idMaxValue; idMed++) {
+            medicamento_laboratorio.fkIdMedicamento = idMed;
+            
+            // Medicamento tem no mínimo um laboratorio no máx n
+            numLaboratoriosMedicamento = 1 + GENERATOR.nextInt(2);
+            List<Integer> idUsados = new ArrayList();
+            for (int i = 0; i < numLaboratoriosMedicamento; i++) {
+                
+                do {
+                    medicamento_laboratorio.fkIdLaboratorio = idMaxMinLaboratorio.idMinValue + GENERATOR.nextInt(idMaxMinLaboratorio.idMaxValue);
+                } while(idUsados.contains(medicamento_laboratorio.fkIdLaboratorio));
+                idUsados.add(medicamento_laboratorio.fkIdLaboratorio);
+                
+                // Insere a query no arquivo sql de saída
+                medicamento_laboratorio.createInsertQueryPostgreSql(tableName, "idmedicamento", "idlaboratorio");
+                arqEscrita.println(medicamento_laboratorio.getSqlInsert());
+            }
+        }
+    }
+    
+    // Usa o idMedicamento e idPosto
+    public static void insertMedicamentoPosto(PrintWriter arqEscrita) {
+        MedicamentoPostoInsert medicamento_posto = new MedicamentoPostoInsert();
+        
+        final int INDISPONIVEL = 0;
+        final int DISPONIVEL = 1;
+        String tableName = "medicamento_posto";
+        
+        int idValue = 1;
+        idMaxMinMedicamentoPosto = new MinMaxValueID();
+        idMaxMinMedicamentoPosto.idMinValue = idValue;
+        
+        for (int idPosto = idMaxMinPosto.idMinValue; idPosto <= idMaxMinPosto.idMaxValue; idPosto++) {
+            for (int idMed = idMaxMinMedicamento.idMinValue; idMed <= idMaxMinMedicamento.idMaxValue; idMed++) {
+                medicamento_posto.idMedicamentoPosto = idValue++;
+                medicamento_posto.fkIdMedicamento = idMed;
+                medicamento_posto.fkIdPosto = idPosto;
+                medicamento_posto.estadoMedicamento = DISPONIVEL; // Todos disponíveis
+                
+                medicamento_posto.createInsertQueryPostgreSql(tableName, "idmedicamentoposto",
+                                                              "idmedicamento", "idposto", "estadomedicamento");
+                arqEscrita.println(medicamento_posto.getSqlInsert());
+            }
+        }
+        
+        idMaxMinMedicamentoPosto.idMaxValue = idValue-1;
+    }
+    
+    // Usa o idEstadoSolicitacao e idTitular
+    // Faz somente as solicitações do estado comunicado
+    public static void insertSolicitacaoComunicado(PrintWriter arqEscrita) {
+        SolicitacaoInsert solicitacao = new SolicitacaoInsert();
+        
+        final int ATENDIDO = 1;
+        final int EXPIRADO = 2;
+        final int COMUNICADO = 3;
+        String tableName = "solicitacao";
+        int qntSolicitacaoPorUsuario = 1000;
+        
+        int idValue = 1;
+        idMaxMinSolicitacaoComunicado = new MinMaxValueID();
+        idMaxMinSolicitacaoComunicado.idMinValue = idValue;
+        
+        // A solicitação só para testes é feita por todos os titulares cadastrados, onde cada um faz 1000 dando 1M
+        for (int idTitular = idMaxMinPessoaTitular.idMinValue; idTitular <= 10/*idMaxMinPessoaTitular.idMaxValue*/; idTitular++) {
+            for (int i = 0; i < qntSolicitacaoPorUsuario; i++) {
+                solicitacao.idSolicitacao = idValue++;
+                solicitacao.dataHora = new Date(); // Todas solicitações são hoje nesse exato momento
+                solicitacao.fkIdEstadoSolicitacao = COMUNICADO;
+                solicitacao.quantidadeMedicamentos = 1 + GENERATOR.nextInt(10);
+                solicitacao.fkIdTitular = idTitular;
+
+                solicitacao.createInsertQueryPostgreSql(tableName, "idsolicitacao", "quantidademedicamento",
+                                                              "data_hora", "idtitular", "idestadosolicitacao");
+                arqEscrita.println(solicitacao.getSqlInsert());
+            }
+        }
+        
+        idMaxMinSolicitacaoComunicado.idMaxValue = idValue-1;
+    }
+    
+    // Usa o idEstadoSolicitacao e idTitular
+    // Faz somente as solicitações do estado expirado
+    public static void insertSolicitacaoExpirado(PrintWriter arqEscrita) {
+        SolicitacaoInsert solicitacao = new SolicitacaoInsert();
+        
+        final int ATENDIDO = 1;
+        final int EXPIRADO = 2;
+        final int COMUNICADO = 3;
+        String tableName = "solicitacao";
+        int qntSolicitacaoPorUsuario = 1000;
+        
+        int idValue = idMaxMinSolicitacaoComunicado.idMaxValue + 1;
+        idMaxMinSolicitacaoExpirado = new MinMaxValueID();
+        idMaxMinSolicitacaoExpirado.idMinValue = idValue;
+        
+        // A solicitação só para testes é feita por todos os titulares cadastrados, onde cada um faz 1000 dando 1M
+        for (int idTitular = idMaxMinPessoaTitular.idMinValue; idTitular <= 10/*idMaxMinPessoaTitular.idMaxValue*/; idTitular++) {
+            Calendar dataSemanaPassada = Calendar.getInstance();
+            dataSemanaPassada.add(Calendar.DATE, -7); // Uma semana atrás
+            
+            for (int i = 0; i < qntSolicitacaoPorUsuario; i++) {
+                solicitacao.idSolicitacao = idValue++;
+                solicitacao.dataHora = dataSemanaPassada.getTime(); // Todas solicitações são de uma semana atrás
+                solicitacao.fkIdEstadoSolicitacao = EXPIRADO;
+                solicitacao.quantidadeMedicamentos = 1 + GENERATOR.nextInt(10);
+                solicitacao.fkIdTitular = idTitular;
+
+                solicitacao.createInsertQueryPostgreSql(tableName, "idsolicitacao", "quantidademedicamento",
+                                                              "data_hora", "idtitular", "idestadosolicitacao");
+                arqEscrita.println(solicitacao.getSqlInsert());
+            }
+        }
+        
+        idMaxMinSolicitacaoExpirado.idMaxValue = idValue-1;
+    }
+    
+    // Usa o idSolitacao e idMedicamentoPosto
+    public static void insertSolicitacaoMedicamentoPosto(PrintWriter arqEscrita) {
+        SolicitacaoMedicamentoPosto solicitacao_medicamentoPosto = new SolicitacaoMedicamentoPosto();
+        
+        String tableName = "solicitacao_medicamentoposto";
+        
+        for (int idSolComunicado = idMaxMinSolicitacaoComunicado.idMinValue; idSolComunicado <= idMaxMinSolicitacaoComunicado.idMaxValue; idSolComunicado++) {
+            solicitacao_medicamentoPosto.fkIdSolicitacao = idSolComunicado;
+            solicitacao_medicamentoPosto.fkIdMedicamentoPosto = idMaxMinMedicamentoPosto.idMinValue + GENERATOR.nextInt(idMaxMinMedicamentoPosto.idMaxValue);
+
+            solicitacao_medicamentoPosto.createInsertQueryPostgreSql(tableName, "idsolicitacao", "idmedicamentoposto");
+            arqEscrita.println(solicitacao_medicamentoPosto.getSqlInsert());
+        }
+        
+        for (int idSolExpirado = idMaxMinSolicitacaoExpirado.idMinValue; idSolExpirado <= idMaxMinSolicitacaoExpirado.idMaxValue; idSolExpirado++) {
+            solicitacao_medicamentoPosto.fkIdSolicitacao = idSolExpirado;
+            solicitacao_medicamentoPosto.fkIdMedicamentoPosto = idMaxMinMedicamentoPosto.idMinValue + GENERATOR.nextInt(idMaxMinMedicamentoPosto.idMaxValue);
+
+            solicitacao_medicamentoPosto.createInsertQueryPostgreSql(tableName, "idsolicitacao", "idmedicamentoposto");
+            arqEscrita.println(solicitacao_medicamentoPosto.getSqlInsert());
+        }
     }
 }
 

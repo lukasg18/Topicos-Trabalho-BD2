@@ -1,6 +1,6 @@
 CREATE TABLE public.atendente (
     idpessoa integer NOT NULL,
-    numeroregistro integer NOT NULL,
+    numeroregistro character varying(10) NOT NULL,
     idposto integer
 );
 
@@ -65,7 +65,7 @@ CREATE TABLE public.pessoa (
     datanascimento timestamp without time zone NOT NULL,
     cpf character varying(12) NOT NULL,
     sexo integer NOT NULL,
-    rg integer NOT NULL
+    rg character varying(10) NOT NULL
 );
 
 CREATE TABLE public.posto (

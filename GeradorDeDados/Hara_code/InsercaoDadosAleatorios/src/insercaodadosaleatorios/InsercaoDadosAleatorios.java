@@ -67,10 +67,10 @@ public class InsercaoDadosAleatorios {
             PrintWriter gravarArqComFK = new PrintWriter(fileWithForeignKey);
             PrintWriter gravarArqSemFK = new PrintWriter(fileWithoutForeignKey);
             
-            insertDadosCategoria(gravarArqSemFK, NOMEARQUIVOSLEITURA[0]);
+            //insertDadosCategoria(gravarArqSemFK, NOMEARQUIVOSLEITURA[0]);
             insertDadosEstado(gravarArqSemFK, NOMEARQUIVOSLEITURA[1]);
             //insertDadosEstadoMedicamento(gravarArqSemFK, NOMEARQUIVOSLEITURA[2]);
-            insertDadosEstadoSolicitacao(gravarArqSemFK, NOMEARQUIVOSLEITURA[3]);
+            //insertDadosEstadoSolicitacao(gravarArqSemFK, NOMEARQUIVOSLEITURA[3]);
             insertDadosLaboratorio(gravarArqSemFK, NOMEARQUIVOSLEITURA[4]);
             //insertDadosSexo(gravarArqSemFK, NOMEARQUIVOSLEITURA[5]);
             //insertDadosTipoControle(gravarArqSemFK, NOMEARQUIVOSLEITURA[6]);
@@ -83,7 +83,7 @@ public class InsercaoDadosAleatorios {
             insertPosto(gravarArqComFK, NOMEARQUIVOSLEITURA[10]);
             insertAtendente(gravarArqComFK);
             insertMedicamento(gravarArqSemFK, NOMEARQUIVOSLEITURA[11]);
-            insertMedicamentoCategoria(gravarArqComFK);
+            //insertMedicamentoCategoria(gravarArqComFK);
             insertMedicamentoLaboratorio(gravarArqComFK);
             insertMedicamentoPosto(gravarArqComFK);
             insertSolicitacaoComunicado(gravarArqComFK);
@@ -363,7 +363,7 @@ public class InsercaoDadosAleatorios {
             
             int anoCorrente = Calendar.getInstance().get(Calendar.YEAR);
             List<String> cpfLidos = new ArrayList();
-            List<Integer> rgLidos = new ArrayList();
+            List<String> rgLidos = new ArrayList();
             
             int idValue = 1;
             idMaxMinPessoa = new MinMaxValueID();
@@ -377,7 +377,7 @@ public class InsercaoDadosAleatorios {
                
                do {
                    pessoa.cpf = GeradorCpf.geraStrCPF();
-                   pessoa.rg = GeradorRg.geraRG();
+                   pessoa.rg = GeradorRg.geraStrRG();
                } while(cpfLidos.contains(pessoa.cpf) || rgLidos.contains(pessoa.rg));
                
                // Add como um cpf e rg já lido
@@ -540,7 +540,7 @@ public class InsercaoDadosAleatorios {
         int idValue = idMaxMinPessoaDependente.idMaxValue + 1;
         idMaxMinPessoaAtentende = new MinMaxValueID();
         idMaxMinPessoaAtentende.idMinValue = idValue; // Recebe o menor valor do id
-        idMaxMinPessoaAtentende.idMaxValue = 1095; // Primeiras 4K pessoas serão titulares
+        idMaxMinPessoaAtentende.idMaxValue = 1095; 
         
         for (int i = idValue; i <= idMaxMinPessoaAtentende.idMaxValue; i++) {
            atendente.fkIdPessoa = idValue++;
@@ -640,6 +640,7 @@ public class InsercaoDadosAleatorios {
         final int INDISPONIVEL = 0;
         final int DISPONIVEL = 1;
         String tableName = "medicamento_posto";
+        int anoCorrente = Calendar.getInstance().get(Calendar.YEAR);
         
         int idValue = 1;
         idMaxMinMedicamentoPosto = new MinMaxValueID();
@@ -651,9 +652,12 @@ public class InsercaoDadosAleatorios {
                 medicamento_posto.fkIdMedicamento = idMed;
                 medicamento_posto.fkIdPosto = idPosto;
                 medicamento_posto.estadoMedicamento = DISPONIVEL; // Todos disponíveis
+                medicamento_posto.quantidade = 10000000;
+                medicamento_posto.dataVencimento = GeradorDataHora.gerarData(anoCorrente+1, anoCorrente+4);
                 
                 medicamento_posto.createInsertQueryPostgreSql(tableName, "idmedicamentoposto",
-                                                              "idmedicamento", "idposto", "estadomedicamento");
+                                                              "idmedicamento", "idposto", "estadomedicamento",
+                                                              "quantidade", "dataVencimento");
                 arqEscrita.println(medicamento_posto.getSqlInsert());
             }
         }

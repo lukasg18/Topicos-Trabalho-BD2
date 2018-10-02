@@ -10,7 +10,7 @@ public class PessoaInsert extends Insert implements InsertPostgreSql {
     public String nome;
     public Date dataNascimento;
     public String cpf;
-    public int rg;
+    public String rg;
     public int sexoEnum;
 
     public PessoaInsert() {
@@ -26,7 +26,7 @@ public class PessoaInsert extends Insert implements InsertPostgreSql {
         String dataFormatadaPostgreSql = sdf.format(this.dataNascimento).replace('/', '-');
         
         super.insertSql = String.format("INSERT INTO %s (%s, %s, %s, %s, %s, %s) "
-            + "VALUES (%d, '%s', '%s', '%s', %d, %d);"
+            + "VALUES (%d, '%s', '%s', '%s', '%s', %d);"
             , params[0], params[1], params[2], params[3], params[4], params[5], params[6], 
             this.idPessoa, this.nome, dataFormatadaPostgreSql, this.cpf, this.rg, 
             this.sexoEnum);

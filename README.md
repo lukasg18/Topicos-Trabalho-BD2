@@ -74,13 +74,13 @@ Subsistema para Atendente do posto
 (Apresentação para o professor em sala de aula)
 
 #### 5.3 DECISÕES DE PROJETO
-    sexo: este campo se tornou um atributo em vez de uma tabela, pois em nível de código é um atributo/propriedade da classe Pessoa do tipo Enum Sexo. Assim quando se utilizar o ORM para gerar as tabelas do banco de dados será mapeado com um código inteiro correspondente do Enum Sexo.
-    estadoMedicamento: Mesmos motivos do atributo sexo com diferença que a propriedade é do tipo Enum EstadoMedicamento.
-    estadoSolicitacao: Mesmos motivos dos atributos sexo e estadoMedicamento. Entretanto com a diferença que a propriedade é do tipo Enum EstadoSolicitacao.
-    endereço: como decisão foi decidido quebrar em três entidades que se relacionam, os quais são: Estado, Municipio e Bairro. Além de a própria entidade posto também conter informações específicas de localização do posto, como latitude e longitude que tem como principal objetivo na visualização nas views que fazem o atendimento das solicitações da população. Outro ponto importante é mesmo que no estado inicial do software é voltado somente para o município de Fundão foram criados as entidades Município e Estado visando a escalabilidade e crescimento do sistema.
-    Dependente: apesar dessa entidade não conter nenhum atributo específico que não herde da entidade Pessoa foi decidido que existisse para que tivesse a separação apropriada entre os tipos de pessoas, ou seja, caso queira pegar os atendentes do sistema só ir até a tabela de atendentes, assim como também tanto para o dependente quanto para o titular.
-    Entrada_Medicamento: é uma entidade e basicamente serve para o controle e registro de entrada medicamentos realizados pelo atendente do posto. Anteriormente foram modelados diversas maneiras até chegar nessa entidade, mas que pode sofrer alterações futuras.
-    Recebimento: como foi citado acima sobre o controle de entrada de medicamentos, a entidade Recebimento atua de maneira contrária, pois é o controle e registro da saída de medicamentos.
+    - sexo: este campo se tornou um atributo em vez de uma tabela, pois em nível de código é um atributo/propriedade da classe Pessoa do tipo Enum Sexo. Assim quando se utilizar o ORM para gerar as tabelas do banco de dados será mapeado com um código inteiro correspondente do Enum Sexo.
+    - estadoMedicamento: Mesmos motivos do atributo sexo com diferença que a propriedade é do tipo Enum EstadoMedicamento.
+    - estadoSolicitacao: Mesmos motivos dos atributos sexo e estadoMedicamento. Entretanto com a diferença que a propriedade é do tipo Enum EstadoSolicitacao.
+    - endereço: como decisão foi decidido quebrar em três entidades que se relacionam, os quais são: Estado, Municipio e Bairro. Além de a própria entidade posto também conter informações específicas de localização do posto, como latitude e longitude que tem como principal objetivo na visualização nas views que fazem o atendimento das solicitações da população. Outro ponto importante é mesmo que no estado inicial do software é voltado somente para o município de Fundão foram criados as entidades Município e Estado visando a escalabilidade e crescimento do sistema.
+    - Dependente: apesar dessa entidade não conter nenhum atributo específico que não herde da entidade Pessoa foi decidido que existisse para que tivesse a separação apropriada entre os tipos de pessoas, ou seja, caso queira pegar os atendentes do sistema só ir até a tabela de atendentes, assim como também tanto para o dependente quanto para o titular.
+    - Entrada_Medicamento: é uma entidade e basicamente serve para o controle e registro de entrada medicamentos realizados pelo atendente do posto. Anteriormente foram modelados diversas maneiras até chegar nessa entidade, mas que pode sofrer alterações futuras.
+    - Recebimento: como foi citado acima sobre o controle de entrada de medicamentos, a entidade Recebimento atua de maneira contrária, pois é o controle e registro da saída de medicamentos.
 
 #### 5.4 DESCRIÇÃO DOS DADOS
     ATENDENTE: Tabela que contém os dados do atendente do posto.

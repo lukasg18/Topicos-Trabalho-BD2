@@ -167,7 +167,7 @@ Subsistema para Atendente do posto
     SOLICITACAO: Tabela que contém os dados relacionados a uma solicitação de medicamento.
         idSolicitacao: campo que armazena o identificador da solicitação.
         data_hora: campo que armazena o registro de data e hora da solicitação.
-        estadoSolicitacao: campo que armazena o estado em que a solicitação encontra(solicitado(0), atendido(1) ou expirado(2)).
+        estadoSolicitacao: campo que armazena o estado em que a solicitação encontra(comunicado(0), atendido(1) ou expirado(2)).
         quantidadeMedicamento: campo que armazena a quantidade de medicamentos solicitados.
         idTitular: campo que armazena o identificador da pessoa titular que solicitou os medicamentos.
     

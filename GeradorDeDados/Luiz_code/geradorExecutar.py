@@ -39,8 +39,8 @@ def tabelaAtendente():
 
 	for i in range(0, qtd_atendente):
 		campos = ["idpessoa","numeroregistro","idposto"]
-		tipos = ["int", "char", "int"]
-		valores = [idpessoa[i], "txt1", idposto[i]]
+		tipos = ["int", "int", "int"]
+		valores = [idpessoa[i], i+1, idposto[i]]
 		vFile.write(gerador.sql_insert("atendente", campos, tipos, valores) + "\n")
 	#end
 	vFile.close()

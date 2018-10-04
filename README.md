@@ -92,7 +92,7 @@ Subsistema para Atendente do posto
 ![Alt text](https://raw.githubusercontent.com/lukasg18/Topicos-Trabalho-BD2/master/Imagens/Modelo_Logico.png)
 
 ### 7	MODELO FÍSICO<br>
-[Link modelo físico](https://raw.githubusercontent.com/lukasg18/Topicos-Trabalho-BD2/master/modelo_fisico.sql)
+[Link modelo físico](https://raw.githubusercontent.com/lukasg18/Topicos-Trabalho-BD2/master/Modelo_Fisico.sql)
     
     /* Modelo Físico */
     

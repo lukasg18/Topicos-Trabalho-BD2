@@ -18,8 +18,8 @@ def cpf(num):
 
 # --------------------------------------------------
 def nome(num):
-	vFileNomes = open("lst_nomes.txt",'r')
-	vFileSobrenomes = open("lst_sobrenomes.txt",'r')
+	vFileNomes = open("lst_nomes.txt",'r', encoding = "ISO-8859-1")
+	vFileSobrenomes = open("lst_sobrenomes.txt",'r', encoding = "ISO-8859-1")
 	
 	lstNomes = vFileNomes.read().split("\n")
 	lstSobrenomes = vFileSobrenomes.read().split("\n")

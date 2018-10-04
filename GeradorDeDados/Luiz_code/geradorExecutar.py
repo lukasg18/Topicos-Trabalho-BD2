@@ -136,7 +136,7 @@ def tabelaLaboratorio():
 
 # --------------------------------------------------
 def tabelaMedicamento():
-	vFile = open("lst_remedios.txt",'r')
+	vFile = open("lst_remedios.txt",'r', encoding = "ISO-8859-1")
 	lstRemedios = []
 	linha = vFile.readline()
 	while(linha != ""):

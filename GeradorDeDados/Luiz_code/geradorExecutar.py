@@ -7,23 +7,23 @@ import sys
 import gerador
 
 nomeDoArquivo = "sql_insertCompleto.sql"
-qtd_atendente = 1000  #qtd <= qtd_pessoa
+qtd_atendente = 10  #qtd <= qtd_pessoa
 qtd_bairro = 13  #fixo, bairros de Fundão
-qtd_depedente = 100000  #qtd <= qtd_pessoa
+qtd_depedente = 10  #qtd <= qtd_pessoa
 qtd_entrada_medicamento = 10  #qtd >= qtd_medicamento
 qtd_estado = 1  #fixo, Espirito Santo
-qtd_laboratorio = 50  #qtd >= 1
+qtd_laboratorio = 10  #qtd >= 1
 qtd_medicamento = 91  #Fixo, peguei de uma lista
 qtd_medicamento_laboratorio = 10  #qtd >= 0?
 qtd_medicamento_posto = 20  #qtd >= qtd_posto?
 qtd_municipio = 1  #fixo, Fundão
-qtd_pessoa = 300000  #qtd >=1
+qtd_pessoa = 30  #qtd >=1
 qtd_posto = 20  #qtd >= 1
-qtd_recebimento = 1000  #qtd >= 0?
+qtd_recebimento = 10  #qtd >= 0?
 qtd_recebimento_medicamentoposto = 10  #qtd <= qtd_recebimento?
-qtd_solicitacao = 10  #qtd >= 1?
-qtd_solicitacao_medicamentoposto = 10  #qtd >= qtd_solicitacao?
-qtd_titular = 200000  #qtd <= qtd_pessoa
+qtd_solicitacao = 20  #qtd >= 1?
+qtd_solicitacao_medicamentoposto = 20  #qtd >= qtd_solicitacao?
+qtd_titular = 20  #qtd <= qtd_pessoa
 
 # ==================================================
 # FUNÇÕES
@@ -259,10 +259,11 @@ def tabelaRecebimento():
 		cpo1 = randint(1,10)
 		cpo2 = gerador.timestamp(1, 2014, 2018)[0]
 		cpo3 = randint(1,qtd_pessoa)
+		cpo4 = gerador.numerosDistintos(qtd_recebimento_medicamentoposto, 1, qtd_atendente)
 
-		campos = ["idrecebimento","quantidademedicamentos","data_hora","idpessoa"]
-		tipos = ["int", "int", "time", "int"]
-		valores = [i+1, cpo1, cpo2, cpo3]
+		campos = ["idrecebimento","quantidademedicamentos","data_hora","idpessoa","idatendente"]
+		tipos = ["int", "int", "time", "int", "int"]
+		valores = [i+1, cpo1, cpo2, cpo3, cpo4[i]]
 		vFile.write(gerador.sql_insert("recebimento", campos, tipos, valores) + "\n")
 	#end
 	vFile.close()
@@ -272,14 +273,13 @@ def tabelaRecebimento_Medicamentoposto():
 	vFile = open(nomeDoArquivo,'a')
 	vFile.write("\n-- TABELA RECEBIMENTO_MEDICAMENTOPOSTO\n\n")
 	
-	cpo1 = gerador.numerosDistintos(qtd_recebimento_medicamentoposto, 1, qtd_atendente)
-	cpo2 = gerador.numerosDistintos(qtd_recebimento_medicamentoposto, 1, qtd_recebimento)
-	cpo3 = gerador.numerosAleatorios(qtd_recebimento_medicamentoposto, 1, qtd_medicamento_posto)
+	cpo1 = gerador.numerosDistintos(qtd_recebimento_medicamentoposto, 1, qtd_recebimento)
+	cpo2 = gerador.numerosAleatorios(qtd_recebimento_medicamentoposto, 1, qtd_medicamento_posto)
 
 	for i in range(0, qtd_recebimento_medicamentoposto):
-		campos = ["idatendente","idrecebimento","idmedicamentoposto"]
-		tipos = ["int", "int", "int"]
-		valores = [cpo1[i], cpo2[i], cpo3[i]]
+		campos = ["idrecebimento","idmedicamentoposto"]
+		tipos = ["int", "int"]
+		valores = [cpo1[i], cpo2[i]]
 		vFile.write(gerador.sql_insert("recebimento_medicamentoposto", campos, tipos, valores) + "\n")
 	#end
 	vFile.close()
@@ -345,19 +345,44 @@ def main():
 	vFile.close()
 	print("Arquivo resetado")
 
-	print("criando Atendente... ", end='')
+	print("criando Estado... ", end='')
 	sys.stdout.flush()
-	tabelaAtendente()
+	tabelaEstado()
 	print("concluido!")
-
+	
+	print("criando Municipio... ", end='')
+	sys.stdout.flush()
+	tabelaMunicipio()
+	print("concluido!")
+	
 	print("criando Bairro... ", end='')
 	sys.stdout.flush()
 	tabelaBairro()
 	print("concluido!")
-
+	
+	print("criando Laboratorio... ", end='')
+	sys.stdout.flush()
+	tabelaLaboratorio()
+	print("concluido!")
+	
+	print("criando Medicamento... ", end='')
+	sys.stdout.flush()
+	tabelaMedicamento()
+	print("concluido!")
+	
 	print("criando Pessoa... ", end='')
 	sys.stdout.flush()
 	tabelaPessoa()
+	print("concluido!")
+
+	print("criando Posto... ", end='')
+	sys.stdout.flush()
+	tabelaPosto()
+	print("concluido!")
+	
+	print("criando Atendente... ", end='')
+	sys.stdout.flush()
+	tabelaAtendente()
 	print("concluido!")
 
 	print("criando Titular... ", end='')
@@ -369,30 +394,15 @@ def main():
 	sys.stdout.flush()
 	tabelaDependente()
 	print("concluido!")
-
-	print("criando Estado... ", end='')
-	sys.stdout.flush()
-	tabelaEstado()
-	print("concluido!")
-
-	print("criando Laboratorio... ", end='')
-	sys.stdout.flush()
-	tabelaLaboratorio()
-	print("concluido!")
 	
-	print("criando Medicamento... ", end='')
+	print("criando Solicitacao... ", end='')
 	sys.stdout.flush()
-	tabelaMedicamento()
+	tabelaSolicitacao()
 	print("concluido!")
 
-	print("criando Municipio... ", end='')
+	print("criando Solicitacao_MedicamentoPosto... ", end='')
 	sys.stdout.flush()
-	tabelaMunicipio()
-	print("concluido!")
-
-	print("criando Posto... ", end='')
-	sys.stdout.flush()
-	tabelaPosto()
+	tabelaSolicitacao_Medicamentoposto()
 	print("concluido!")
 
 	print("criando Entrada_Medicamento... ", end='')
@@ -408,16 +418,6 @@ def main():
 	print("criando Medicamento_Posto... ", end='')
 	sys.stdout.flush()
 	tabelaMedicamentoPosto()
-	print("concluido!")
-
-	print("criando Solicitacao... ", end='')
-	sys.stdout.flush()
-	tabelaSolicitacao()
-	print("concluido!")
-
-	print("criando Solicitacao_MedicamentoPosto... ", end='')
-	sys.stdout.flush()
-	tabelaSolicitacao_Medicamentoposto()
 	print("concluido!")
 	
 	print("criando Recebimento... ", end='')

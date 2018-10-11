@@ -65,10 +65,10 @@ Será utilizado das informações de medicações e de dados de consumo médio p
 #### 5.2 NOTACAO UML (Caso esteja fazendo a disciplina de Projeto)
 
 Subsistema para solicitação de Medicamentos realizado pela População
-![Alt text](https://raw.githubusercontent.com/lukasg18/Topicos-Trabalho-BD2/master/Imagens/DiagramaClasse_AtendimentoPopulacao.png)
+![Alt text](https://raw.githubusercontent.com/lukasg18/Topicos-Trabalho-BD2/master/Imagens/Diagrama_classes_projeto_AtendimentoPopulacao.png)
 
 Subsistema para Atendente do posto
-![Alt text](https://raw.githubusercontent.com/lukasg18/Topicos-Trabalho-BD2/master/Imagens/DiagramaClasse_ControleEstoque.png)
+![Alt text](https://raw.githubusercontent.com/lukasg18/Topicos-Trabalho-BD2/master/Imagens/Diagrama_classes_projeto_ControleEstoque.png)
 
 ## Data de Entrega: (23/08/2018) 
 (Apresentação para o professor em sala de aula)
@@ -86,103 +86,96 @@ Subsistema para Atendente do posto
 
 #### 5.4 DESCRIÇÃO DOS DADOS
     ATENDENTE: Tabela que contém os dados do atendente do posto.
-        idPessoa: campo que armazena o Identificador de pessoa(o atendente no caso).
-        numeroRegistro: campo que armazena o registro de funcionário do posto.
-        idPosto: campo que armazena o Identificador do posto que o atendente está alocado.
+        idpessoa: campo que armazena o Identificador de pessoa(o atendente no caso).
+        numeroregistro: campo que armazena o registro de funcionário do posto.
+        idposto: campo que armazena o Identificador do posto que o atendente está alocado.
         
     BAIRRO: Tabela que contém dados sobre o bairro em que o posto de saúde está localizado.
-        idBairro: campo que armazena o identificador do bairro.
+        idbairro: campo que armazena o identificador do bairro.
         nome: campo que armazena o nome do bairro.
-        idMunicipio: campo que armazena o identificador do município que o bairro está alocado.
+        idmunicipio: campo que armazena o identificador do município que o bairro está alocado.
 
     DEPENDENTE: Tabela que armazena apenas os códigos de pessoa e titular ligados ao qual pertence
-        idPessoa: campo que armazena o Identificador de pessoa(o dependente no caso).
-        idTitular: campo que armazena o Identificador do titular ao qual o dependente está ligado.
-    
-    ENTRADAMEDICAMENTO: Tabela que guarda os registro de entrada de novos medicamentos ou de medicamentos em falta no posto.
-        idEntradaMedicamento: campo que armazena o identificador da entrada de um medicamento.
-        data_hora: campo que armazena o registro de data e hora da entrada de um medicamento.
-        quantidade: campo que armazena a quantidade de medicamentos adquiridos(inseridos).
-        idMedicamentoPosto: campo que armazena o identificador do medicamento inserido no estoque do determinado posto.
-        idAtendente: campo que armazena o identificador do atendente que realiza a entrada de medicamentos no posto.
+        idpessoa: campo que armazena o Identificador de pessoa(o dependente no caso).
+        idtitular: campo que armazena o Identificador do titular ao qual o dependente está ligado.
     
     ESTADO: Tabela que contém dados sobre o estado em que o posto de saúde está localizado.
-        idEstado: campo que armazena o identificador do estado.
+        idestado: campo que armazena o identificador do estado.
         nome: campo que armazena o nome do estado.
     
     LABORATORIO: Tabela que contém dados acerca do laboratório ao qual pertence o medicamento.
-        idLaboratorio: campo que armazena o identificador do laboratório.
+        idlaboratorio: campo que armazena o identificador do laboratório.
         nome: campo que armazena o nome do laboratório.
     
     MEDICAMENTO: Tabela que contém dados sobre o medicamento.
-        idMedicamento: campo que armazena o identificador do medicamento.
+        idmedicamento: campo que armazena o identificador do medicamento.
         nome: campo que armazena o nome do medicamento.	
         bula: campo que armazena o link das páginas html sobre a bula do medicamento.
         
     MEDICAMENTO_LABORATORIO: Tabela que reúne dados das entidades Medicamento e Laboratório.
-        idLaboratorio: campo que guarda o identificador do laboratório.
-        idMedicamento: campo que guarda o identificador do Medicamento.
+        idlaboratorio: campo que guarda o identificador do laboratório.
+        idmedicamento: campo que guarda o identificador do Medicamento.
         
     MEDICAMENTO_POSTO: Tabela que contém os dados sobre os medicamentos de acordo com a localização do posto de saúde e reúne dados das entidades Posto e Medicamento.
-        idMedicamentoPosto: campo que armazena o identificador do medicamento de acordo com o posto.
-        estadoMedicamento: campo que armazena a disponibilidade do medicamento de acordo com o posto(indisponível(0) e disponível(1)).
+        idmedicamentoPosto: campo que armazena o identificador do medicamento de acordo com o posto.
+        estadomedicamento: campo que armazena a disponibilidade do medicamento de acordo com o posto(indisponível(0) e disponível(1)).
         quantidade: campo que guarda a quantidade de determinado medicamento de acordo com o posto.
-        dataVencimento: campo que guarda a data de vencimento do medicamento no dado posto.
-        idPosto: campo que armazena o identificador do posto.
-        idMedicamento: campo que armazena o identificador do medicamento.
+        datavencimento: campo que guarda a data de vencimento do medicamento no dado posto.
+        idposto: campo que armazena o identificador do posto.
+        idmedicamento: campo que armazena o identificador do medicamento.
     
     MUNICIPIO: Tabela que contém dados sobre o município em que o posto de saúde está localizado.
-        idMunicipio: campo que armazena o identificador do município.
+        idmunicipio: campo que armazena o identificador do município.
         nome: campo que armazena o nome do município.
-        idEstado: campo que armazena o identificador do Estado em que o município está alocado.
+        idestado: campo que armazena o identificador do Estado em que o município está alocado.
     
     PESSOA: Tabela que contém os dados da pessoa.
-        idPessoa: campo que armazena o Identificador de pessoa.
+        idpessoa: campo que armazena o Identificador de pessoa.
         nome: campo que armazena o nome da pessoa.
-        dataNascimento: campo que armazena a data de nascimento da pessoa.
+        datanascimento: campo que armazena a data de nascimento da pessoa.
         cpf: campo que armazena o cadastro de pessoa física da pessoa
         rg: campo que armazena o registro geral do documento de identidade da pessoa.
         sexo: campo que indica o sexo da pessoa, podendo ser masculino(0) e feminino(1).
         
     POSTO: Tabela que contém os dados relacionados ao posto de saúde.
-        idPosto: campo que armazena o identificador do posto de saúde.
+        idposto: campo que armazena o identificador do posto de saúde.
         nome: campo que armazena o nome do posto de saúde.
         rua: campo que armazena o nome da rua na qual o posto está localizado.
         numero: número de endereço do posto de saúde.
-        complemento: campo que armazena dados complementares ao endereço do posto de saúde.
         cep: campo que armazena o código de endereçamento postal dos posto de saúde.
-        coordGeoLong: campo que armazena as coordenadas geográficas de longitude da localização do posto de saúde.
-        coordGeoLat: campo que armazena as coordenadas geográficas de latitude da localização do posto de saúde.
-        idBairro: campo que armazena o identificador do bairro em que o posto se encontra.
+        coordgeolong: campo que armazena as coordenadas geográficas de longitude da localização do posto de saúde.
+        coordgeolat: campo que armazena as coordenadas geográficas de latitude da localização do posto de saúde.
+        idbairro: campo que armazena o identificador do bairro em que o posto se encontra.
     
     RECEBIMENTO: Tabela que contém os dados sobre retirada dos medicamentos por uma pessoa.
-        idRecebimento: campo que armazena o identificador do recebimento.
+        idrecebimento: campo que armazena o identificador do recebimento.
         data_hora: campo que armazena o registro de data e hora do recebimento.
-        quantidadeMedicamento: armazena a quantidade de medicamentos retirados em um recebimento.
-        idPessoa: campo que armazena o identificador da pessoa(titular ou dependente) que retira o medicamento.
-        idAtendente: campo que armazena o identificador do atendente que realiza a retirada do medicamento.
+        quantidademedicamento: armazena a quantidade de medicamentos retirados em um recebimento.
+        idpessoa: campo que armazena o identificador da pessoa(titular ou dependente) que retira o medicamento.
+        idatendente: campo que armazena o identificador do atendente que realiza a retirada do medicamento.
+        idmedicamentoposto: campo que armazena o identificador do medicamento no determinado posto em que foi realizado a retirada de recebimento do medicamento.
         
-    RECEBIMENTO_MEDICAMENTOPOSTO: Tabela que reúne os dados das entidades Recebimento e Medicamento_Posto.
-        idMedicamento: campo que guarda o identificador do medicamento.
-        idRecebimento: campo que guarda o identificador do recebimento.
+    REGISTRO_MEDICAMENTO: Tabela que guarda os registro de entrada de novos medicamentos ou de medicamentos em falta no posto.
+        idregistromedicamento: campo que armazena o identificador da entrada/registro de um medicamento.
+        data_hora: campo que armazena o registro de data e hora da entrada de um medicamento.
+        quantidade: campo que armazena a quantidade de medicamentos adquiridos(inseridos).
+        idmedicamentoposto: campo que armazena o identificador do medicamento inserido no estoque do determinado posto.
+        idatendente: campo que armazena o identificador do atendente que realiza a entrada de medicamentos no posto.
     
     SOLICITACAO: Tabela que contém os dados relacionados a uma solicitação de medicamento.
         idSolicitacao: campo que armazena o identificador da solicitação.
         data_hora: campo que armazena o registro de data e hora da solicitação.
-        estadoSolicitacao: campo que armazena o estado em que a solicitação encontra(comunicado(0), atendido(1) ou expirado(2)).
-        quantidadeMedicamento: campo que armazena a quantidade de medicamentos solicitados.
-        idTitular: campo que armazena o identificador da pessoa titular que solicitou os medicamentos.
-    
-    SOLICITACAO_MEDICAMENTOPOSTO: Tabela que reúne os identificadores das entidades solicitação e Medicamento_posto
-        IdMedicamentoPosto: campo que armazena o identificador do medicamento_posto.
-        idSolicitacao: campo que armazena o identificador da solicitação.
+        estadosolicitacao: campo que armazena o estado em que a solicitação encontra(comunicado(0), atendido(1) ou expirado(2)).
+        quantidademedicamento: campo que armazena a quantidade de medicamentos solicitados.
+        idtitular: campo que armazena o identificador da pessoa titular que solicitou os medicamentos.
+        idmedicamentoposto: campo que armazena o identificador do medicamento no determinado posto em que foi realizado solicitação do medicamento desejado.
 
     TITULAR: Tabela que contém o código necessário para ser um solicitante de medicamento.
-        idPessoa: campo que armazena o Identificador de pessoa(o titular no caso).
-        numeroSUS: campo que armazena o número cadastrado da pessoa no Sistema único de Saúde.
+        idpessoa: campo que armazena o Identificador de pessoa(o titular no caso).
+        numerosus: campo que armazena o número cadastrado da pessoa no Sistema único de Saúde.
 
 ### 6	MODELO LÓGICO<br>
-![Alt text](https://raw.githubusercontent.com/lukasg18/Topicos-Trabalho-BD2/master/Imagens/Modelo_Logico_versao2.png)
+![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Modelo_Logico_versao.png)
 
 ### 7	MODELO FÍSICO<br>
 [Link modelo físico](https://raw.githubusercontent.com/lukasg18/Topicos-Trabalho-BD2/master/Modelo_Fisico.sql)

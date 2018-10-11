@@ -60,7 +60,7 @@ Será utilizado das informações de medicações e de dados de consumo médio p
 
 ### 5	MODELO CONCEITUAL<br>
 #### 5.1 NOTACAO ENTIDADE RELACIONAMENTO
-![Alt text](https://raw.githubusercontent.com/lukasg18/Topicos-Trabalho-BD2/master/Imagens/Modelo_Conceitual.png)
+![Alt text](https://raw.githubusercontent.com/lukasg18/Topicos-Trabalho-BD2/master/Imagens/Modelo_Conceitual_versao2.png)
     
 #### 5.2 NOTACAO UML (Caso esteja fazendo a disciplina de Projeto)
 
@@ -182,7 +182,7 @@ Subsistema para Atendente do posto
         numeroSUS: campo que armazena o número cadastrado da pessoa no Sistema único de Saúde.
 
 ### 6	MODELO LÓGICO<br>
-![Alt text](https://raw.githubusercontent.com/lukasg18/Topicos-Trabalho-BD2/master/Imagens/Modelo_Logico.png)
+![Alt text](https://raw.githubusercontent.com/lukasg18/Topicos-Trabalho-BD2/master/Imagens/Modelo_Logico_versao2.png)
 
 ### 7	MODELO FÍSICO<br>
 [Link modelo físico](https://raw.githubusercontent.com/lukasg18/Topicos-Trabalho-BD2/master/Modelo_Fisico.sql)

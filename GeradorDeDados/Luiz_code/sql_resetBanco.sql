@@ -1,0 +1,15 @@
+DELETE FROM "public"."titular";
+DELETE FROM "public"."atendente";
+DELETE FROM "public"."bairro";
+DELETE FROM "public"."dependente";
+DELETE FROM "public"."estado";
+DELETE FROM "public"."laboratorio";
+DELETE FROM "public"."medicamento";
+DELETE FROM "public"."medicamento_laboratorio";
+DELETE FROM "public"."medicamento_posto";
+DELETE FROM "public"."municipio";
+DELETE FROM "public"."pessoa";
+DELETE FROM "public"."posto";
+DELETE FROM "public"."recebimento";
+DELETE FROM "public"."registro_medicamento";
+DELETE FROM "public"."solicitacao";

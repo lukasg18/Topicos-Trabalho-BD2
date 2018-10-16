@@ -109,10 +109,32 @@ def numerosDistintos(qtd, min, max):
 #end
 
 # --------------------------------------------------
+def numerosDistintosFrom(valores, qtd):
+	lst = []
+	rng = valores[:] #TODO checar se isso eh necessario
+	for i in range(qtd):
+		num = randint(0, len(rng)-1)
+		lst.append(rng[num])
+		del rng[num]
+	#end
+	return lst
+#end
+
+# --------------------------------------------------
 def numerosAleatorios(qtd, min, max):
 	lst = []
 	for i in range(qtd):
 		lst.append(randint(min,max))
+	#end
+	return lst
+#end
+
+# --------------------------------------------------
+def numerosAleatoriosFrom(valores, qtd):
+	lst = []
+	tam = len(valores)-1
+	for i in range(qtd):
+		lst.append( valores[randint(0, tam)] )
 	#end
 	return lst
 #end

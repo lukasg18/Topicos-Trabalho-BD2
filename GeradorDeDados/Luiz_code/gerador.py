@@ -109,6 +109,21 @@ def numerosDistintos(qtd, min, max):
 #end
 
 # --------------------------------------------------
+def tuplasDistintas(qtd, min1, max1, min2, max2):
+	lst = []
+	i = 0
+	while(i < qtd):
+		num1 = randint(min1, max1)
+		num2 = randint(min2, max2)
+		if((num1, num2) not in lst):
+			lst.append((num1,num2))
+			i += 1
+		#end
+	#end
+	return lst
+#end
+
+# --------------------------------------------------
 def numerosDistintosFrom(valores, qtd):
 	lst = []
 	rng = valores[:] #TODO checar se isso eh necessario

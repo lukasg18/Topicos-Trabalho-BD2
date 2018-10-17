@@ -13,22 +13,22 @@ import gerador
 
 nomeDoArquivo = "sql_insertCompleto.sql"
 
+qtd_pessoa = 30  #num >= 1
 qtd_atendente = 10  #num <= qtd_pessoa
 qtd_depedente = 10  #num <= qtd_pessoa
-qtd_registro_medicamento = 10  #num >= qtd_medicamento
+qtd_titular = 20  #num <= qtd_pessoa
+qtd_registro_medicamento = 10  #num >= 0
 qtd_medicamento_laboratorio = 10  #num >= 1
-qtd_medicamento_posto = 10  #num > 0
-qtd_pessoa = 30  #num >=1
+qtd_medicamento_posto = 10  #num >= 0
 qtd_posto = 20  #num >= 1
 qtd_recebimento = 10  #num >= 0?
 qtd_solicitacao = 20  #num >= 1?
-qtd_titular = 20  #num <= qtd_pessoa
 
-qtd_bairro = 13  #Valor fixo
 qtd_estado = 1  #Valor fixo
+qtd_bairro = 13  #Valor fixo
+qtd_municipio = 1  #Valor fixo
 qtd_laboratorio = 196  #Valor fixo
 qtd_medicamento = 91  #Valor fixo
-qtd_municipio = 1  #Valor fixo
 
 key_titular = []
 key_atendente = []
@@ -189,15 +189,13 @@ def tabelaMedicamentoLaboratorio():
 	vFile = open(nomeDoArquivo,'a')
 	vFile.write("\n-- TABELA MEDICAMENTO_LABORATORIO\n\n")
 
-	for idlab in range(1, qtd_laboratorio):
-		idmed = gerador.numerosDistintos(qtd_medicamento_laboratorio, 1, qtd_medicamento)
+	val = gerador.tuplasDistintas(qtd_medicamento_laboratorio, 1, qtd_medicamento, 1, qtd_medicamento_laboratorio)
 
-		for i in range(0, qtd_medicamento_laboratorio):
-			campos = ["idmedicamento", "idlaboratorio"]
-			tipos = ["int", "int"]
-			valores = [idmed[i], idlab]
-			vFile.write(gerador.sql_insert("medicamento_laboratorio", campos, tipos, valores) + "\n")
-		#end
+	for i in range(0, qtd_medicamento_laboratorio):
+		campos = ["idmedicamento", "idlaboratorio"]
+		tipos = ["int", "int"]
+		valores = [val[i][0], val[i][1]]
+		vFile.write(gerador.sql_insert("medicamento_laboratorio", campos, tipos, valores) + "\n")
 	#end
 	vFile.close()
 	print("concluido!")
@@ -300,7 +298,7 @@ def tabelaRecebimento():
 		cpo2 = gerador.timestamp(1, 2014, 2018)[0]
 		cpo3 = randint(1,qtd_pessoa)
 		cpo4 = gerador.numerosDistintosFrom(key_atendente, qtd_recebimento)
-		cpo5  = gerador.numerosAleatorios(qtd_recebimento, 1, qtd_medicamento_posto) # TODO conferir?
+		cpo5 = gerador.numerosAleatorios(qtd_recebimento, 1, qtd_medicamento_posto) # TODO conferir?
 
 		campos = ["idrecebimento","quantidademedicamentos","data_hora","idpessoa","idatendente","idmedicamentoposto"]
 		tipos = ["int", "int", "time", "int", "int", "int"]
@@ -321,13 +319,12 @@ def tabelaRegistroMedicamento():
 	cpo1 = gerador.numerosAleatorios(qtd_registro_medicamento, 1, 20)
 	cpo2 = gerador.timestamp(qtd_registro_medicamento, 2014, 2018)
 	cpo3 = gerador.numerosAleatoriosFrom(key_atendente, qtd_registro_medicamento)
-	cpo4 = gerador.numerosAleatorios(qtd_registro_medicamento, 1, qtd_titular)
-	cpo5 = gerador.numerosAleatorios(qtd_registro_medicamento, 1, qtd_medicamento_posto)
+	cpo4 = gerador.numerosAleatorios(qtd_registro_medicamento, 1, qtd_medicamento_posto)
 
 	for i in range(0, qtd_registro_medicamento):
 		campos = ["idregistromedicamento","quantidade","data_hora","idatendente","idmedicamentoposto"]
 		tipos = ["int", "int", "time", "int", "int"]
-		valores = [i+1, cpo1[i], cpo2[i], cpo3[i], cpo4[i], cpo5[i]]
+		valores = [i+1, cpo1[i], cpo2[i], cpo3[i], cpo4[i]]
 		vFile.write(gerador.sql_insert("registro_medicamento", campos, tipos, valores) + "\n")
 	#end
 	vFile.close()

@@ -1,6 +1,11 @@
 # ==================================================
 # Cabecalho 
 # ==================================================
+#
+# Esse software gera dados, em sua maioria aleatórios, para
+# inserir no projeto FilaZero para fins de teste. A otimização
+# Desse script, assim como de gerador.py, não é uma prioridade. 
+#
 
 from random import randint
 import sys
@@ -9,20 +14,21 @@ import gerador
 nomeDoArquivo = "sql_insertCompleto.sql"
 
 qtd_atendente = 10  #num <= qtd_pessoa
-qtd_bairro = 13  #fixo, bairros de Fundão
 qtd_depedente = 10  #num <= qtd_pessoa
 qtd_registro_medicamento = 10  #num >= qtd_medicamento
-qtd_estado = 1  #fixo, Espirito Santo
-qtd_laboratorio = 10  #num >= 1
-qtd_medicamento = 91  #Fixo, peguei de uma lista
-qtd_medicamento_laboratorio = 10  #num >= 0?
-qtd_medicamento_posto = 20  #num >= qtd_posto?
-qtd_municipio = 1  #fixo, Fundão
+qtd_medicamento_laboratorio = 10  #num >= 1
+qtd_medicamento_posto = 10  #num > 0
 qtd_pessoa = 30  #num >=1
 qtd_posto = 20  #num >= 1
 qtd_recebimento = 10  #num >= 0?
 qtd_solicitacao = 20  #num >= 1?
 qtd_titular = 20  #num <= qtd_pessoa
+
+qtd_bairro = 13  #Valor fixo
+qtd_estado = 1  #Valor fixo
+qtd_laboratorio = 196  #Valor fixo
+qtd_medicamento = 91  #Valor fixo
+qtd_municipio = 1  #Valor fixo
 
 key_titular = []
 key_atendente = []
@@ -124,13 +130,24 @@ def tabelaEstado():
 def tabelaLaboratorio():
 	print("criando Laboratorio... ", end='')
 	sys.stdout.flush()
+	vFile = open("lst_labs.txt",'r')
+	lstLabs = []
+	linha = vFile.readline()
+	while(linha != ""):
+		if(linha[-1] == '\n'):
+			linha = linha[:-1]
+		#end
+		lstLabs.append(linha)
+		linha = vFile.readline()
+	#end
+	vFile.close()
+
 	vFile = open(nomeDoArquivo,'a')
 	vFile.write("\n-- TABELA LABORATORIO\n\n")
-	
-	for i in range(0, qtd_laboratorio):
+	for i in range(0,len(lstLabs)):
 		campos = ["idlaboratorio", "nome"]
 		tipos = ["int", "char"]
-		valores = [i+1, gerador.gibberish(1)]
+		valores = [i+1, lstLabs[i]]
 		vFile.write(gerador.sql_insert("laboratorio", campos, tipos, valores) + "\n")
 	#end
 	vFile.close()
@@ -285,7 +302,7 @@ def tabelaRecebimento():
 		cpo4 = gerador.numerosDistintosFrom(key_atendente, qtd_recebimento)
 		cpo5  = gerador.numerosAleatorios(qtd_recebimento, 1, qtd_medicamento_posto) # TODO conferir?
 
-		campos = ["idrecebimento","quantidademedicamentos","data_hora","idpessoa","idatedente","idmedicamentoposto"] #TODO idatedente deveria ser idatendente
+		campos = ["idrecebimento","quantidademedicamentos","data_hora","idpessoa","idatendente","idmedicamentoposto"]
 		tipos = ["int", "int", "time", "int", "int", "int"]
 		valores = [i+1, cpo1, cpo2, cpo3, cpo4[i], cpo5[i]]
 		vFile.write(gerador.sql_insert("recebimento", campos, tipos, valores) + "\n")

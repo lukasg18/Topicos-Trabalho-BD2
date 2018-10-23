@@ -650,8 +650,8 @@ Subsistema para Atendente do posto
         
         Todos os dados foram gerados aleatoriamente, porém algumas palavras como nomes de composições e laboratórios
         foram copiados de listas. Fontes das palavras citadas:
-        [Nomes de laboratórios](https://guiadafarmacia.com.br/industrias/)
-        [Nomes comuns de pessoas](https://github.com/emersonsoares/SampleDataGenerator/blob/master/SampleDataGenerator/Resources/nomes.txt)
+        [Nomes_de_laboratórios](https://guiadafarmacia.com.br/industrias/)
+        [Nomes_comuns_de_pessoas](https://github.com/emersonsoares/SampleDataGenerator/blob/master/SampleDataGenerator/Resources/nomes.txt)
         [Sobrenomes comuns](https://pt.wiktionary.org/wiki/Ap%C3%AAndice:Sobrenomes_em_portugu%C3%AAs)
         [Nomes de Composições quimicas / remedios](http://www.subpav.org/aaz/)
         [Nomes de bairros](https://pt.wikipedia.org/wiki/Lista_de_bairros_de_Fund%C3%A3o_(Esp%C3%ADrito_Santo))

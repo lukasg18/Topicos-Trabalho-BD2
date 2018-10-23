@@ -13,16 +13,16 @@ import gerador
 
 nomeDoArquivo = "sql_insertCompleto.sql"
 
-qtd_pessoa = 30  #num >= 1
-qtd_atendente = 10  #num <= qtd_pessoa
-qtd_depedente = 10  #num <= qtd_pessoa
-qtd_titular = 20  #num <= qtd_pessoa
+qtd_pessoa = 10000  #num >= 1
+qtd_atendente = 20  #num <= qtd_pessoa
+qtd_depedente = 6000  #num <= qtd_pessoa
+qtd_titular = 3980  #num <= qtd_pessoa
 qtd_registro_medicamento = 10  #num >= 0
 qtd_medicamento_laboratorio = 10  #num >= 1
 qtd_medicamento_posto = 10  #num >= 0
 qtd_posto = 20  #num >= 1
-qtd_recebimento = 10  #num >= 0?
-qtd_solicitacao = 20  #num >= 1?
+qtd_recebimento = 100000  #num >= 0?
+qtd_solicitacao = 1500000  #num >= 1?
 
 qtd_estado = 1  #Valor fixo
 qtd_bairro = 13  #Valor fixo
@@ -247,13 +247,13 @@ def tabelaPessoa():
 
 	nome = gerador.nome(qtd_pessoa)
 	data = gerador.timestamp(qtd_pessoa, 1950, 2018)
-	cpf = gerador.cpf(qtd_pessoa)
-	rg = gerador.rg(qtd_pessoa)
+	#cpf = gerador.cpf(qtd_pessoa)
+	#rg = gerador.rg(qtd_pessoa)
 
 	for i in range(0, qtd_pessoa):
 		campos = ["idpessoa", "nome", "datanascimento", "cpf", "sexo", "rg"]
 		tipos = ["int", "char", "time", "char", "int", "char"]
-		valores = [i+1, nome[i], data[i], cpf[i], gerador.definirSexo(nome[i]), str(rg[i])]
+		valores = [i+1, nome[i], data[i], str(i+1), gerador.definirSexo(nome[i]), str(i+1)]
 		vFile.write(gerador.sql_insert("pessoa", campos, tipos, valores) + "\n")
 	#end
 	vFile.close()
@@ -293,12 +293,15 @@ def tabelaRecebimento():
 	vFile = open(nomeDoArquivo,'a')
 	vFile.write("\n-- TABELA RECEBIMENTO\n\n")
 	
+
+	cpo4 = gerador.numerosAleatoriosFrom(key_atendente, qtd_recebimento)
+	cpo5 = gerador.numerosAleatorios(qtd_recebimento, 1, qtd_medicamento_posto) # TODO conferir?
+	
 	for i in range(0, qtd_recebimento):
 		cpo1 = randint(1,10)
 		cpo2 = gerador.timestamp(1, 2014, 2018)[0]
 		cpo3 = randint(1,qtd_pessoa)
-		cpo4 = gerador.numerosDistintosFrom(key_atendente, qtd_recebimento)
-		cpo5 = gerador.numerosAleatorios(qtd_recebimento, 1, qtd_medicamento_posto) # TODO conferir?
+		
 
 		campos = ["idrecebimento","quantidademedicamentos","data_hora","idpessoa","idatendente","idmedicamentoposto"]
 		tipos = ["int", "int", "time", "int", "int", "int"]

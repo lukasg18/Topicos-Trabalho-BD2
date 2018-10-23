@@ -651,11 +651,11 @@ Subsistema para Atendente do posto
         Todos os dados foram gerados aleatoriamente, porém algumas palavras como nomes de composições e laboratórios
         foram copiados de listas. Fontes das palavras citadas:
 
-[Nomes de laboratórios](https://guiadafarmacia.com.br/industrias/);
-[Nomes comuns de pessoas](https://github.com/emersonsoares/SampleDataGenerator/blob/master/SampleDataGenerator/Resources/nomes.txt);
-[Sobrenomes comuns](https://pt.wiktionary.org/wiki/Ap%C3%AAndice:Sobrenomes_em_portugu%C3%AAs);
-[Nomes de Composições quimicas / remedios](http://www.subpav.org/aaz/);
-[Nomes de bairros](https://pt.wikipedia.org/wiki/Lista_de_bairros_de_Fund%C3%A3o_(Esp%C3%ADrito_Santo));
+[Nomes de laboratórios](https://guiadafarmacia.com.br/industrias/)<br>
+[Nomes comuns de pessoas](https://github.com/emersonsoares/SampleDataGenerator/blob/master/SampleDataGenerator/Resources/nomes.txt)<br>
+[Sobrenomes comuns](https://pt.wiktionary.org/wiki/Ap%C3%AAndice:Sobrenomes_em_portugu%C3%AAs)<br>
+[Nomes de Composições quimicas / remedios](http://www.subpav.org/aaz/)<br>
+[Nomes de bairros](https://pt.wikipedia.org/wiki/Lista_de_bairros_de_Fund%C3%A3o_(Esp%C3%ADrito_Santo))<br>
         
         b) obtenção de códigos reutilizados
         
@@ -669,12 +669,12 @@ Subsistema para Atendente do posto
 #### 8.2 INCLUSÃO DO SCRIPT PARA CRIAÇÃO DE TABELAS E INSERÇÃO DOS DADOS (ARQUIVO ÚNICO COM):
         a) inclusão das instruções para criação das tabelas e estruturas de amazenamento do BD
         
-[Link](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Modelo_Fisico.sql)
+[Criação e estrutura do banco](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Modelo_Fisico.sql)
         
         b) inclusão das instruções de inserção dos dados nas referidas tabelas
         
-[Link](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/GeradorDeDados/Luiz_code/gerador.py)
-[Link](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/GeradorDeDados/Luiz_code/geradorExecutar.py)
+[Biblioteca do gerador](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/GeradorDeDados/Luiz_code/gerador.py)
+[Gerador de inserção dados](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/GeradorDeDados/Luiz_code/geradorExecutar.py)
         
         c) inclusão das instruções para execução de outros procedimentos necessários
         

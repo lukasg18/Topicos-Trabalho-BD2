@@ -673,7 +673,7 @@ Subsistema para Atendente do posto
         
         b) inclusão das instruções de inserção dos dados nas referidas tabelas
         
-[Biblioteca do gerador](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/GeradorDeDados/Luiz_code/gerador.py)
+[Biblioteca do gerador](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/GeradorDeDados/Luiz_code/gerador.py)<br>
 [Gerador de inserção dados](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/GeradorDeDados/Luiz_code/geradorExecutar.py)
         
         c) inclusão das instruções para execução de outros procedimentos necessários

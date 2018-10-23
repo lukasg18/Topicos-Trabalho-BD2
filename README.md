@@ -645,14 +645,39 @@ Subsistema para Atendente do posto
 #### 8.1 DETALHAMENTO DAS INFORMAÇÕES
         Detalhamento sobre as informações e processo de obtenção ou geração dos dados.
         Referenciar todas as fontes referentes a:
+        
         a) obtenção dos dados
+        
+        Todos os dados foram gerados aleatoriamente, porém algumas palavras como nomes de composições e laboratórios
+        foram copiados de listas. Fontes das palavras citadas:
+        Nomes de laboratórios => https://guiadafarmacia.com.br/industrias/
+        Nomes comuns de pessoas => https://github.com/emersonsoares/SampleDataGenerator/blob/master/SampleDataGenerator/Resources/nomes.txt
+        Sobrenomes comuns => https://pt.wiktionary.org/wiki/Ap%C3%AAndice:Sobrenomes_em_portugu%C3%AAs
+        Nomes de Composições quimicas / remedios => http://www.subpav.org/aaz/
+        Nomes de bairros => https://pt.wikipedia.org/wiki/Lista_de_bairros_de_Fund%C3%A3o_(Esp%C3%ADrito_Santo)
+        
         b) obtenção de códigos reutilizados
+        
+        O código para geração de dados foi criado sem reutilização.
+        // TODO checar para ooutros códigos tipo backend?
+        
         c) fontes de estudo para desenvolvimento do projeto
+        
+        // TODO Nenhum?
         
 #### 8.2 INCLUSÃO DO SCRIPT PARA CRIAÇÃO DE TABELAS E INSERÇÃO DOS DADOS (ARQUIVO ÚNICO COM):
         a) inclusão das instruções para criação das tabelas e estruturas de amazenamento do BD
+        
+        https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Modelo_Fisico.sql
+        
         b) inclusão das instruções de inserção dos dados nas referidas tabelas
+        
+        https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/GeradorDeDados/Luiz_code/gerador.py
+        https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/GeradorDeDados/Luiz_code/geradorExecutar.py
+        
         c) inclusão das instruções para execução de outros procedimentos necessários
+        
+        //TODO?
 
 ### 9	TABELAS E PRINCIPAIS CONSULTAS<br>
 #### 9.1	GERACAO DE DADOS (MÍNIMO DE 10 REGISTROS PARA CADA TABELA NO BANCO DE DADOS)<br>

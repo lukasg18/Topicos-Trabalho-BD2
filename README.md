@@ -45,7 +45,7 @@ DICA:
 Os motivos da escolha do sistema proposto são da população não ter a necessidade de ir até o posto sem ter a certeza da obtenção do medicamento, o que consequentemente evitaria filas enormes para a solicitação. Com isso facilitaria a solicitação de medicamentos pela população local, além de ajudar os atendentes internos que trabalham nos postos de controlar e administrar o sistema de forma mais eficiente.
       
 ### 3	MINI-MUNDO<br>
-O registro dos medicamentos são feitos assim que chegam na unidade, registrando assim o nome, o lote, a validade e a fabricação do medicamento. A cada transação é registrado no estoque o medicamento distribuído. A população para fazer a retirada de medicamentos deve levar a carteirinha do SUS, Receita médica emitida pelos serviços públicos de saúde e um documento original com foto. Cada pessoa pode registrar até 3 dependentes com motivos excepcionais para a retirada de remédio em seu lugar, ou para a retirada de medicamentos de crianças de até 7 anos que não tenham o cartão. Será feito um cadastro de cada pessoa através do cartão do SUS e outras informações pessoais para a retirada de medicamentos.<br>
+O registro dos medicamentos são feitos assim que chegam na unidade, registrando assim o nome, o lote, a validade e a fabricação do medicamento. A cada transação é registrado no estoque o medicamento distribuído. A população para fazer a retirada de medicamentos deve levar a carteirinha do SUS, Receita médica emitida pelos serviços públicos de saúde e um documento original com foto. Cada pessoa pode registrar até 3 dependentes com motivos excepcionais para a retirada de remédio em seu lugar. Será feito um cadastro de cada pessoa através do cartão do SUS e outras informações pessoais para a retirada de medicamentos.<br>
 A população pode consultar de maneira online os medicamentos disponíveis em determinados postos da região e solicitar um medicamento em um posto específico.<br>
 O responsável pelo sistema terá que realizar a tarefa de cadastro de usuário, cadastro de remédio e registrar as transações efetuadas, além de poder emitir relatórios dos pacientes mensais, medicamentos que saíram no mês, entre outros relatórios. Ele também será notificado no sistema sobre medicamentos próximos de vencer ou sem ter no estoque para solicitar a substituição e o envio dos medicamentos.<br>
 Será utilizado das informações de medicações e de dados de consumo médio para elaborar estoques mais flexíveis e também facilitar o rodízio de medicamentos menos usados de um posto para o outro.
@@ -60,46 +60,138 @@ Será utilizado das informações de medicações e de dados de consumo médio p
 
 ### 5	MODELO CONCEITUAL<br>
 #### 5.1 NOTACAO ENTIDADE RELACIONAMENTO
-![Alt text](https://raw.githubusercontent.com/lukasg18/Topicos-Trabalho-BD2/master/Imagens/Modelo_Conceitual.png)
+![Alt text](https://raw.githubusercontent.com/lukasg18/Topicos-Trabalho-BD2/master/Imagens/Modelo_Conceitual_versao2.png)
     
 #### 5.2 NOTACAO UML (Caso esteja fazendo a disciplina de Projeto)
 
 Subsistema para solicitação de Medicamentos realizado pela População
-![Alt text](https://raw.githubusercontent.com/lukasg18/Topicos-Trabalho-BD2/master/Imagens/DiagramaClasse_AtendimentoPopulacao.png)
+![Alt text](https://raw.githubusercontent.com/lukasg18/Topicos-Trabalho-BD2/master/Imagens/Diagrama_classes_projeto_AtendimentoPopulacao.png)
 
 Subsistema para Atendente do posto
-![Alt text](https://raw.githubusercontent.com/lukasg18/Topicos-Trabalho-BD2/master/Imagens/DiagramaClasse_ControleEstoque.png)
+![Alt text](https://raw.githubusercontent.com/lukasg18/Topicos-Trabalho-BD2/master/Imagens/Diagrama_classes_projeto_ControleEstoque.png)
 
 ## Data de Entrega: (23/08/2018) 
 (Apresentação para o professor em sala de aula)
 
 #### 5.3 DECISÕES DE PROJETO
-    [atributo]: [descrição da decisão]
-    
-    EXEMPLO:
-    a) Campo endereço: em nosso projeto optamos por um campo multivalorado e composto, pois a empresa 
-    pode possuir para cada departamento mais de uma localização... 
-    b) justifique!
+    - sexo: este campo se tornou um atributo em vez de uma tabela, pois em nível de código é um atributo/propriedade da classe Pessoa do tipo Enum Sexo. Assim quando se utilizar o ORM para gerar as tabelas do banco de dados será mapeado com um código inteiro correspondente do Enum Sexo.
+    - estadoMedicamento: Mesmos motivos do atributo sexo com diferença que a propriedade é do tipo Enum EstadoMedicamento.
+    - estadoSolicitacao: Mesmos motivos dos atributos sexo e estadoMedicamento. Entretanto com a diferença que a propriedade é do tipo Enum EstadoSolicitacao.
+    - endereço: como decisão foi decidido quebrar em três entidades que se relacionam, os quais são: Estado, Municipio e Bairro. Além de a própria entidade posto também conter informações específicas de localização do posto, como latitude e longitude que tem como principal objetivo na visualização nas views que fazem o atendimento das solicitações da população. Outro ponto importante é mesmo que no estado inicial do software é voltado somente para o município de Fundão foram criados as entidades Município e Estado visando a escalabilidade e crescimento do sistema.
+    - Dependente: apesar dessa entidade não conter nenhum atributo específico que não herde da entidade Pessoa foi decidido que existisse para que tivesse a separação apropriada entre os tipos de pessoas, ou seja, caso queira pegar os atendentes do sistema só ir até a tabela de atendentes, assim como também tanto para o dependente quanto para o titular.
+    - Entrada_Medicamento: é uma entidade surgida pelo relacionamento n:n de Atendente com Medicamento_Posto e basicamente serve para o controle e registro de entrada medicamentos realizados pelo atendente do posto. Anteriormente foram modelados diversas maneiras até chegar nessa entidade, mas que pode sofrer alterações futuras.
+    - Recebimento: como foi citado acima sobre o controle de entrada de medicamentos, a entidade Recebimento surge também do relacionamento n:n de Pessoa com Medicamento_Posto e atua de maneira a controlar e registrar a saída de medicamentos previamente solicitados pelos usuários referente a população.
+    - dataVencimento: é um atributo da entidade Medicamento_Posto que indica a data de vencimento do medicamento referente ao determinado posto. Em um sistema em produção e com aplicação real o ideal e coerente seria a utilização de uma entidade lote que se relaciona com Medicamento_Posto e teria como atributos: número do lote, assim como sua data de vencimento do lote em questão e a quantidade de medicamentos do lote. Entretanto foi decidido ter somente um data de vencimento comum aos medicamentos em geral para facilitar no desenvolvimento do sistema para uma versão inicial. Logo, claramente se fosse colocado o sistema em produção deveria adotar uma estratégia como a do lote mencionada anteriormente.
+    - Medicamento: como no tópico anterior, o medicamento é uma entidade mais complexa e com mais características. Como decisão de projeto decidimos pegar somente algumas características mais relevantes até o momento. Claramente que em versões posteriores ou até mesmo em uma aplicação real do software em produção ela seria uma classe mais bem trabalhada e detalhada, definindo os tipos de medicamentos, suas categorias e afins.
 
-#### 5.4 DESCRIÇÃO DOS DADOS 
-    [objeto]: [descrição do objeto]
+#### 5.4 DESCRIÇÃO DOS DADOS
+    ATENDENTE: Tabela que contém os dados do atendente do posto.
+        idpessoa: campo que armazena o Identificador de pessoa(o atendente no caso).
+        numeroregistro: campo que armazena o registro de funcionário do posto.
+        idposto: campo que armazena o Identificador do posto que o atendente está alocado.
+        
+    BAIRRO: Tabela que contém dados sobre o bairro em que o posto de saúde está localizado.
+        idbairro: campo que armazena o identificador do bairro.
+        nome: campo que armazena o nome do bairro.
+        idmunicipio: campo que armazena o identificador do município que o bairro está alocado.
+
+    DEPENDENTE: Tabela que armazena apenas os códigos de pessoa e titular ligados ao qual pertence
+        idpessoa: campo que armazena o Identificador de pessoa(o dependente no caso).
+        idtitular: campo que armazena o Identificador do titular ao qual o dependente está ligado.
     
-    EXEMPLO:
-    CLIENTE: Tabela que armazena as informações relativas ao cliente<br>
-    CPF: campo que armazena o número de Cadastro de Pessoa Física para cada cliente da empresa.<br>
+    ESTADO: Tabela que contém dados sobre o estado em que o posto de saúde está localizado.
+        idestado: campo que armazena o identificador do estado.
+        nome: campo que armazena o nome do estado.
+    
+    LABORATORIO: Tabela que contém dados acerca do laboratório ao qual pertence o medicamento.
+        idlaboratorio: campo que armazena o identificador do laboratório.
+        nome: campo que armazena o nome do laboratório.
+    
+    MEDICAMENTO: Tabela que contém dados sobre o medicamento.
+        idmedicamento: campo que armazena o identificador do medicamento.
+        nome: campo que armazena o nome do medicamento.	
+        bula: campo que armazena o link das páginas html sobre a bula do medicamento.
+        
+    MEDICAMENTO_LABORATORIO: Tabela que reúne dados das entidades Medicamento e Laboratório.
+        idlaboratorio: campo que guarda o identificador do laboratório.
+        idmedicamento: campo que guarda o identificador do Medicamento.
+        
+    MEDICAMENTO_POSTO: Tabela que contém os dados sobre os medicamentos de acordo com a localização do posto de saúde e reúne dados das entidades Posto e Medicamento.
+        idmedicamentoPosto: campo que armazena o identificador do medicamento de acordo com o posto.
+        estadomedicamento: campo que armazena a disponibilidade do medicamento de acordo com o posto(indisponível(0) e disponível(1)).
+        quantidade: campo que guarda a quantidade de determinado medicamento de acordo com o posto.
+        datavencimento: campo que guarda a data de vencimento do medicamento no dado posto.
+        idposto: campo que armazena o identificador do posto.
+        idmedicamento: campo que armazena o identificador do medicamento.
+    
+    MUNICIPIO: Tabela que contém dados sobre o município em que o posto de saúde está localizado.
+        idmunicipio: campo que armazena o identificador do município.
+        nome: campo que armazena o nome do município.
+        idestado: campo que armazena o identificador do Estado em que o município está alocado.
+    
+    PESSOA: Tabela que contém os dados da pessoa.
+        idpessoa: campo que armazena o Identificador de pessoa.
+        nome: campo que armazena o nome da pessoa.
+        datanascimento: campo que armazena a data de nascimento da pessoa.
+        cpf: campo que armazena o cadastro de pessoa física da pessoa
+        rg: campo que armazena o registro geral do documento de identidade da pessoa.
+        sexo: campo que indica o sexo da pessoa, podendo ser masculino(0) e feminino(1).
+        
+    POSTO: Tabela que contém os dados relacionados ao posto de saúde.
+        idposto: campo que armazena o identificador do posto de saúde.
+        nome: campo que armazena o nome do posto de saúde.
+        rua: campo que armazena o nome da rua na qual o posto está localizado.
+        numero: número de endereço do posto de saúde.
+        cep: campo que armazena o código de endereçamento postal dos posto de saúde.
+        coordgeolong: campo que armazena as coordenadas geográficas de longitude da localização do posto de saúde.
+        coordgeolat: campo que armazena as coordenadas geográficas de latitude da localização do posto de saúde.
+        idbairro: campo que armazena o identificador do bairro em que o posto se encontra.
+    
+    RECEBIMENTO: Tabela que contém os dados sobre retirada dos medicamentos por uma pessoa.
+        idrecebimento: campo que armazena o identificador do recebimento.
+        data_hora: campo que armazena o registro de data e hora do recebimento.
+        quantidademedicamento: armazena a quantidade de medicamentos retirados em um recebimento.
+        idpessoa: campo que armazena o identificador da pessoa(titular ou dependente) que retira o medicamento.
+        idatendente: campo que armazena o identificador do atendente que realiza a retirada do medicamento.
+        idmedicamentoposto: campo que armazena o identificador do medicamento no determinado posto em que foi realizado a retirada de recebimento do medicamento.
+        
+    REGISTRO_MEDICAMENTO: Tabela que guarda os registro de entrada de novos medicamentos ou de medicamentos em falta no posto.
+        idregistromedicamento: campo que armazena o identificador da entrada/registro de um medicamento.
+        data_hora: campo que armazena o registro de data e hora da entrada de um medicamento.
+        quantidade: campo que armazena a quantidade de medicamentos adquiridos(inseridos).
+        idmedicamentoposto: campo que armazena o identificador do medicamento inserido no estoque do determinado posto.
+        idatendente: campo que armazena o identificador do atendente que realiza a entrada de medicamentos no posto.
+    
+    SOLICITACAO: Tabela que contém os dados relacionados a uma solicitação de medicamento.
+        idSolicitacao: campo que armazena o identificador da solicitação.
+        data_hora: campo que armazena o registro de data e hora da solicitação.
+        estadosolicitacao: campo que armazena o estado em que a solicitação encontra(comunicado(0), atendido(1) ou expirado(2)).
+        quantidademedicamento: campo que armazena a quantidade de medicamentos solicitados.
+        idtitular: campo que armazena o identificador da pessoa titular que solicitou os medicamentos.
+        idmedicamentoposto: campo que armazena o identificador do medicamento no determinado posto em que foi realizado solicitação do medicamento desejado.
+
+    TITULAR: Tabela que contém o código necessário para ser um solicitante de medicamento.
+        idpessoa: campo que armazena o Identificador de pessoa(o titular no caso).
+        numerosus: campo que armazena o número cadastrado da pessoa no Sistema único de Saúde.
 
 ### 6	MODELO LÓGICO<br>
-![Alt text](https://raw.githubusercontent.com/lukasg18/Topicos-Trabalho-BD2/master/Imagens/Modelo_Logico.png)
+![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Modelo_Logico_versao.png)
 
 ### 7	MODELO FÍSICO<br>
-[Link modelo físico](https://raw.githubusercontent.com/lukasg18/Topicos-Trabalho-BD2/master/modelo_fisico.sql)
+[Link modelo físico](https://raw.githubusercontent.com/lukasg18/Topicos-Trabalho-BD2/master/Modelo_Fisico.sql)
     
     /* Modelo Físico */
     
+    
+    CREATE TABLE public."Titular" (
+        idpessoa integer NOT NULL,
+        numerosus integer NOT NULL
+    );
+
     CREATE TABLE public.atendente (
-    idpessoa integer NOT NULL,
-    numeroregistro character varying(10) NOT NULL,
-    idposto integer
+        idpessoa integer NOT NULL,
+        numeroregistro character varying(10) NOT NULL,
+        idposto integer
     );
 
     CREATE TABLE public.bairro (
@@ -111,14 +203,6 @@ Subsistema para Atendente do posto
     CREATE TABLE public.depedente (
         idpessoa integer NOT NULL,
         idtitular integer
-    );
-
-    CREATE TABLE public.entrada_medicamento (
-        identradamedicamento integer NOT NULL,
-        quantidade integer NOT NULL,
-        data_hora timestamp without time zone NOT NULL,
-        idatendente integer,
-        idmedicamentoposto integer
     );
 
     CREATE TABLE public.estado (
@@ -157,6 +241,7 @@ Subsistema para Atendente do posto
         idestado integer
     );
 
+
     CREATE TABLE public.pessoa (
         idpessoa integer NOT NULL,
         nome character varying(100) NOT NULL,
@@ -182,13 +267,17 @@ Subsistema para Atendente do posto
         idrecebimento integer NOT NULL,
         quantidademedicamentos integer NOT NULL,
         data_hora timestamp without time zone NOT NULL,
-        idpessoa integer
+        idpessoa integer,
+        idatedente integer,
+        idmedicamentoposto integer
     );
 
-    CREATE TABLE public.recebimento_medicamentoposto (
-        idatendente integer NOT NULL,
-        idrecebimento integer NOT NULL,
-        idmedicamentoposto integer NOT NULL
+    CREATE TABLE public.registro_medicamento (
+        idregistromedicamento integer NOT NULL,
+        quantidade integer NOT NULL,
+        data_hora timestamp without time zone NOT NULL,
+        idatendente integer,
+        idmedicamentoposto integer
     );
 
     CREATE TABLE public.solicitacao (
@@ -196,17 +285,8 @@ Subsistema para Atendente do posto
         data_hora timestamp without time zone NOT NULL,
         quantidademedicamento integer NOT NULL,
         estadosolicitacao integer NOT NULL,
-        idtitular integer
-    );
-
-    CREATE TABLE public.solicitacao_medicamentoposto (
-        idsolicitacao integer NOT NULL,
-        idmedicamentoposto integer NOT NULL
-    );
-
-    CREATE TABLE public.titular (
-        idpessoa integer NOT NULL,
-        numerosus integer NOT NULL
+        idtitular integer,
+        idmedicamentoposto integer
     );
 
     ALTER TABLE ONLY public.pessoa
@@ -214,7 +294,7 @@ Subsistema para Atendente do posto
 
 
     --
-    -- TOC entry 2143 (class 2606 OID 51203)
+    -- TOC entry 2122 (class 2606 OID 61959)
     -- Name: PK_4fdaa48a8d5b79bfc8f5959251a; Type: CONSTRAINT; Schema: public; Owner: postgres
     --
 
@@ -223,16 +303,7 @@ Subsistema para Atendente do posto
 
 
     --
-    -- TOC entry 2153 (class 2606 OID 51240)
-    -- Name: PK_52a860fd27254e95d135301b989; Type: CONSTRAINT; Schema: public; Owner: postgres
-    --
-
-    ALTER TABLE ONLY public.titular
-        ADD CONSTRAINT "PK_52a860fd27254e95d135301b989" PRIMARY KEY (idpessoa);
-
-
-    --
-    -- TOC entry 2147 (class 2606 OID 51222)
+    -- TOC entry 2130 (class 2606 OID 61994)
     -- Name: PK_55f589d48cf08820e62c4218619; Type: CONSTRAINT; Schema: public; Owner: postgres
     --
 
@@ -241,7 +312,7 @@ Subsistema para Atendente do posto
 
 
     --
-    -- TOC entry 2131 (class 2606 OID 51152)
+    -- TOC entry 2112 (class 2606 OID 61928)
     -- Name: PK_746650b7410a8cea3f66aa08e96; Type: CONSTRAINT; Schema: public; Owner: postgres
     --
 
@@ -250,7 +321,7 @@ Subsistema para Atendente do posto
 
 
     --
-    -- TOC entry 2139 (class 2606 OID 51187)
+    -- TOC entry 2118 (class 2606 OID 61943)
     -- Name: PK_81df0554baeeb3c342378a627ad; Type: CONSTRAINT; Schema: public; Owner: postgres
     --
 
@@ -259,7 +330,7 @@ Subsistema para Atendente do posto
 
 
     --
-    -- TOC entry 2141 (class 2606 OID 51195)
+    -- TOC entry 2120 (class 2606 OID 61951)
     -- Name: PK_9288f1d12a5d8150c355b5e9b16; Type: CONSTRAINT; Schema: public; Owner: postgres
     --
 
@@ -268,25 +339,7 @@ Subsistema para Atendente do posto
 
 
     --
-    -- TOC entry 2133 (class 2606 OID 51166)
-    -- Name: PK_944c455746e086ac5435e942d11; Type: CONSTRAINT; Schema: public; Owner: postgres
-    --
-
-    ALTER TABLE ONLY public.recebimento_medicamentoposto
-        ADD CONSTRAINT "PK_944c455746e086ac5435e942d11" PRIMARY KEY (idatendente, idrecebimento, idmedicamentoposto);
-
-
-    --
-    -- TOC entry 2159 (class 2606 OID 51258)
-    -- Name: PK_9d333711c126acb16b1477629b0; Type: CONSTRAINT; Schema: public; Owner: postgres
-    --
-
-    ALTER TABLE ONLY public.solicitacao_medicamentoposto
-        ADD CONSTRAINT "PK_9d333711c126acb16b1477629b0" PRIMARY KEY (idsolicitacao, idmedicamentoposto);
-
-
-    --
-    -- TOC entry 2127 (class 2606 OID 51136)
+    -- TOC entry 2126 (class 2606 OID 61978)
     -- Name: PK_a02d191f1adefa1e3c2b21ef553; Type: CONSTRAINT; Schema: public; Owner: postgres
     --
 
@@ -295,16 +348,7 @@ Subsistema para Atendente do posto
 
 
     --
-    -- TOC entry 2135 (class 2606 OID 51174)
-    -- Name: PK_a4b09d82e3f666513cb1a28b4dc; Type: CONSTRAINT; Schema: public; Owner: postgres
-    --
-
-    ALTER TABLE ONLY public.entrada_medicamento
-        ADD CONSTRAINT "PK_a4b09d82e3f666513cb1a28b4dc" PRIMARY KEY (identradamedicamento);
-
-
-    --
-    -- TOC entry 2137 (class 2606 OID 51179)
+    -- TOC entry 2114 (class 2606 OID 61933)
     -- Name: PK_a5b0986f6decfe7ce7d287a8afc; Type: CONSTRAINT; Schema: public; Owner: postgres
     --
 
@@ -313,7 +357,7 @@ Subsistema para Atendente do posto
 
 
     --
-    -- TOC entry 2151 (class 2606 OID 51235)
+    -- TOC entry 2134 (class 2606 OID 62007)
     -- Name: PK_aae06f9c94ee75703a930472480; Type: CONSTRAINT; Schema: public; Owner: postgres
     --
 
@@ -322,7 +366,16 @@ Subsistema para Atendente do posto
 
 
     --
-    -- TOC entry 2129 (class 2606 OID 51144)
+    -- TOC entry 2136 (class 2606 OID 62012)
+    -- Name: PK_b641f90e20dbdd9a429a5af575d; Type: CONSTRAINT; Schema: public; Owner: postgres
+    --
+
+    ALTER TABLE ONLY public."Titular"
+        ADD CONSTRAINT "PK_b641f90e20dbdd9a429a5af575d" PRIMARY KEY (idpessoa);
+
+
+    --
+    -- TOC entry 2128 (class 2606 OID 61986)
     -- Name: PK_c9eba17e6634c1e256d21d9ff33; Type: CONSTRAINT; Schema: public; Owner: postgres
     --
 
@@ -331,7 +384,16 @@ Subsistema para Atendente do posto
 
 
     --
-    -- TOC entry 2145 (class 2606 OID 51214)
+    -- TOC entry 2110 (class 2606 OID 61920)
+    -- Name: PK_caa0afb5240252ec27258f685d5; Type: CONSTRAINT; Schema: public; Owner: postgres
+    --
+
+    ALTER TABLE ONLY public.registro_medicamento
+        ADD CONSTRAINT "PK_caa0afb5240252ec27258f685d5" PRIMARY KEY (idregistromedicamento);
+
+
+    --
+    -- TOC entry 2124 (class 2606 OID 61970)
     -- Name: PK_cc32119736b40c091e8bb97c554; Type: CONSTRAINT; Schema: public; Owner: postgres
     --
 
@@ -340,7 +402,7 @@ Subsistema para Atendente do posto
 
 
     --
-    -- TOC entry 2157 (class 2606 OID 51253)
+    -- TOC entry 2144 (class 2606 OID 62029)
     -- Name: PK_df376ac8b15a58f4693f765dbc7; Type: CONSTRAINT; Schema: public; Owner: postgres
     --
 
@@ -349,7 +411,7 @@ Subsistema para Atendente do posto
 
 
     --
-    -- TOC entry 2149 (class 2606 OID 51230)
+    -- TOC entry 2132 (class 2606 OID 62002)
     -- Name: PK_ffd64b9cb2dfb73cf046c16907a; Type: CONSTRAINT; Schema: public; Owner: postgres
     --
 
@@ -358,7 +420,34 @@ Subsistema para Atendente do posto
 
 
     --
-    -- TOC entry 2168 (class 2606 OID 51299)
+    -- TOC entry 2140 (class 2606 OID 62024)
+    -- Name: UQ_70e82a4695f07a6ce61fc9492b6; Type: CONSTRAINT; Schema: public; Owner: postgres
+    --
+
+    ALTER TABLE ONLY public.pessoa
+        ADD CONSTRAINT "UQ_70e82a4695f07a6ce61fc9492b6" UNIQUE (rg);
+
+
+    --
+    -- TOC entry 2116 (class 2606 OID 61935)
+    -- Name: UQ_a134eaf7339d2c607039333f008; Type: CONSTRAINT; Schema: public; Owner: postgres
+    --
+
+    ALTER TABLE ONLY public.atendente
+        ADD CONSTRAINT "UQ_a134eaf7339d2c607039333f008" UNIQUE (numeroregistro);
+
+
+    --
+    -- TOC entry 2142 (class 2606 OID 62022)
+    -- Name: UQ_ee80cc840596cc1bca8a149bcd5; Type: CONSTRAINT; Schema: public; Owner: postgres
+    --
+
+    ALTER TABLE ONLY public.pessoa
+        ADD CONSTRAINT "UQ_ee80cc840596cc1bca8a149bcd5" UNIQUE (cpf);
+
+
+    --
+    -- TOC entry 2152 (class 2606 OID 62065)
     -- Name: FK_00033fc05927f355f13fe4aabe6; Type: FK CONSTRAINT; Schema: public; Owner: postgres
     --
 
@@ -367,34 +456,7 @@ Subsistema para Atendente do posto
 
 
     --
-    -- TOC entry 2164 (class 2606 OID 51279)
-    -- Name: FK_05bb09859ce4a679b124101ec81; Type: FK CONSTRAINT; Schema: public; Owner: postgres
-    --
-
-    ALTER TABLE ONLY public.entrada_medicamento
-        ADD CONSTRAINT "FK_05bb09859ce4a679b124101ec81" FOREIGN KEY (idatendente) REFERENCES public.atendente(idpessoa);
-
-
-    --
-    -- TOC entry 2163 (class 2606 OID 51274)
-    -- Name: FK_210f732e9aca792547b1038f946; Type: FK CONSTRAINT; Schema: public; Owner: postgres
-    --
-
-    ALTER TABLE ONLY public.recebimento_medicamentoposto
-        ADD CONSTRAINT "FK_210f732e9aca792547b1038f946" FOREIGN KEY (idmedicamentoposto) REFERENCES public.medicamento_posto(idmedicamentoposto);
-
-
-    --
-    -- TOC entry 2179 (class 2606 OID 51354)
-    -- Name: FK_2cccb200c387acd9cb709b6b2b7; Type: FK CONSTRAINT; Schema: public; Owner: postgres
-    --
-
-    ALTER TABLE ONLY public.solicitacao_medicamentoposto
-        ADD CONSTRAINT "FK_2cccb200c387acd9cb709b6b2b7" FOREIGN KEY (idsolicitacao) REFERENCES public.solicitacao(idsolicitacao) ON DELETE CASCADE;
-
-
-    --
-    -- TOC entry 2171 (class 2606 OID 51314)
+    -- TOC entry 2155 (class 2606 OID 62080)
     -- Name: FK_34211f805b13249a304d0490fb3; Type: FK CONSTRAINT; Schema: public; Owner: postgres
     --
 
@@ -403,34 +465,25 @@ Subsistema para Atendente do posto
 
 
     --
-    -- TOC entry 2174 (class 2606 OID 51329)
+    -- TOC entry 2159 (class 2606 OID 62100)
     -- Name: FK_444445956119983f6d824840cd5; Type: FK CONSTRAINT; Schema: public; Owner: postgres
     --
 
     ALTER TABLE ONLY public.depedente
-        ADD CONSTRAINT "FK_444445956119983f6d824840cd5" FOREIGN KEY (idtitular) REFERENCES public.titular(idpessoa);
+        ADD CONSTRAINT "FK_444445956119983f6d824840cd5" FOREIGN KEY (idtitular) REFERENCES public."Titular"(idpessoa);
 
 
     --
-    -- TOC entry 2176 (class 2606 OID 51339)
-    -- Name: FK_52a860fd27254e95d135301b989; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+    -- TOC entry 2149 (class 2606 OID 62050)
+    -- Name: FK_475829d5c50c3859ce7ccb37646; Type: FK CONSTRAINT; Schema: public; Owner: postgres
     --
 
-    ALTER TABLE ONLY public.titular
-        ADD CONSTRAINT "FK_52a860fd27254e95d135301b989" FOREIGN KEY (idpessoa) REFERENCES public.pessoa(idpessoa);
-
-
-    --
-    -- TOC entry 2161 (class 2606 OID 51264)
-    -- Name: FK_5478d515d238e03ae342d7f63e4; Type: FK CONSTRAINT; Schema: public; Owner: postgres
-    --
-
-    ALTER TABLE ONLY public.recebimento_medicamentoposto
-        ADD CONSTRAINT "FK_5478d515d238e03ae342d7f63e4" FOREIGN KEY (idatendente) REFERENCES public.atendente(idpessoa);
+    ALTER TABLE ONLY public.recebimento
+        ADD CONSTRAINT "FK_475829d5c50c3859ce7ccb37646" FOREIGN KEY (idmedicamentoposto) REFERENCES public.medicamento_posto(idmedicamentoposto);
 
 
     --
-    -- TOC entry 2166 (class 2606 OID 51289)
+    -- TOC entry 2150 (class 2606 OID 62055)
     -- Name: FK_590cc4410853d91b70266bdfde0; Type: FK CONSTRAINT; Schema: public; Owner: postgres
     --
 
@@ -439,7 +492,7 @@ Subsistema para Atendente do posto
 
 
     --
-    -- TOC entry 2177 (class 2606 OID 51344)
+    -- TOC entry 2162 (class 2606 OID 62115)
     -- Name: FK_59f71b7b9ec062ef9be80f527f0; Type: FK CONSTRAINT; Schema: public; Owner: postgres
     --
 
@@ -448,7 +501,7 @@ Subsistema para Atendente do posto
 
 
     --
-    -- TOC entry 2169 (class 2606 OID 51304)
+    -- TOC entry 2153 (class 2606 OID 62070)
     -- Name: FK_6ac866ccb173b3b7698a49541ff; Type: FK CONSTRAINT; Schema: public; Owner: postgres
     --
 
@@ -457,16 +510,16 @@ Subsistema para Atendente do posto
 
 
     --
-    -- TOC entry 2165 (class 2606 OID 51284)
-    -- Name: FK_9843b833a649f2c19d2f8c18ebf; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+    -- TOC entry 2148 (class 2606 OID 62045)
+    -- Name: FK_816a839606b454616adab6960fd; Type: FK CONSTRAINT; Schema: public; Owner: postgres
     --
 
-    ALTER TABLE ONLY public.entrada_medicamento
-        ADD CONSTRAINT "FK_9843b833a649f2c19d2f8c18ebf" FOREIGN KEY (idmedicamentoposto) REFERENCES public.medicamento_posto(idmedicamentoposto);
+    ALTER TABLE ONLY public.recebimento
+        ADD CONSTRAINT "FK_816a839606b454616adab6960fd" FOREIGN KEY (idatedente) REFERENCES public.atendente(idpessoa);
 
 
     --
-    -- TOC entry 2167 (class 2606 OID 51294)
+    -- TOC entry 2151 (class 2606 OID 62060)
     -- Name: FK_a5b0986f6decfe7ce7d287a8afc; Type: FK CONSTRAINT; Schema: public; Owner: postgres
     --
 
@@ -475,7 +528,7 @@ Subsistema para Atendente do posto
 
 
     --
-    -- TOC entry 2175 (class 2606 OID 51334)
+    -- TOC entry 2160 (class 2606 OID 62105)
     -- Name: FK_aae06f9c94ee75703a930472480; Type: FK CONSTRAINT; Schema: public; Owner: postgres
     --
 
@@ -484,16 +537,16 @@ Subsistema para Atendente do posto
 
 
     --
-    -- TOC entry 2162 (class 2606 OID 51269)
-    -- Name: FK_c087bab8f53392f6bab8e445e5a; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+    -- TOC entry 2161 (class 2606 OID 62110)
+    -- Name: FK_b641f90e20dbdd9a429a5af575d; Type: FK CONSTRAINT; Schema: public; Owner: postgres
     --
 
-    ALTER TABLE ONLY public.recebimento_medicamentoposto
-        ADD CONSTRAINT "FK_c087bab8f53392f6bab8e445e5a" FOREIGN KEY (idrecebimento) REFERENCES public.recebimento(idrecebimento);
+    ALTER TABLE ONLY public."Titular"
+        ADD CONSTRAINT "FK_b641f90e20dbdd9a429a5af575d" FOREIGN KEY (idpessoa) REFERENCES public.pessoa(idpessoa);
 
 
     --
-    -- TOC entry 2170 (class 2606 OID 51309)
+    -- TOC entry 2154 (class 2606 OID 62075)
     -- Name: FK_c52dd314fd94874d9d261059c2e; Type: FK CONSTRAINT; Schema: public; Owner: postgres
     --
 
@@ -502,16 +555,25 @@ Subsistema para Atendente do posto
 
 
     --
-    -- TOC entry 2180 (class 2606 OID 51359)
-    -- Name: FK_cc1c8108bf19af48b649461fac0; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+    -- TOC entry 2146 (class 2606 OID 62035)
+    -- Name: FK_c6c78ca2cfd73ad0dbdafcc5005; Type: FK CONSTRAINT; Schema: public; Owner: postgres
     --
 
-    ALTER TABLE ONLY public.solicitacao_medicamentoposto
-        ADD CONSTRAINT "FK_cc1c8108bf19af48b649461fac0" FOREIGN KEY (idmedicamentoposto) REFERENCES public.medicamento_posto(idmedicamentoposto) ON DELETE CASCADE;
+    ALTER TABLE ONLY public.registro_medicamento
+        ADD CONSTRAINT "FK_c6c78ca2cfd73ad0dbdafcc5005" FOREIGN KEY (idmedicamentoposto) REFERENCES public.medicamento_posto(idmedicamentoposto);
 
 
     --
-    -- TOC entry 2178 (class 2606 OID 51349)
+    -- TOC entry 2158 (class 2606 OID 62095)
+    -- Name: FK_d38b3913472dde9e8bdd6c7f15f; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+    --
+
+    ALTER TABLE ONLY public.solicitacao
+        ADD CONSTRAINT "FK_d38b3913472dde9e8bdd6c7f15f" FOREIGN KEY (idmedicamentoposto) REFERENCES public.medicamento_posto(idmedicamentoposto);
+
+
+    --
+    -- TOC entry 2163 (class 2606 OID 62120)
     -- Name: FK_d8109f3516752ce13ee32b692ce; Type: FK CONSTRAINT; Schema: public; Owner: postgres
     --
 
@@ -520,7 +582,7 @@ Subsistema para Atendente do posto
 
 
     --
-    -- TOC entry 2160 (class 2606 OID 51259)
+    -- TOC entry 2147 (class 2606 OID 62040)
     -- Name: FK_ddf1939ef15cc85d043eecb2d88; Type: FK CONSTRAINT; Schema: public; Owner: postgres
     --
 
@@ -529,7 +591,7 @@ Subsistema para Atendente do posto
 
 
     --
-    -- TOC entry 2172 (class 2606 OID 51319)
+    -- TOC entry 2156 (class 2606 OID 62085)
     -- Name: FK_e12054ea5e6bedd76415f02b4bb; Type: FK CONSTRAINT; Schema: public; Owner: postgres
     --
 
@@ -538,16 +600,25 @@ Subsistema para Atendente do posto
 
 
     --
-    -- TOC entry 2173 (class 2606 OID 51324)
+    -- TOC entry 2145 (class 2606 OID 62030)
+    -- Name: FK_e7076e84095a8abb5cff10db3b0; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+    --
+
+    ALTER TABLE ONLY public.registro_medicamento
+        ADD CONSTRAINT "FK_e7076e84095a8abb5cff10db3b0" FOREIGN KEY (idatendente) REFERENCES public.atendente(idpessoa);
+
+
+    --
+    -- TOC entry 2157 (class 2606 OID 62090)
     -- Name: FK_f61371e9c058a6d9c9ab83d99fa; Type: FK CONSTRAINT; Schema: public; Owner: postgres
     --
 
     ALTER TABLE ONLY public.solicitacao
-        ADD CONSTRAINT "FK_f61371e9c058a6d9c9ab83d99fa" FOREIGN KEY (idtitular) REFERENCES public.titular(idpessoa);
+        ADD CONSTRAINT "FK_f61371e9c058a6d9c9ab83d99fa" FOREIGN KEY (idtitular) REFERENCES public."Titular"(idpessoa);
 
 
     --
-    -- TOC entry 2334 (class 0 OID 0)
+    -- TOC entry 2312 (class 0 OID 0)
     -- Dependencies: 6
     -- Name: SCHEMA public; Type: ACL; Schema: -; Owner: postgres
     --
@@ -558,7 +629,7 @@ Subsistema para Atendente do posto
     GRANT ALL ON SCHEMA public TO PUBLIC;
 
 
-    -- Completed on 2018-10-01 23:57:16 BRT
+    -- Completed on 2018-10-11 09:28:17 BRT
 
     --
     -- PostgreSQL database dump complete
@@ -566,18 +637,48 @@ Subsistema para Atendente do posto
 
 
 
+
+
+
+
 ### 8	INSERT APLICADO NAS TABELAS DO BANCO DE DADOS<br>
 #### 8.1 DETALHAMENTO DAS INFORMAÇÕES
         Detalhamento sobre as informações e processo de obtenção ou geração dos dados.
         Referenciar todas as fontes referentes a:
+        
         a) obtenção dos dados
+        
+        Todos os dados foram gerados aleatoriamente, porém algumas palavras como nomes de composições e laboratórios
+        foram copiados de listas. Fontes das palavras citadas:
+
+[Nomes de laboratórios](https://guiadafarmacia.com.br/industrias/)<br>
+[Nomes comuns de pessoas](https://github.com/emersonsoares/SampleDataGenerator/blob/master/SampleDataGenerator/Resources/nomes.txt)<br>
+[Sobrenomes comuns](https://pt.wiktionary.org/wiki/Ap%C3%AAndice:Sobrenomes_em_portugu%C3%AAs)<br>
+[Nomes de Composições quimicas / remedios](http://www.subpav.org/aaz/)<br>
+[Nomes de bairros](https://pt.wikipedia.org/wiki/Lista_de_bairros_de_Fund%C3%A3o_(Esp%C3%ADrito_Santo))<br>
+        
         b) obtenção de códigos reutilizados
+        
+        O código para geração de dados foi criado sem reutilização.
+        // TODO checar para ooutros códigos tipo backend?
+        
         c) fontes de estudo para desenvolvimento do projeto
+        
+        // TODO Nenhum?
         
 #### 8.2 INCLUSÃO DO SCRIPT PARA CRIAÇÃO DE TABELAS E INSERÇÃO DOS DADOS (ARQUIVO ÚNICO COM):
         a) inclusão das instruções para criação das tabelas e estruturas de amazenamento do BD
+        
+[Criação e estrutura do banco](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Modelo_Fisico.sql)
+        
         b) inclusão das instruções de inserção dos dados nas referidas tabelas
+        
+[Biblioteca do gerador](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/GeradorDeDados/Luiz_code/gerador.py)<br>
+[Gerador de inserção dados](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/GeradorDeDados/Luiz_code/geradorExecutar.py)
+        
         c) inclusão das instruções para execução de outros procedimentos necessários
+        
+        //TODO?
 
 ### 9	TABELAS E PRINCIPAIS CONSULTAS<br>
 #### 9.1	GERACAO DE DADOS (MÍNIMO DE 10 REGISTROS PARA CADA TABELA NO BANCO DE DADOS)<br>

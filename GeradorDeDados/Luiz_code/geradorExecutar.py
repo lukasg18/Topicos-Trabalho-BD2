@@ -13,13 +13,13 @@ import gerador
 
 nomeDoArquivo = "sql_insertCompleto.sql"
 
-qtd_pessoa = 10000  #num >= 1
+qtd_pessoa = 100000  #num >= 1
 qtd_atendente = 20  #num <= qtd_pessoa
-qtd_depedente = 6000  #num <= qtd_pessoa
-qtd_titular = 3980  #num <= qtd_pessoa
-qtd_registro_medicamento = 10  #num >= 0
-qtd_medicamento_laboratorio = 10  #num >= 1
-qtd_medicamento_posto = 10  #num >= 0
+qtd_depedente = 60000  #num <= qtd_pessoa
+qtd_titular = 39980  #num <= qtd_pessoa
+qtd_registro_medicamento = 1000  #num >= 0
+qtd_medicamento_laboratorio = 100  #num >= 1
+qtd_medicamento_posto = 1000  #num >= 0
 qtd_posto = 20  #num >= 1
 qtd_recebimento = 100000  #num >= 0?
 qtd_solicitacao = 1500000  #num >= 1?

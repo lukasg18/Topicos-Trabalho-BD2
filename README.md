@@ -179,7 +179,8 @@ Subsistema para Atendente do posto
 
 ### 7	MODELO FÍSICO<br>
 [Link modelo físico](https://raw.githubusercontent.com/lukasg18/Topicos-Trabalho-BD2/master/Modelo_Fisico.sql)
-    
+ 
+ ```sql
     /* Modelo Físico */
     
     
@@ -634,7 +635,7 @@ Subsistema para Atendente do posto
     --
     -- PostgreSQL database dump complete
     --
-
+```
 
 
 
@@ -752,6 +753,21 @@ OBS: Incluir para os tópicos 9.2 e 9.3 as instruções SQL + imagens (print da 
     f) Inclusão de tabela mostrando as 10 execuções, excluindo-se o maior e menor tempos para cada consulta e 
     obtendo-se a media dos outros valores como resultado médio final.
 <br>
+
+## Performances
+### Query de teste base
+
+```sql
+    SELECT p.nome AS Titular, po.nome AS "Nome do posto", me.nome AS Medicamento, s.quantidademedicamento "Quantidade de Medicamentos" FROM pessoa AS p
+    INNER JOIN titular AS t ON (p.idpessoa = t.idpessoa)
+    INNER JOIN solicitacao AS s ON (s.idtitular = t.idpessoa)
+    INNER JOIN medicamento_posto AS mp ON (mp.idmedicamentoposto = s.idmedicamentoposto)
+    INNER JOIN posto AS po ON (po.idposto = mp.idposto)
+    INNER JOIN medicamento AS me ON (me.idmedicamento = mp.idmedicamento)
+    GROUP BY p.nome, po.nome, me.nome, s.quantidademedicamento
+    ORDER BY p.nome, po.nome 
+```
+### Query com indices
 
 ## Data de Entrega: (22/11/2018)
 

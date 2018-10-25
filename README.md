@@ -764,7 +764,6 @@ OBS: Incluir para os tópicos 9.2 e 9.3 as instruções SQL + imagens (print da 
     INNER JOIN medicamento_posto AS mp ON (mp.idmedicamentoposto = s.idmedicamentoposto)
     INNER JOIN posto AS po ON (po.idposto = mp.idposto)
     INNER JOIN medicamento AS me ON (me.idmedicamento = mp.idmedicamento)
-    GROUP BY p.nome, po.nome, me.nome, s.quantidademedicamento
     ORDER BY p.nome, po.nome 
 ```
 ### Query com indices

@@ -661,14 +661,12 @@ Subsistema para Atendente do posto
         b) obtenção de códigos reutilizados
         
         O código para geração de dados foi criado sem reutilização.
-        // TODO checar para ooutros códigos tipo backend?
         
-        c) fontes de estudo para desenvolvimento do projeto
-        
-        // TODO Nenhum?
+     
         
 #### 8.2 INCLUSÃO DO SCRIPT PARA CRIAÇÃO DE TABELAS E INSERÇÃO DOS DADOS (ARQUIVO ÚNICO COM):
-        a) inclusão das instruções para criação das tabelas e estruturas de amazenamento do BD
+       
+       a) inclusão das instruções para criação das tabelas e estruturas de amazenamento do BD
         
 [Criação e estrutura do banco](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Modelo_Fisico.sql)
         
@@ -678,8 +676,10 @@ Subsistema para Atendente do posto
 [Gerador de inserção dados](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/GeradorDeDados/Luiz_code/geradorExecutar.py)
         
         c) inclusão das instruções para execução de outros procedimentos necessários
+       Comandos: 
+       1 - Abrir o arquivo geradorExecutar.py caso queira mudar a quantidade de dados gerados, atravé de variáveis globais;
+       2 - python geradorExecutar.py ou python3 geradorExecutar.py 
         
-        //TODO?
 
 ### 9	TABELAS E PRINCIPAIS CONSULTAS<br>
 #### 9.1	GERACAO DE DADOS (MÍNIMO DE 10 REGISTROS PARA CADA TABELA NO BANCO DE DADOS)<br>

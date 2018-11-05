@@ -753,7 +753,17 @@ OBS: Incluir para os tópicos 9.2 e 9.3 as instruções SQL + imagens (print da 
     f) Inclusão de tabela mostrando as 10 execuções, excluindo-se o maior e menor tempos para cada consulta e 
     obtendo-se a media dos outros valores como resultado médio final.
 <br>
+```sql
+    create index index_idtitular on solicitacao (idtitular)
+    
+    create index index_idmedicamentoposto on solicitacao (idmedicamentoposto)
 
+    create index index_pessoa on titular (idpessoa)
+
+    create index index_idposto on medicamento_posto (idposto)
+
+    create index index_idmedicamento on medicamento_posto (idmedicamento)
+```
 ## Performances
 ### Query de teste base
 

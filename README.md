@@ -691,7 +691,7 @@ OBS: Incluir para os tópicos 9.2 e 9.3 as instruções SQL + imagens (print da 
 
 #### 9.2	SELECT DAS TABELAS COM PRIMEIROS 10 REGISTROS INSERIDOS <br> 
     SELECT * FROM atendente limit 10;    
-![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Modelo_Logico_versao.png)
+![Alt text](https://raw.githubusercontent.com/lukasg18/Topicos-Trabalho-BD2/master/selects/atendente.png)
 
     SELECT * FROM bairro limit 10;
 ![Alt text](https://raw.githubusercontent.com/lukasg18/Topicos-Trabalho-BD2/master/selects/bairro.png)

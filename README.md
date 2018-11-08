@@ -690,8 +690,50 @@ Subsistema para Atendente do posto
 OBS: Incluir para os tópicos 9.2 e 9.3 as instruções SQL + imagens (print da tela) mostrando os resultados.<br>
 
 #### 9.2	SELECT DAS TABELAS COM PRIMEIROS 10 REGISTROS INSERIDOS <br> 
+    SELECT * FROM atendente limit 10;    
+![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Modelo_Logico_versao.png)
+
+    SELECT * FROM bairro limit 10;
+![Alt text](https://raw.githubusercontent.com/lukasg18/Topicos-Trabalho-BD2/master/selects/bairro.png)
+
+    SELECT * FROM dependente limit 10;
+![Alt text](https://raw.githubusercontent.com/lukasg18/Topicos-Trabalho-BD2/master/selects/depedente.png)
     
-<br>
+    SELECT * FROM estado limit 10;
+![Alt text](https://raw.githubusercontent.com/lukasg18/Topicos-Trabalho-BD2/master/selects/estado.png)
+
+    SELECT * FROM laboratorio limit 10;
+![Alt text](https://raw.githubusercontent.com/lukasg18/Topicos-Trabalho-BD2/master/selects/laboratorio.png)
+
+    SELECT * FROM medicamento limit 10;
+![Alt text](https://raw.githubusercontent.com/lukasg18/Topicos-Trabalho-BD2/master/selects/medicamento.png)
+    
+    SELECT * FROM medicamento_laboratorio limit 10;
+![Alt text](https://raw.githubusercontent.com/lukasg18/Topicos-Trabalho-BD2/master/selects/medicamento_laboratorio.png)
+
+    SELECT * FROM medicamento_posto limit 10;
+![Alt text](https://raw.githubusercontent.com/lukasg18/Topicos-Trabalho-BD2/master/selects/medicamento_posto.png)
+
+    SELECT * FROM municipio limit 10;
+![Alt text](https://raw.githubusercontent.com/lukasg18/Topicos-Trabalho-BD2/master/selects/municipio.png)
+
+    SELECT * FROM pessoa limit 10;
+![Alt text](https://raw.githubusercontent.com/lukasg18/Topicos-Trabalho-BD2/master/selects/pessoa.png)
+
+    SELECT * FROM posto limit 10;
+![Alt text](https://raw.githubusercontent.com/lukasg18/Topicos-Trabalho-BD2/master/selects/posto.png)
+
+    SELECT * FROM recebimento limit 10;
+![Alt text](https://raw.githubusercontent.com/lukasg18/Topicos-Trabalho-BD2/master/selects/recebimento.png)
+
+    SELECT * FROM registro_medicamento limit 10;
+![Alt text](https://raw.githubusercontent.com/lukasg18/Topicos-Trabalho-BD2/master/selects/registro_medicamento.png)
+
+    SELECT * FROM solicitacao limit 10;
+![Alt text](https://raw.githubusercontent.com/lukasg18/Topicos-Trabalho-BD2/master/selects/solicitacao.png)
+
+    SELECT * FROM titular limit 10;
+![Alt text](https://raw.githubusercontent.com/lukasg18/Topicos-Trabalho-BD2/master/selects/titular.png)
 
 #### 9.3	SELECT DAS VISÕES COM PRIMEIROS 10 REGISTROS DA VIEW <br>
         a) Descrição da view sobre que grupos de usuários (operacional/estratégico) <br>

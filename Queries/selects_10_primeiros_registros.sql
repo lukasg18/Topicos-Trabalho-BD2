@@ -1,0 +1,15 @@
+﻿SELECT * FROM atendente limit 10;
+SELECT * FROM bairro limit 10;
+SELECT * FROM dependente limit 10;
+SELECT * FROM estado limit 10;
+SELECT * FROM laboratorio limit 10;
+SELECT * FROM medicamento limit 10;
+SELECT * FROM medicamento_laboratorio limit 10;
+SELECT * FROM medicamento_posto limit 10;
+SELECT * FROM municipio limit 10;
+SELECT * FROM pessoa limit 10;
+SELECT * FROM posto limit 10;
+SELECT * FROM recebimento limit 10;
+SELECT * FROM registro_medicamento limit 10;
+SELECT * FROM solicitacao limit 10;
+SELECT * FROM titular limit 10;

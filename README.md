@@ -644,41 +644,26 @@ Subsistema para Atendente do posto
 
 ### 8	INSERT APLICADO NAS TABELAS DO BANCO DE DADOS<br>
 #### 8.1 DETALHAMENTO DAS INFORMAÇÕES
-        Detalhamento sobre as informações e processo de obtenção ou geração dos dados.
-        Referenciar todas as fontes referentes a:
-        
-        a) obtenção dos dados
-        
-        Todos os dados foram gerados aleatoriamente, porém algumas palavras como nomes de composições e laboratórios
-        foram copiados de listas. Fontes das palavras citadas:
 
 [Nomes de laboratórios](https://guiadafarmacia.com.br/industrias/)<br>
 [Nomes comuns de pessoas](https://github.com/emersonsoares/SampleDataGenerator/blob/master/SampleDataGenerator/Resources/nomes.txt)<br>
 [Sobrenomes comuns](https://pt.wiktionary.org/wiki/Ap%C3%AAndice:Sobrenomes_em_portugu%C3%AAs)<br>
 [Nomes de Composições quimicas / remedios](http://www.subpav.org/aaz/)<br>
 [Nomes de bairros](https://pt.wikipedia.org/wiki/Lista_de_bairros_de_Fund%C3%A3o_(Esp%C3%ADrito_Santo))<br>
-        
-        b) obtenção de códigos reutilizados
-        
-        O código para geração de dados foi criado sem reutilização.
-        
+
      
         
 #### 8.2 INCLUSÃO DO SCRIPT PARA CRIAÇÃO DE TABELAS E INSERÇÃO DOS DADOS (ARQUIVO ÚNICO COM):
-       
-       a) inclusão das instruções para criação das tabelas e estruturas de amazenamento do BD
-        
-[Criação e estrutura do banco](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Modelo_Fisico.sql)
-        
-        b) inclusão das instruções de inserção dos dados nas referidas tabelas
         
 [Biblioteca do gerador](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/GeradorDeDados/Luiz_code/gerador.py)<br>
 [Gerador de inserção dados](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/GeradorDeDados/Luiz_code/geradorExecutar.py)
-        
-        c) inclusão das instruções para execução de outros procedimentos necessários
-       Comandos: 
-       1 - Abrir o arquivo geradorExecutar.py caso queira mudar a quantidade de dados gerados, atravé de variáveis globais;
-       2 - python geradorExecutar.py ou python3 geradorExecutar.py 
+
+     
+* 1 - Abrir o arquivo geradorExecutar.py
+* 2 - Para executar o programa, abra o terminal e digite:
+```shell
+    python3 geradorExecutar.py
+```
         
 
 ### 9	TABELAS E PRINCIPAIS CONSULTAS<br>
@@ -830,7 +815,6 @@ OBS: Incluir para os tópicos 9.2 e 9.3 as instruções SQL + imagens (print da 
     create index index_idtitular on solicitacao (idtitular)    
     create index index_idmedicamentoposto on solicitacao (idmedicamentoposto)
     create index index_pessoa on titular (idpessoa)
-    create index index_idposto on medicamento_posto (idposto)
     create index index_idmedicamento on medicamento_posto (idmedicamento)
 ```
 

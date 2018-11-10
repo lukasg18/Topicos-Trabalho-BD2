@@ -52,37 +52,51 @@ Será utilizado das informações de medicações e de dados de consumo médio p
 
 ### 4	RASCUNHOS BÁSICOS DA INTERFACE (MOCKUPS)<br>
 
-[PDF Subsistema para Atendente do posto](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Prot%C3%B3tipos/Prot%C3%B3tipo%20PS%20-%20Atendente%20App%20Desktop%202.pdf)
-![Alt text](https://raw.githubusercontent.com/lukasg18/Topicos-Trabalho-BD2/master/Imagens/Atendente_posto.png)
+[PDF Subsistema para Atendente do posto](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Prot%C3%B3tipos/Atendente%20Web.pdf)
+![Alt text](https://raw.githubusercontent.com/lukasg18/Topicos-Trabalho-BD2/master/Imagens/Prot%C3%B3tipos/Atendimento_posto.png)
 
-[PDF Subsistema para solicitação de Medicamentos realizado pela População](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Prot%C3%B3tipos/Prot%C3%B3tipo%20PS%20-%20Popula%C3%A7%C3%A3o%20website.pdf)
-![Alt text](https://raw.githubusercontent.com/lukasg18/Topicos-Trabalho-BD2/master/Imagens/Atendimento_populacao.png)
+[PDF Subsistema para solicitação de Medicamentos realizado pela População](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Prot%C3%B3tipos/Popula%C3%A7%C3%A3o%20WebSite.pdf)
+![Alt text](https://raw.githubusercontent.com/lukasg18/Topicos-Trabalho-BD2/master/Imagens/Prot%C3%B3tipos/Atendimento_populacao.png)
 
 ### 5	MODELO CONCEITUAL<br>
 #### 5.1 NOTACAO ENTIDADE RELACIONAMENTO
-![Alt text](https://raw.githubusercontent.com/lukasg18/Topicos-Trabalho-BD2/master/Imagens/Modelo_Conceitual_versao2.png)
+![Alt text](https://raw.githubusercontent.com/lukasg18/Topicos-Trabalho-BD2/master/Imagens/Modelos/Modelo_Conceitual.png)
     
 #### 5.2 NOTACAO UML (Caso esteja fazendo a disciplina de Projeto)
 
 Subsistema para solicitação de Medicamentos realizado pela População
-![Alt text](https://raw.githubusercontent.com/lukasg18/Topicos-Trabalho-BD2/master/Imagens/Diagrama_classes_projeto_AtendimentoPopulacao.png)
+![Alt text](https://raw.githubusercontent.com/lukasg18/Topicos-Trabalho-BD2/master/Imagens/Modelos/Diagrama_classes_projeto_AtendimentoPopulacao.png)
 
 Subsistema para Atendente do posto
-![Alt text](https://raw.githubusercontent.com/lukasg18/Topicos-Trabalho-BD2/master/Imagens/Diagrama_classes_projeto_ControleEstoque.png)
+![Alt text](https://raw.githubusercontent.com/lukasg18/Topicos-Trabalho-BD2/master/Imagens/Modelos/Diagrama_classes_projeto_ControleEstoque.png)
 
 ## Data de Entrega: (23/08/2018) 
 (Apresentação para o professor em sala de aula)
 
 #### 5.3 DECISÕES DE PROJETO
-    - sexo: este campo se tornou um atributo em vez de uma tabela, pois em nível de código é um atributo/propriedade da classe Pessoa do tipo Enum Sexo. Assim quando se utilizar o ORM para gerar as tabelas do banco de dados será mapeado com um código inteiro correspondente do Enum Sexo.
-    - estadoMedicamento: Mesmos motivos do atributo sexo com diferença que a propriedade é do tipo Enum EstadoMedicamento.
-    - estadoSolicitacao: Mesmos motivos dos atributos sexo e estadoMedicamento. Entretanto com a diferença que a propriedade é do tipo Enum EstadoSolicitacao.
-    - endereço: como decisão foi decidido quebrar em três entidades que se relacionam, os quais são: Estado, Municipio e Bairro. Além de a própria entidade posto também conter informações específicas de localização do posto, como latitude e longitude que tem como principal objetivo na visualização nas views que fazem o atendimento das solicitações da população. Outro ponto importante é mesmo que no estado inicial do software é voltado somente para o município de Fundão foram criados as entidades Município e Estado visando a escalabilidade e crescimento do sistema.
-    - Dependente: apesar dessa entidade não conter nenhum atributo específico que não herde da entidade Pessoa foi decidido que existisse para que tivesse a separação apropriada entre os tipos de pessoas, ou seja, caso queira pegar os atendentes do sistema só ir até a tabela de atendentes, assim como também tanto para o dependente quanto para o titular.
-    - Entrada_Medicamento: é uma entidade surgida pelo relacionamento n:n de Atendente com Medicamento_Posto e basicamente serve para o controle e registro de entrada medicamentos realizados pelo atendente do posto. Anteriormente foram modelados diversas maneiras até chegar nessa entidade, mas que pode sofrer alterações futuras.
-    - Recebimento: como foi citado acima sobre o controle de entrada de medicamentos, a entidade Recebimento surge também do relacionamento n:n de Pessoa com Medicamento_Posto e atua de maneira a controlar e registrar a saída de medicamentos previamente solicitados pelos usuários referente a população.
-    - dataVencimento: é um atributo da entidade Medicamento_Posto que indica a data de vencimento do medicamento referente ao determinado posto. Em um sistema em produção e com aplicação real o ideal e coerente seria a utilização de uma entidade lote que se relaciona com Medicamento_Posto e teria como atributos: número do lote, assim como sua data de vencimento do lote em questão e a quantidade de medicamentos do lote. Entretanto foi decidido ter somente um data de vencimento comum aos medicamentos em geral para facilitar no desenvolvimento do sistema para uma versão inicial. Logo, claramente se fosse colocado o sistema em produção deveria adotar uma estratégia como a do lote mencionada anteriormente.
-    - Medicamento: como no tópico anterior, o medicamento é uma entidade mais complexa e com mais características. Como decisão de projeto decidimos pegar somente algumas características mais relevantes até o momento. Claramente que em versões posteriores ou até mesmo em uma aplicação real do software em produção ela seria uma classe mais bem trabalhada e detalhada, definindo os tipos de medicamentos, suas categorias e afins.
+    - sexo: este campo se tornou um atributo em vez de uma tabela, pois em nível de código é um atributo/propriedade da classe Pessoa do tipo Enum Sexo. 
+    Assim quando se utilizar o ORM para gerar as tabelas do banco de dados será mapeado com um código inteiro correspondente do Enum Sexo.
+    - estadoMedicamento: Mesmos motivos do atributo sexo com diferença que a 
+    propriedade é do tipo Enum EstadoMedicamento.
+    - estadoSolicitacao: Mesmos motivos dos atributos sexo e estadoMedicamento. 
+    Entretanto com a diferença que a propriedade é do tipo Enum EstadoSolicitacao.
+    - endereço: como decisão foi decidido quebrar em três entidades que se relacionam, os quais são: Estado, Municipio e Bairro. 
+    Além de a própria entidade posto também conter informações específicas de localização do posto, como latitude e longitude que tem como principal objetivo na visualização nas views que fazem o atendimento das solicitações da população.
+    Outro ponto importante é mesmo que no estado inicial do software é voltado somente para o município de Fundão foram criados as entidades Município e Estado visando a escalabilidade e crescimento do sistema.
+    - Dependente: apesar dessa entidade não conter nenhum atributo específico que não herde da entidade Pessoa foi decidido
+    que existisse para que tivesse a separação apropriada entre os tipos de pessoas, 
+    ou seja, caso queira pegar os atendentes do sistema só ir até a tabela de atendentes, assim como também tanto para o dependente quanto para o titular.
+    - Entrada_Medicamento: é uma entidade surgida pelo relacionamento n:n de Atendente com Medicamento_Posto e 
+    basicamente serve para o controle e registro de entrada medicamentos realizados pelo atendente do posto. 
+    Anteriormente foram modelados diversas maneiras até chegar nessa entidade, mas que pode sofrer alterações futuras.
+    - Recebimento: como foi citado acima sobre o controle de entrada de medicamentos, a entidade Recebimento surge também do relacionamento n:n de Pessoa com Medicamento_Posto e atua de maneira a controlar e 
+    registrar a saída de medicamentos previamente solicitados pelos usuários referente a população.
+    - dataVencimento: é um atributo da entidade Medicamento_Posto que indica a data de vencimento do medicamento referente ao determinado posto. 
+    Em um sistema em produção e com aplicação real o ideal e coerente seria a utilização de uma entidade lote que se relaciona com Medicamento_Posto e teria como atributos: número do lote, assim como sua data de vencimento do lote em questão e a quantidade de medicamentos do lote. 
+    Entretanto foi decidido ter somente um data de vencimento comum aos medicamentos em geral para facilitar no desenvolvimento do sistema para uma versão inicial. 
+    Logo, claramente se fosse colocado o sistema em produção deveria adotar uma estratégia como a do lote mencionada anteriormente.
+    - Medicamento: como no tópico anterior, o medicamento é uma entidade mais complexa e com mais características. Como decisão de projeto decidimos pegar somente algumas características mais relevantes até o momento. 
+    Claramente que em versões posteriores ou até mesmo em uma aplicação real do software em produção ela seria uma classe mais bem trabalhada e detalhada, definindo os tipos de medicamentos, suas categorias e afins.
 
 #### 5.4 DESCRIÇÃO DOS DADOS
     ATENDENTE: Tabela que contém os dados do atendente do posto.
@@ -175,10 +189,10 @@ Subsistema para Atendente do posto
         numerosus: campo que armazena o número cadastrado da pessoa no Sistema único de Saúde.
 
 ### 6	MODELO LÓGICO<br>
-![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Modelo_Logico_versao.png)
+![Alt text](https://raw.githubusercontent.com/lukasg18/Topicos-Trabalho-BD2/master/Imagens/Modelos/Modelo_Logico.png)
 
 ### 7	MODELO FÍSICO<br>
-[Link modelo físico](https://raw.githubusercontent.com/lukasg18/Topicos-Trabalho-BD2/master/Modelo_Fisico.sql)
+[Link modelo físico](https://raw.githubusercontent.com/lukasg18/Topicos-Trabalho-BD2/master/Modelagens/Modelo_Fisico.sql)
  
  ```sql
     /* Modelo Físico */

@@ -789,42 +789,104 @@ OBS: Incluir para os tópicos 9.2 e 9.3 as instruções SQL + imagens (print da 
     atendentes do determinado posto terão permissões de consultas, inserções, deleções e edição dos medicamentos
     - View relacionadas: Página de cadastro de medicamentos retirada do protótipo do sistema.
 
-![Alt text]()
+![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Prot%C3%B3tipos/view%20cadastrar%20medicamentos.png)
+
 
 ```sql
     SELECT * FROM view_cadastro_pacientes LIMIT 10;
 ```
 ![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Principais%20Views/View%20Atendente%20Cadastro%20Pacientes.png)
 
+    - Público alvo: Voltado aos usuários atendentes dos postos para o CRUD geral de pacientes no sistema, onde todos os
+    atendentes do determinado posto terão permissões de consultas, inserções, deleções e edição dos pacientes. Lembrando
+    que os pacientes é o mesmo que a população em geral que solicitam medicamentos através do sistema.
+    - View relacionadas: Página de cadastro de pacientes retirada do protótipo do sistema.
+
+![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Prot%C3%B3tipos/view%20cadastrar%20pacientes.png)
+
+
 ```sql
     SELECT * FROM view_retirar_medicamentos_solicitados LIMIT 10;
 ```
 ![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Principais%20Views/View%20Atendente%20retirar%20medicamentos%20solicitados.png)
 
+    - Público alvo: Voltado aos usuários atendentes dos postos retirada dos medicamentos solicitados realizado pelos
+    pacientes/população, onde os atendentes tem as permissões de excluir, consultar e editar somente um campo de estado
+    da solicitação feita pelo paciente, onde assumirá o estado de expirado ou atendido.
+    - View relacionadas: Página de retirar medicamentos solicitados do protótipo do sistema.
+
+![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Prot%C3%B3tipos/view%20retirar%20medicamentos%20solicitados.png)
+
+    OBS.: Note que na tabela do banco a coluna estado da solicitação possui valores de 1 a 3, onde estes são redenrizados 
+    na data table do front em comunicado, atendido e experido.
+
+
 ```sql
     SELECT * FROM view_medicamentos_mais_retirados_por_quantidade LIMIT 10;
 ```
 ![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Principais%20Views/View%20Atendente%20Medicamentos%20mais%20retirados.png)
+    
+    - Público alvo: Voltado aos usuários atendentes dos postos para geração de relatórios de medicamentos mais retirados
+    por quantidade, ou seja, pela quantidade unidades retiradas em cada retirada dos medicamentos nos postos.
+    - View relacionadas: Página de gerar relatórios do protótipo do sistema.
+
+![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Prot%C3%B3tipos/view%20gerar%20relat%C3%B3rios.png)
+
 
 ```sql
     SELECT * FROM view_medicamentos_mais_retirados_por_numero_retiradas LIMIT 10;
 ```
 ![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Principais%20Views/View%20Atendente%20Medicamentos%20mais%20retirados%20por%20n%C3%BAmero%20de%20retiradas.png)
+    
+    - Público alvo: Voltado aos usuários atendentes dos postos para geração de relatórios de medicamentos mais retirados
+    por número de retiradas feitas pelos pacientes, ou seja, pela quantidade de retiradas e não pelo quantidade de
+    medicamentos em cada retirada.
+    - View relacionadas: Página de gerar relatórios do protótipo do sistema.
+
+![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Prot%C3%B3tipos/view%20gerar%20relat%C3%B3rios.png)
+
 
 ```sql
     SELECT * FROM view_medicamentos_mais_solicitados_por_quantidade LIMIT 10;
 ```
 ![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Principais%20Views/View%20Atendente%20Medicamentos%20mais%20solicitados%20por%20quantidade.png)
 
+    - Público alvo: Voltado aos usuários atendentes dos postos para geração de relatórios de medicamentos mais solicitados
+    por quantidade, ou seja, pela quantidade unidades solicitadas em cada solicitação dos medicamentos nos postos.
+    - View relacionadas: Página de gerar relatórios do protótipo do sistema.
+
+![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Prot%C3%B3tipos/view%20gerar%20relat%C3%B3rios.png)
+
+
 ```sql
     SELECT * FROM view_medicamentos_mais_solicitados_por_numero_solicitacoes LIMIT 10;
 ```
 ![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Principais%20Views/View%20Atendente%20Medicamentos%20mais%20retirados%20por%20n%C3%BAmero%20de%20retiradas.png)
 
+    - Público alvo: Voltado aos usuários atendentes dos postos para geração de relatórios de medicamentos mais solicitados
+    por número de solicitações feitas pelos pacientes, ou seja, pela quantidade de solicitações e não pelo quantidade de
+    medicamentos em cada solicitação.
+    - View relacionadas: Página de gerar relatórios do protótipo do sistema.
+
+![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Prot%C3%B3tipos/view%20gerar%20relat%C3%B3rios.png)
+
+
 ```sql
     SELECT * FROM view_medicamentos_para_solicitacao LIMIT 10;
 ```
-![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Principais%20Views/View%20Popula%C3%A7%C3%A3o%20medicamento%20para%20solicita%C3%A7%C3%A3o%20nos%20postos.png)    
+![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Principais%20Views/View%20Popula%C3%A7%C3%A3o%20medicamento%20para%20solicita%C3%A7%C3%A3o%20nos%20postos.png) 
+    
+    - Público alvo: Voltado para a população/pacientes que desejam solicitar medicamentos nos postos. Assim é possível
+    de verificar e solicitar medicamentos, caso estejam disponível, e retirá-los nos postos.
+    - View relacionadas: Página de solicitações de medicamentos do protótipo do sistema.
+
+![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Prot%C3%B3tipos/view%20gerar%20relat%C3%B3rios.png)
+
+    OBS.: Note que não tem a coluna posto na view, pois não há necessidade, dado que a tabela que aparece dos medicamentos
+    é no próprio posto, pois o paciente escolhe o posto através do mapa. Outro ponto é que a disponibilidade é 1 para
+    indisponível e 2 para disponível na tabela do banco. Já na view isso é redenrizado em run-time na data table.
+
+
 
 #### 9.4	LISTA DE CODIGOS DAS FUNÇÕES, ASSERÇOES E TRIGGERS<br>
         Detalhamento sobre funcionalidade de cada código.

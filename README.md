@@ -654,8 +654,6 @@ Subsistema para Atendente do posto
 
 
 
-
-
 ### 8	INSERT APLICADO NAS TABELAS DO BANCO DE DADOS<br>
 #### 8.1 DETALHAMENTO DAS INFORMAÇÕES
 
@@ -779,8 +777,8 @@ OBS: Incluir para os tópicos 9.2 e 9.3 as instruções SQL + imagens (print da 
         presentes aqui. 
 <br>
 
-[Criação das views](https://raw.githubusercontent.com/lukasg18/Topicos-Trabalho-BD2/master/Queries/Principais_Views.sql)
-[Selects de todas as views](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Queries/Selects%20das%20Principais%20views.sql)
+[Criação das views](https://raw.githubusercontent.com/lukasg18/Topicos-Trabalho-BD2/master/Queries/Principais_Views.sql) <br>
+[Selects de todas as views](https://raw.githubusercontent.com/lukasg18/Topicos-Trabalho-BD2/master/Queries/Selects%20das%20Principais%20views.sql)
 
 ```sql
     SELECT * FROM view_cadastro_medicamentos LIMIT 10;

@@ -191,6 +191,69 @@ Subsistema para Atendente do posto
 ### 6	MODELO LÓGICO<br>
 ![Alt text](https://raw.githubusercontent.com/lukasg18/Topicos-Trabalho-BD2/master/Imagens/Modelos/Modelo_Logico.png)
 
+### 6.2	Padrões de Projeto<br>
+#### Método Fábrica
+    Foi utilizado o padrão método fábrica para a criação genérica de objetos do modelo. Dessa forma, permitesse facilmente adicionar novos objetos do modelo sem grandes impactos ao sistema.
+
+```typescript
+    const app = await NestFactory.create(AppModule);
+```
+
+```typescript
+    import { Module } from '@nestjs/common';
+    import { PooModule } from './poo/poo.module';
+    @Module({
+      imports: [PooModule]
+    })
+    export class AppModule {}
+```
+
+```typescript
+    import { Module } from '@nestjs/common';
+    import { PessoaService } from './service/pessoa.service';
+    import { databaseProviders } from './database/database.providers';
+    import { PessoaController } from './controller/pessoa.controller';
+    import { MedicamentoService } from './service/medicamento.service';
+    import { AtendenteService } from './service/atendente.service';
+    import { TitularService } from './service/titular.service';
+    import { TitularController } from './controller/titular.controller';
+    import { SexoService } from './service/sexo.service';
+    import { SexoController } from './controller/sexo.controller';
+    import { AtendenteController } from './controller/atendente.controller';
+    import { EstadoService } from './service/estado.service';
+    import { EstadoController } from './controller/estado.controller';
+    import { BairroService } from './service/bairro.service';
+    import { BairroController } from './controller/bairro.controller';
+    import { MunicipioService } from './service/municipio.service';
+    import { MunicipioController } from './controller/municipio.controller';
+    import { SolicitacaoService } from './service/solicitacao.service';
+    import { SolicitacaoController } from './controller/solicitacao.controller';
+
+    const modelProvider = [...databaseProviders];
+
+    const modelService = [
+    MedicamentoService,
+    AtendenteService,
+    PessoaService,
+    TitularService,
+    SexoService,
+    EstadoService,
+    BairroService,
+    MunicipioService,
+    SolicitacaoService
+    ];
+
+    const modelController = [PessoaController, TitularController, SexoController, AtendenteController, EstadoController, BairroController, MunicipioController, SolicitacaoController];
+
+    @Module({
+    providers: [...modelProvider, ...modelService],
+    controllers: [...modelController],
+    })
+    export class PooModule {}
+```
+
+
+
 ### 7	MODELO FÍSICO<br>
 [Link modelo físico](https://raw.githubusercontent.com/lukasg18/Topicos-Trabalho-BD2/master/Modelagens/Modelo_Fisico.sql)
  

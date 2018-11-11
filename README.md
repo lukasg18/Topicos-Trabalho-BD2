@@ -792,6 +792,7 @@ OBS: Incluir para os tópicos 9.2 e 9.3 as instruções SQL + imagens (print da 
 ![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Prot%C3%B3tipos/view%20cadastrar%20medicamentos.png)
 
 
+
 ```sql
     SELECT * FROM view_cadastro_pacientes LIMIT 10;
 ```
@@ -821,6 +822,7 @@ OBS: Incluir para os tópicos 9.2 e 9.3 as instruções SQL + imagens (print da 
     na data table do front em comunicado, atendido e experido.
 
 
+
 ```sql
     SELECT * FROM view_medicamentos_mais_retirados_por_quantidade LIMIT 10;
 ```
@@ -831,6 +833,7 @@ OBS: Incluir para os tópicos 9.2 e 9.3 as instruções SQL + imagens (print da 
     - View relacionadas: Página de gerar relatórios do protótipo do sistema.
 
 ![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Prot%C3%B3tipos/view%20gerar%20relat%C3%B3rios.png)
+
 
 
 ```sql
@@ -846,6 +849,7 @@ OBS: Incluir para os tópicos 9.2 e 9.3 as instruções SQL + imagens (print da 
 ![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Prot%C3%B3tipos/view%20gerar%20relat%C3%B3rios.png)
 
 
+
 ```sql
     SELECT * FROM view_medicamentos_mais_solicitados_por_quantidade LIMIT 10;
 ```
@@ -856,6 +860,7 @@ OBS: Incluir para os tópicos 9.2 e 9.3 as instruções SQL + imagens (print da 
     - View relacionadas: Página de gerar relatórios do protótipo do sistema.
 
 ![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Prot%C3%B3tipos/view%20gerar%20relat%C3%B3rios.png)
+
 
 
 ```sql
@@ -869,6 +874,7 @@ OBS: Incluir para os tópicos 9.2 e 9.3 as instruções SQL + imagens (print da 
     - View relacionadas: Página de gerar relatórios do protótipo do sistema.
 
 ![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Prot%C3%B3tipos/view%20gerar%20relat%C3%B3rios.png)
+
 
 
 ```sql

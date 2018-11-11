@@ -785,6 +785,12 @@ OBS: Incluir para os tópicos 9.2 e 9.3 as instruções SQL + imagens (print da 
 ```
 ![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Principais%20Views/View%20Atendente%20Cadastro%20Medicamentos.png)
 
+    - Público alvo: Voltado os usuários atendentes dos postos para o CRUD geral de medicamentos no sistema, onde todos os
+    atendentes do determinado posto terão permissões de consultas, inserções, deleções e edição dos medicamentos
+    - View relacionadas: Página de cadastro de medicamentos retirada do protótipo do sistema.
+
+![Alt text]()
+
 ```sql
     SELECT * FROM view_cadastro_pacientes LIMIT 10;
 ```

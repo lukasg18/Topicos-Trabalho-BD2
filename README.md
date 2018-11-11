@@ -779,38 +779,48 @@ OBS: Incluir para os tópicos 9.2 e 9.3 as instruções SQL + imagens (print da 
         presentes aqui. 
 <br>
 
+[Criação das views](https://raw.githubusercontent.com/lukasg18/Topicos-Trabalho-BD2/master/Queries/Principais_Views.sql)
+[Selects de todas as views](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Queries/Selects%20das%20Principais%20views.sql)
+
 ```sql
     SELECT * FROM view_cadastro_medicamentos LIMIT 10;
 ```
+![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Principais%20Views/View%20Atendente%20Cadastro%20Medicamentos.png)
 
 ```sql
     SELECT * FROM view_cadastro_pacientes LIMIT 10;
 ```
+![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Principais%20Views/View%20Atendente%20Cadastro%20Pacientes.png)
 
 ```sql
     SELECT * FROM view_retirar_medicamentos_solicitados LIMIT 10;
 ```
+![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Principais%20Views/View%20Atendente%20retirar%20medicamentos%20solicitados.png)
 
 ```sql
     SELECT * FROM view_medicamentos_mais_retirados_por_quantidade LIMIT 10;
 ```
+![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Principais%20Views/View%20Atendente%20Medicamentos%20mais%20retirados.png)
 
 ```sql
     SELECT * FROM view_medicamentos_mais_retirados_por_numero_retiradas LIMIT 10;
 ```
+![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Principais%20Views/View%20Atendente%20Medicamentos%20mais%20retirados%20por%20n%C3%BAmero%20de%20retiradas.png)
 
 ```sql
     SELECT * FROM view_medicamentos_mais_solicitados_por_quantidade LIMIT 10;
 ```
+![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Principais%20Views/View%20Atendente%20Medicamentos%20mais%20solicitados%20por%20quantidade.png)
 
 ```sql
     SELECT * FROM view_medicamentos_mais_solicitados_por_numero_solicitacoes LIMIT 10;
 ```
+![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Principais%20Views/View%20Atendente%20Medicamentos%20mais%20retirados%20por%20n%C3%BAmero%20de%20retiradas.png)
 
 ```sql
     SELECT * FROM view_medicamentos_para_solicitacao LIMIT 10;
 ```
-    
+![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Principais%20Views/View%20Popula%C3%A7%C3%A3o%20medicamento%20para%20solicita%C3%A7%C3%A3o%20nos%20postos.png)    
 
 #### 9.4	LISTA DE CODIGOS DAS FUNÇÕES, ASSERÇOES E TRIGGERS<br>
         Detalhamento sobre funcionalidade de cada código.

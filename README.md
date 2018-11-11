@@ -193,10 +193,17 @@ Subsistema para Atendente do posto
 
 ### 6.2	Padrões de Projeto<br>
 #### Método Fábrica
-    Foi utilizado o padrão método fábrica para a criação genérica de objetos do modelo. Dessa forma, permitesse facilmente adicionar novos objetos do modelo sem grandes impactos ao sistema.
+Foi utilizado o padrão método fábrica para a criação genérica de objetos do modelo. Dessa forma, permitesse facilmente adicionar novos objetos do modelo sem grandes impactos ao sistema.
 
 ```typescript
-    const app = await NestFactory.create(AppModule);
+    import { NestFactory } from '@nestjs/core';
+    import { AppModule } from './app.module';
+    import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
+    import * as cors from 'cors';
+
+    async function bootstrap() {
+        const app = await NestFactory.create(AppModule);
+    ...
 ```
 
 ```typescript
@@ -209,25 +216,6 @@ Subsistema para Atendente do posto
 ```
 
 ```typescript
-    import { Module } from '@nestjs/common';
-    import { PessoaService } from './service/pessoa.service';
-    import { databaseProviders } from './database/database.providers';
-    import { PessoaController } from './controller/pessoa.controller';
-    import { MedicamentoService } from './service/medicamento.service';
-    import { AtendenteService } from './service/atendente.service';
-    import { TitularService } from './service/titular.service';
-    import { TitularController } from './controller/titular.controller';
-    import { SexoService } from './service/sexo.service';
-    import { SexoController } from './controller/sexo.controller';
-    import { AtendenteController } from './controller/atendente.controller';
-    import { EstadoService } from './service/estado.service';
-    import { EstadoController } from './controller/estado.controller';
-    import { BairroService } from './service/bairro.service';
-    import { BairroController } from './controller/bairro.controller';
-    import { MunicipioService } from './service/municipio.service';
-    import { MunicipioController } from './controller/municipio.controller';
-    import { SolicitacaoService } from './service/solicitacao.service';
-    import { SolicitacaoController } from './controller/solicitacao.controller';
 
     const modelProvider = [...databaseProviders];
 
@@ -251,8 +239,49 @@ Subsistema para Atendente do posto
     })
     export class PooModule {}
 ```
+#### Padrão injeção de depedencia
+O padrão de injeção de dependência visa remover dependências desnecessárias entre as classes ou torná-las mais suaves e ter um design de software que seja fácil de manter e evoluir.
+
+```typescript
+    import { Injectable, Inject } from '@nestjs/common';
+    import { Bairro } from '../model/bairro.entity';
+
+    @Injectable()
+    export class BairroService{
+
+        async readAll() {
+            return await Bairro.find();
+        }
+
+        async readOne(id: number) {
+            return await Bairro.findOne({idbairro:id});
+        }
+        ...
+```
+#### Padrão Repository
+O padrão  Repository faz a mediação entre o domínio e as camadas de mapeamento de dados, agindo como uma coleção de objetos de domínio em memória. Um repositório encapsula o conjunto de objetos persistidos em um armazenamento de dados e as operações realizadas sobre eles, fornecendo uma visão mais orientada a objetos da camada de persistência.
 
 
+```typescript
+    @Entity()
+    export class Atendente extends BaseEntity {
+    @PrimaryColumn()
+    idpessoa: number;
+
+    @Column({ nullable: false, length: 10, unique: true })
+    numeroregistro: string;
+    ...
+```
+
+```typescript
+    export declare class BaseEntity {
+    ....
+    /**
+     * Gets current entity's Repository.
+     */
+    static getRepository<T extends BaseEntity>(this: ObjectType<T>): Repository<T>;
+    ....
+```
 
 ### 7	MODELO FÍSICO<br>
 [Link modelo físico](https://raw.githubusercontent.com/lukasg18/Topicos-Trabalho-BD2/master/Modelagens/Modelo_Fisico.sql)

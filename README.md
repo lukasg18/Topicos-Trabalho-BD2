@@ -893,6 +893,8 @@ OBS: Incluir para os tópicos 9.2 e 9.3 as instruções SQL + imagens (print da 
         d) resultados em forma de tabela/imagem
 <br>
 
+[Criação e select de functions](https://raw.githubusercontent.com/lukasg18/Topicos-Trabalho-BD2/master/Queries/functions.sql)
+
 ## Data de Entrega: (27/09/2018)
 
 #### 9.5	Administração do banco de dados<br>

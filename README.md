@@ -779,6 +779,39 @@ OBS: Incluir para os tópicos 9.2 e 9.3 as instruções SQL + imagens (print da 
         presentes aqui. 
 <br>
 
+```sql
+    SELECT * FROM view_cadastro_medicamentos LIMIT 10;
+```
+
+```sql
+    SELECT * FROM view_cadastro_pacientes LIMIT 10;
+```
+
+```sql
+    SELECT * FROM view_retirar_medicamentos_solicitados LIMIT 10;
+```
+
+```sql
+    SELECT * FROM view_medicamentos_mais_retirados_por_quantidade LIMIT 10;
+```
+
+```sql
+    SELECT * FROM view_medicamentos_mais_retirados_por_numero_retiradas LIMIT 10;
+```
+
+```sql
+    SELECT * FROM view_medicamentos_mais_solicitados_por_quantidade LIMIT 10;
+```
+
+```sql
+    SELECT * FROM view_medicamentos_mais_solicitados_por_numero_solicitacoes LIMIT 10;
+```
+
+```sql
+    SELECT * FROM view_medicamentos_para_solicitacao LIMIT 10;
+```
+    
+
 #### 9.4	LISTA DE CODIGOS DAS FUNÇÕES, ASSERÇOES E TRIGGERS<br>
         Detalhamento sobre funcionalidade de cada código.
         a) Objetivo

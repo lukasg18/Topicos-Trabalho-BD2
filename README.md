@@ -880,7 +880,7 @@ OBS: Incluir para os tópicos 9.2 e 9.3 as instruções SQL + imagens (print da 
     de verificar e solicitar medicamentos, caso estejam disponível, e retirá-los nos postos.
     - View relacionadas: Página de solicitações de medicamentos do protótipo do sistema.
 
-![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Prot%C3%B3tipos/view%20gerar%20relat%C3%B3rios.png)
+![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Prot%C3%B3tipos/view%20retirar%20medicamentos%20solicitados.png)
 
     OBS.: Note que não tem a coluna posto na view, pois não há necessidade, dado que a tabela que aparece dos medicamentos
     é no próprio posto, pois o paciente escolhe o posto através do mapa. Outro ponto é que a disponibilidade é 1 para

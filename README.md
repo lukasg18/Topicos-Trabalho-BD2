@@ -985,7 +985,126 @@ OBS: Incluir para os tópicos 9.2 e 9.3 as instruções SQL + imagens (print da 
         d) resultados em forma de tabela/imagem
 <br>
 
-[Criação e select de functions](https://raw.githubusercontent.com/lukasg18/Topicos-Trabalho-BD2/master/Queries/functions.sql)
+[Criação e Select das Functions](https://raw.githubusercontent.com/lukasg18/Topicos-Trabalho-BD2/master/Queries/functions.sql)<br>
+[Criação das Triggers e Assertions](https://github.com/lukasg18/Topicos-Trabalho-BD2/raw/master/Queries/triggers_assertions.sql)<br>
+
+    - OBJETIVO: Pegar todos os campos da solicitação a partir do estado da solicitação (comunicado(1), expirado(2),
+    atendido(3)) passando como parâmetro o estado da solicitação e o limite de linhas para ser retornadas como
+    resultado da query.
+    
+    ```sql
+    DROP FUNCTION IF EXISTS get_solicitacoes_pelo_estado(int, int);
+    
+    CREATE OR REPLACE FUNCTION get_solicitacoes_pelo_estado(int, int)
+    RETURNS SETOF solicitacao AS 
+        'SELECT * FROM solicitacao WHERE estadosolicitacao=$1 LIMIT $2'
+    LANGUAGE SQL;
+    
+    SELECT * FROM get_solicitacoes_pelo_estado(2, 150);
+    ```
+![Alt text]()<br>
+
+
+    - OBJETIVO: Pegar a quantidade de medicamentos solicitados pelo Titular a partir do estado da solicitação 
+    (comunicado(1), expirado(2), atendido(3)), passando como parâmetro o estado da solicitação e a quantidade
+    de linhas limites retornadas.
+    
+    ```sql
+    DROP FUNCTION IF EXISTS verifica_qntsolicitacao_pelo_estado(int, int);
+    
+    CREATE OR REPLACE FUNCTION verifica_qntsolicitacao_pelo_estado(int, int)
+    RETURNS TABLE(idtitular int, qtd_solicitado bigint, estadosolicitacao int) AS $$
+        SELECT idtitular, sum(quantidademedicamento), estadosolicitacao FROM solicitacao
+        WHERE estadosolicitacao=$1
+        GROUP BY idtitular, estadosolicitacao 
+        LIMIT $2; 
+    $$
+    LANGUAGE SQL;
+    
+    SELECT * FROM verifica_qntsolicitacao_pelo_estado(1, 200);
+    ```
+![Alt text]()<br>
+
+
+    - OBJETIVO: Pegar a quantidade de recebimentos realizados por atendente no posto em que ele está alocado
+    a partir do id do posto passado como parâmetro da função.
+    
+    ```sql
+    DROP FUNCTION IF EXISTS quantidade_recebimento_por_atendente(idPosto INTEGER);
+    
+    CREATE FUNCTION quantidade_recebimento_por_atendente(idPosto INTEGER)
+    RETURNS TABLE("Registro Geral" VARCHAR(10), "Nome" VARCHAR(50), "Quantidade de Retiradas" BIGINT)
+    AS $$
+        SELECT ate.numeroregistro, pe.nome, COUNT(re.idatendente) FROM pessoa AS pe
+        INNER JOIN atendente AS ate ON (ate.idpessoa = pe.idpessoa)
+        INNER JOIN recebimento AS re ON (re.idatendente = ate.idpessoa)
+        INNER JOIN medicamento_posto AS mp ON (mp.idmedicamentoposto = re.idmedicamentoposto)
+        WHERE mp.idposto = $1
+        GROUP BY ate.numeroregistro, pe.nome
+        ORDER BY 3 DESC;
+    $$
+    LANGUAGE SQL;
+    
+    SELECT * FROM quantidade_recebimento_por_atendente(1);
+    ```
+![Alt text]()<br>
+
+
+    - OBJETIVO: Pegar os medicamentos e sua quantidade em estoque a partir do id do posto passado como
+    parâmetro.
+    
+    ```sql
+    DROP FUNCTION IF EXISTS medicamentos_postos(idPosto INTEGER);
+    
+    CREATE OR REPLACE FUNCTION medicamentos_postos(idPosto INTEGER)
+    RETURNS TABLE("Medicamento" VARCHAR(100), "Quantidade" INTEGER, "Data de Vencimento" TIMESTAMP) AS 
+        'SELECT me.nome, mp.quantidade, mp.datavencimento FROM medicamento AS me
+        INNER JOIN medicamento_posto AS mp ON (mp.idmedicamento = me.idmedicamento)
+        WHERE mp.idposto=$1
+        ORDER BY me.nome;'
+    LANGUAGE SQL;
+    
+    SELECT * FROM medicamentos_postos(3);
+    ```
+![Alt text]()<br>
+
+
+    - OBJETIVO: Filtrar pessoas registradas no banco de dados passando como parâmetro o nome.
+    
+    ```sql
+    DROP FUNCTION IF EXISTS filtrar_pessoa(VARCHAR(30));
+    
+    CREATE FUNCTION filtrar_pessoa(VARCHAR(30))
+    RETURNS SETOF pessoa 
+    AS $$
+        SELECT * FROM pessoa WHERE nome=$1;
+    $$
+    LANGUAGE SQL;
+    
+    SELECT * FROM filtrar_pessoa('Soraia Outeiro');
+    ```
+![Alt text]()<br>
+
+
+    - OBJETIVO: Filtrar os dependentes pelo id do titular passado como parâmetro.
+    
+    ```sql
+    DROP FUNCTION IF EXISTS filtrar_dependentes_pelo_idtitular(idTitular INTEGER);
+    
+    CREATE FUNCTION filtrar_dependentes_pelo_idtitular(idTitular INTEGER)
+    RETURNS TABLE("Nome" VARCHAR(40), "Sexo" INTEGER, "Data de Nascimento" TIMESTAMP)
+    AS $$
+        SELECT pe.nome, pe.sexo, pe.datanascimento FROM pessoa AS pe
+        INNER JOIN titular AS ti ON(ti.idpessoa = pe.idpessoa)
+        INNER JOIN dependente AS de ON (de.idtitular = ti.idpessoa)
+        WHERE de.idtitular = $1;
+    $$
+    LANGUAGE SQL;
+    
+    SELECT * FROM filtrar_dependentes_pelo_idtitular(32514);
+    ```
+![Alt text]()<br>
+
 
 ## Data de Entrega: (27/09/2018)
 

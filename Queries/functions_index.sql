@@ -11,14 +11,13 @@ select * from titular
 select * from medicamento_posto
 
     create index fk_idtitular on solicitacao (idtitular)
-    
     create index fk_idmedicamentoposto on solicitacao (idmedicamentoposto)
-
     create index fk_pessoa on titular (idpessoa)
-
     create index fk_idposto on medicamento_posto (idposto)
-
     create index fk_idmedicamento on medicamento_posto (idmedicamento)
+    create index index_idmedicamentoposto on recebimento (idmedicamentoposto);
+    create index index_idpessoa on recebimento (idpessoa);
+    create index index_idatendente on recebimento (idatendente);
 
 
 DROP FUNCTION verifica_solicitacao_por_pessoa(integer)

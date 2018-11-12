@@ -191,6 +191,98 @@ Subsistema para Atendente do posto
 ### 6	MODELO LÓGICO<br>
 ![Alt text](https://raw.githubusercontent.com/lukasg18/Topicos-Trabalho-BD2/master/Imagens/Modelos/Modelo_Logico.png)
 
+### 6.2	Padrões de Projeto<br>
+#### Método Fábrica
+Foi utilizado o padrão método fábrica para a criação genérica de objetos do modelo. Dessa forma, permitesse facilmente adicionar novos objetos do modelo sem grandes impactos ao sistema.
+
+```typescript
+    import { NestFactory } from '@nestjs/core';
+    import { AppModule } from './app.module';
+    import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
+    import * as cors from 'cors';
+
+    async function bootstrap() {
+        const app = await NestFactory.create(AppModule);
+    ...
+```
+
+```typescript
+    import { Module } from '@nestjs/common';
+    import { PooModule } from './poo/poo.module';
+    @Module({
+      imports: [PooModule]
+    })
+    export class AppModule {}
+```
+
+```typescript
+
+    const modelProvider = [...databaseProviders];
+
+    const modelService = [
+    MedicamentoService,
+    AtendenteService,
+    PessoaService,
+    TitularService,
+    SexoService,
+    EstadoService,
+    BairroService,
+    MunicipioService,
+    SolicitacaoService
+    ];
+
+    const modelController = [PessoaController, TitularController, SexoController, AtendenteController, EstadoController, BairroController, MunicipioController, SolicitacaoController];
+
+    @Module({
+    providers: [...modelProvider, ...modelService],
+    controllers: [...modelController],
+    })
+    export class PooModule {}
+```
+#### Padrão injeção de depedencia
+O padrão de injeção de dependência visa remover dependências desnecessárias entre as classes ou torná-las mais suaves e ter um design de software que seja fácil de manter e evoluir.
+
+```typescript
+    import { Injectable, Inject } from '@nestjs/common';
+    import { Bairro } from '../model/bairro.entity';
+
+    @Injectable()
+    export class BairroService{
+
+        async readAll() {
+            return await Bairro.find();
+        }
+
+        async readOne(id: number) {
+            return await Bairro.findOne({idbairro:id});
+        }
+        ...
+```
+#### Padrão Repository
+O padrão  Repository faz a mediação entre o domínio e as camadas de mapeamento de dados, agindo como uma coleção de objetos de domínio em memória. Um repositório encapsula o conjunto de objetos persistidos em um armazenamento de dados e as operações realizadas sobre eles, fornecendo uma visão mais orientada a objetos da camada de persistência.
+
+
+```typescript
+    @Entity()
+    export class Atendente extends BaseEntity {
+    @PrimaryColumn()
+    idpessoa: number;
+
+    @Column({ nullable: false, length: 10, unique: true })
+    numeroregistro: string;
+    ...
+```
+
+```typescript
+    export declare class BaseEntity {
+    ....
+    /**
+     * Gets current entity's Repository.
+     */
+    static getRepository<T extends BaseEntity>(this: ObjectType<T>): Repository<T>;
+    ....
+```
+
 ### 7	MODELO FÍSICO<br>
 [Link modelo físico](https://raw.githubusercontent.com/lukasg18/Topicos-Trabalho-BD2/master/Modelagens/Modelo_Fisico.sql)
  
@@ -892,6 +984,8 @@ OBS: Incluir para os tópicos 9.2 e 9.3 as instruções SQL + imagens (print da 
         c) exemplo de dados para aplicação
         d) resultados em forma de tabela/imagem
 <br>
+
+[Criação e select de functions](https://raw.githubusercontent.com/lukasg18/Topicos-Trabalho-BD2/master/Queries/functions.sql)
 
 ## Data de Entrega: (27/09/2018)
 

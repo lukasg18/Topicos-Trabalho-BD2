@@ -988,9 +988,9 @@ OBS: Incluir para os tópicos 9.2 e 9.3 as instruções SQL + imagens (print da 
 [Criação e Select das Functions](https://raw.githubusercontent.com/lukasg18/Topicos-Trabalho-BD2/master/Queries/functions.sql)<br>
 [Criação das Triggers e Assertions](https://github.com/lukasg18/Topicos-Trabalho-BD2/raw/master/Queries/triggers_assertions.sql)<br>
 
-    - OBJETIVO: Pegar todos os campos da solicitação a partir do estado da solicitação (comunicado(1), expirado(2),
-    atendido(3)) passando como parâmetro o estado da solicitação e o limite de linhas para ser retornadas como
-    resultado da query.
+- OBJETIVO: Pegar todos os campos da solicitação a partir do estado da solicitação (comunicado(1), expirado(2),
+atendido(3)) passando como parâmetro o estado da solicitação e o limite de linhas para ser retornadas como
+resultado da query.
     
     ```sql
     DROP FUNCTION IF EXISTS get_solicitacoes_pelo_estado(int, int);
@@ -1005,9 +1005,9 @@ OBS: Incluir para os tópicos 9.2 e 9.3 as instruções SQL + imagens (print da 
 ![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Functions%2C%20Triggers%20e%20Assertions/Function%20get_solicitacoes_pelo_estado.png)<br>
 
 
-    - OBJETIVO: Pegar a quantidade de medicamentos solicitados pelo Titular a partir do estado da solicitação 
-    (comunicado(1), expirado(2), atendido(3)), passando como parâmetro o estado da solicitação e a quantidade
-    de linhas limites retornadas.
+- OBJETIVO: Pegar a quantidade de medicamentos solicitados pelo Titular a partir do estado da solicitação 
+(comunicado(1), expirado(2), atendido(3)), passando como parâmetro o estado da solicitação e a quantidade
+de linhas limites retornadas.
     
     ```sql
     DROP FUNCTION IF EXISTS verifica_qntsolicitacao_pelo_estado(int, int);
@@ -1026,8 +1026,8 @@ OBS: Incluir para os tópicos 9.2 e 9.3 as instruções SQL + imagens (print da 
 ![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Functions%2C%20Triggers%20e%20Assertions/Function%20verifica_qntSolicitacao_pelo_estado.png)<br>
 
 
-    - OBJETIVO: Pegar a quantidade de recebimentos realizados por atendente no posto em que ele está alocado
-    a partir do id do posto passado como parâmetro da função.
+- OBJETIVO: Pegar a quantidade de recebimentos realizados por atendente no posto em que ele está alocado
+a partir do id do posto passado como parâmetro da função.
     
     ```sql
     DROP FUNCTION IF EXISTS quantidade_recebimento_por_atendente(idPosto INTEGER);
@@ -1050,8 +1050,8 @@ OBS: Incluir para os tópicos 9.2 e 9.3 as instruções SQL + imagens (print da 
 ![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Functions%2C%20Triggers%20e%20Assertions/Function%20quantidade_recebimento_por_atendente.png)<br>
 
 
-    - OBJETIVO: Pegar os medicamentos e sua quantidade em estoque a partir do id do posto passado como
-    parâmetro.
+- OBJETIVO: Pegar os medicamentos e sua quantidade em estoque a partir do id do posto passado como
+parâmetro.
     
     ```sql
     DROP FUNCTION IF EXISTS medicamentos_postos(idPosto INTEGER);
@@ -1069,7 +1069,7 @@ OBS: Incluir para os tópicos 9.2 e 9.3 as instruções SQL + imagens (print da 
 ![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Functions%2C%20Triggers%20e%20Assertions/Function%20medicamentos_postos.png)<br>
 
 
-    - OBJETIVO: Filtrar pessoas registradas no banco de dados passando como parâmetro o nome.
+- OBJETIVO: Filtrar pessoas registradas no banco de dados passando como parâmetro o nome.
     
     ```sql
     DROP FUNCTION IF EXISTS filtrar_pessoa(VARCHAR(30));
@@ -1086,7 +1086,7 @@ OBS: Incluir para os tópicos 9.2 e 9.3 as instruções SQL + imagens (print da 
 ![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Functions%2C%20Triggers%20e%20Assertions/Function%20filtrar_pessoa.png)<br>
 
 
-    - OBJETIVO: Filtrar os dependentes pelo id do titular passado como parâmetro.
+- OBJETIVO: Filtrar os dependentes pelo id do titular passado como parâmetro.
     
     ```sql
     DROP FUNCTION IF EXISTS filtrar_dependentes_pelo_idtitular(idTitular INTEGER);

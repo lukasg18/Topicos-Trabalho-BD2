@@ -1,26 +1,27 @@
 ﻿DROP FUNCTION IF EXISTS isValidMudancaEstado() CASCADE;
 DROP FUNCTION IF EXISTS novo_dependente() CASCADE;
 DROP FUNCTION IF EXISTS verifica_solicitacao_estado_comunicado() CASCADE;
+DROP FUNCTION IF EXISTS muda_estado_medicamento_basedon_quantidade() CASCADE;
 
 /* Função da trigger que só permite a atualização do estado do medicamento para:
 	Disponível: caso exista medicamentos no estoque
 	Indisponível caso não exista medicamentos no estoque */
 CREATE FUNCTION isValidMudancaEstado() RETURNS TRIGGER AS
 $$ BEGIN
-	IF (NEW.estadomedicamento = 1) THEN 
-	    IF (OLD.quantidade > 0) THEN
-		RAISE EXCEPTION 'Erro: Não pode modificar estado do medicamento para INDISPONÍVEL porque existem medicamentos no estoque';
-	    END IF;
-	ELSE
-	    IF (OLD.quantidade = 0) THEN
-		RAISE EXCEPTION 'Erro: Não pode modificar estado do medicamento para DISPONÍVEL porque não existem medicamentos no estoque';
-	    END IF;
-	END IF;
-	RETURN NEW;
-END; $$
-LANGUAGE plpgsql;
+ 	IF (NEW.estadomedicamento = 1) THEN 
+ 	    IF (NEW.quantidade > 0) THEN
+ 		RAISE EXCEPTION 'Erro: Não pode modificar estado do medicamento para INDISPONÍVEL porque existem medicamentos no estoque';
+ 	    END IF;
+ 	ELSE
+ 	    IF (NEW.quantidade = 0) THEN
+ 		RAISE EXCEPTION 'Erro: Não pode modificar estado do medicamento para DISPONÍVEL porque não existem medicamentos no estoque';
+ 	    END IF;
+ 	END IF;
+ 	RETURN NEW;
+ END; $$
+ LANGUAGE plpgsql;
 
--- Trigger que chama a função que permite ou não o estado de disponibilidade do medicamento
+--Trigger que chama a função que permite ou não o estado de disponibilidade do medicamento
 CREATE TRIGGER tr_estado_medicamento
 BEFORE UPDATE OF estadomedicamento ON medicamento_posto
 FOR EACH ROW
@@ -65,8 +66,32 @@ $$ BEGIN
 END; $$
 LANGUAGE plpgsql;
 
+
 -- Trigger que chama a função que permite a nova solicitação da pessoa
 CREATE TRIGGER tr_verifica_solicitacao_estado_comunicado
 AFTER INSERT ON solicitacao
 FOR EACH ROW
 EXECUTE PROCEDURE verifica_solicitacao_estado_comunicado();
+
+
+-- Mudança do estado do medicamento a partir da quantidade de medicamentos no posto
+CREATE FUNCTION muda_estado_medicamento_basedon_quantidade() RETURNS TRIGGER AS
+$$ BEGIN
+	IF (NEW.quantidade > 0) THEN 
+	    IF (NEW.estadomedicamento = 1) THEN
+		UPDATE medicamento_posto SET estadomedicamento = 2 WHERE NEW.idmedicamentoposto = idmedicamentoposto;
+	    END IF;
+	ELSE
+	    IF (NEW.estadomedicamento = 2) THEN
+	        UPDATE medicamento_posto SET estadomedicamento = 1 WHERE NEW.idmedicamentoposto = idmedicamentoposto;
+	    END IF;
+	END IF;
+	RETURN NEW;
+END; $$
+LANGUAGE plpgsql;
+
+-- Trigger que chama a função responsável pelo update do estado medicamento com a mudança da quantidade
+CREATE TRIGGER tr_muda_estado_medicamento_basedon_quantidade
+AFTER INSERT OR UPDATE OF quantidade ON medicamento_posto
+FOR EACH ROW
+EXECUTE PROCEDURE muda_estado_medicamento_basedon_quantidade();

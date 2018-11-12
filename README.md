@@ -1002,9 +1002,8 @@ resultado da query.
     
     SELECT * FROM get_solicitacoes_pelo_estado(2, 150);
     ```
-![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Functions%2C%20Triggers%20e%20Assertions/Function%20get_solicitacoes_pelo_estado.png)<br>
+![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Functions%2C%20Triggers%20e%20Assertions/Function%20get_solicitacoes_pelo_estado.png)<br><br>
 
-<br>
 - OBJETIVO: Pegar a quantidade de medicamentos solicitados pelo Titular a partir do estado da solicitação 
 (comunicado(1), expirado(2), atendido(3)), passando como parâmetro o estado da solicitação e a quantidade
 de linhas limites retornadas.
@@ -1023,9 +1022,8 @@ de linhas limites retornadas.
     
     SELECT * FROM verifica_qntsolicitacao_pelo_estado(1, 200);
     ```
-![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Functions%2C%20Triggers%20e%20Assertions/Function%20verifica_qntSolicitacao_pelo_estado.png)<br>
+![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Functions%2C%20Triggers%20e%20Assertions/Function%20verifica_qntSolicitacao_pelo_estado.png)<br><br>
 
-<br>
 - OBJETIVO: Pegar a quantidade de recebimentos realizados por atendente no posto em que ele está alocado
 a partir do id do posto passado como parâmetro da função.
     
@@ -1047,9 +1045,8 @@ a partir do id do posto passado como parâmetro da função.
     
     SELECT * FROM quantidade_recebimento_por_atendente(1);
     ```
-![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Functions%2C%20Triggers%20e%20Assertions/Function%20quantidade_recebimento_por_atendente.png)<br>
+![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Functions%2C%20Triggers%20e%20Assertions/Function%20quantidade_recebimento_por_atendente.png)<br><br>
 
-<br>
 - OBJETIVO: Pegar os medicamentos e sua quantidade em estoque a partir do id do posto passado como
 parâmetro.
     
@@ -1066,9 +1063,8 @@ parâmetro.
     
     SELECT * FROM medicamentos_postos(3);
     ```
-![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Functions%2C%20Triggers%20e%20Assertions/Function%20medicamentos_postos.png)<br>
+![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Functions%2C%20Triggers%20e%20Assertions/Function%20medicamentos_postos.png)<br><br>
 
-<br>
 - OBJETIVO: Filtrar pessoas registradas no banco de dados passando como parâmetro o nome.
     
     ```sql
@@ -1083,9 +1079,9 @@ parâmetro.
     
     SELECT * FROM filtrar_pessoa('Soraia Outeiro');
     ```
-![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Functions%2C%20Triggers%20e%20Assertions/Function%20filtrar_pessoa.png)<br>
+![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Functions%2C%20Triggers%20e%20Assertions/Function%20filtrar_pessoa.png)<br><br>
 
-<br>
+
 - OBJETIVO: Filtrar os dependentes pelo id do titular passado como parâmetro.
     
     ```sql

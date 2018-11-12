@@ -59,7 +59,7 @@ $$ BEGIN
 	   GROUP BY idtitular
 	   HAVING COUNT(idtitular) > 5
 	) THEN 
-		RAISE EXCEPTION 'Erro: Este titular já possui mais que 5 solicitações no estado comunicado realizadas.';
+		RAISE EXCEPTION 'Erro: Este titular já possui 5 solicitações no estado comunicado realizadas.';
 	END IF;
 	RETURN NULL;
 END; $$

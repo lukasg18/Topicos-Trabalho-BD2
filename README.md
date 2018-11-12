@@ -1002,7 +1002,7 @@ OBS: Incluir para os tópicos 9.2 e 9.3 as instruções SQL + imagens (print da 
     
     SELECT * FROM get_solicitacoes_pelo_estado(2, 150);
     ```
-![Alt text]()<br>
+![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Functions%2C%20Triggers%20e%20Assertions/Function%20get_solicitacoes_pelo_estado.png)<br>
 
 
     - OBJETIVO: Pegar a quantidade de medicamentos solicitados pelo Titular a partir do estado da solicitação 
@@ -1023,7 +1023,7 @@ OBS: Incluir para os tópicos 9.2 e 9.3 as instruções SQL + imagens (print da 
     
     SELECT * FROM verifica_qntsolicitacao_pelo_estado(1, 200);
     ```
-![Alt text]()<br>
+![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Functions%2C%20Triggers%20e%20Assertions/Function%20verifica_qntSolicitacao_pelo_estado.png)<br>
 
 
     - OBJETIVO: Pegar a quantidade de recebimentos realizados por atendente no posto em que ele está alocado
@@ -1047,7 +1047,7 @@ OBS: Incluir para os tópicos 9.2 e 9.3 as instruções SQL + imagens (print da 
     
     SELECT * FROM quantidade_recebimento_por_atendente(1);
     ```
-![Alt text]()<br>
+![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Functions%2C%20Triggers%20e%20Assertions/Function%20quantidade_recebimento_por_atendente.png)<br>
 
 
     - OBJETIVO: Pegar os medicamentos e sua quantidade em estoque a partir do id do posto passado como
@@ -1066,7 +1066,7 @@ OBS: Incluir para os tópicos 9.2 e 9.3 as instruções SQL + imagens (print da 
     
     SELECT * FROM medicamentos_postos(3);
     ```
-![Alt text]()<br>
+![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Functions%2C%20Triggers%20e%20Assertions/Function%20medicamentos_postos.png)<br>
 
 
     - OBJETIVO: Filtrar pessoas registradas no banco de dados passando como parâmetro o nome.
@@ -1083,7 +1083,7 @@ OBS: Incluir para os tópicos 9.2 e 9.3 as instruções SQL + imagens (print da 
     
     SELECT * FROM filtrar_pessoa('Soraia Outeiro');
     ```
-![Alt text]()<br>
+![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Functions%2C%20Triggers%20e%20Assertions/Function%20filtrar_pessoa.png)<br>
 
 
     - OBJETIVO: Filtrar os dependentes pelo id do titular passado como parâmetro.
@@ -1103,7 +1103,7 @@ OBS: Incluir para os tópicos 9.2 e 9.3 as instruções SQL + imagens (print da 
     
     SELECT * FROM filtrar_dependentes_pelo_idtitular(32514);
     ```
-![Alt text]()<br>
+![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Functions%2C%20Triggers%20e%20Assertions/Function%20filtrar_dependentes_pelo_idtitular.png)<br>
 
 
 ## Data de Entrega: (27/09/2018)

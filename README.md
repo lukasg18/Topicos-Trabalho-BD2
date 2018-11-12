@@ -879,13 +879,13 @@ OBS: Incluir para os tópicos 9.2 e 9.3 as instruções SQL + imagens (print da 
 ```sql
     SELECT * FROM view_cadastro_medicamentos LIMIT 10;
 ```
-![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Principais%20Views/View%20Atendente%20Cadastro%20Medicamentos.png)
+![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Principais%20Views/View%20Atendente%20Cadastro%20Medicamentos.png)<br><br>
 
     - Público alvo: Voltado os usuários atendentes dos postos para o CRUD geral de medicamentos no sistema, onde todos os
     atendentes do determinado posto terão permissões de consultas, inserções, deleções e edição dos medicamentos
     - View relacionadas: Página de cadastro de medicamentos retirada do protótipo do sistema.
 
-![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Prot%C3%B3tipos/view%20cadastrar%20medicamentos.png)
+![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Prot%C3%B3tipos/view%20cadastrar%20medicamentos.png)<br><br>
 
 
 ```sql
@@ -898,7 +898,7 @@ OBS: Incluir para os tópicos 9.2 e 9.3 as instruções SQL + imagens (print da 
     que os pacientes é o mesmo que a população em geral que solicitam medicamentos através do sistema.
     - View relacionadas: Página de cadastro de pacientes retirada do protótipo do sistema.
 
-![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Prot%C3%B3tipos/view%20cadastrar%20pacientes.png)
+![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Prot%C3%B3tipos/view%20cadastrar%20pacientes.png)<br><br>
 
 ```sql
     SELECT * FROM view_retirar_medicamentos_solicitados LIMIT 10;
@@ -914,6 +914,7 @@ OBS: Incluir para os tópicos 9.2 e 9.3 as instruções SQL + imagens (print da 
 
     OBS.: Note que na tabela do banco a coluna estado da solicitação possui valores de 1 a 3, onde estes são redenrizados 
     na data table do front em comunicado, atendido e experido.
+<br><br>
 
 ```sql
     SELECT * FROM view_medicamentos_mais_retirados_por_quantidade LIMIT 10;
@@ -924,7 +925,7 @@ OBS: Incluir para os tópicos 9.2 e 9.3 as instruções SQL + imagens (print da 
     por quantidade, ou seja, pela quantidade unidades retiradas em cada retirada dos medicamentos nos postos.
     - View relacionadas: Página de gerar relatórios do protótipo do sistema.
 
-![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Prot%C3%B3tipos/view%20gerar%20relat%C3%B3rios.png)
+![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Prot%C3%B3tipos/view%20gerar%20relat%C3%B3rios.png)<br><br>
 
 ```sql
     SELECT * FROM view_medicamentos_mais_retirados_por_numero_retiradas LIMIT 10;
@@ -936,7 +937,7 @@ OBS: Incluir para os tópicos 9.2 e 9.3 as instruções SQL + imagens (print da 
     medicamentos em cada retirada.
     - View relacionadas: Página de gerar relatórios do protótipo do sistema.
 
-![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Prot%C3%B3tipos/view%20gerar%20relat%C3%B3rios.png)
+![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Prot%C3%B3tipos/view%20gerar%20relat%C3%B3rios.png)<br><br>
 
 
 ```sql
@@ -948,7 +949,7 @@ OBS: Incluir para os tópicos 9.2 e 9.3 as instruções SQL + imagens (print da 
     por quantidade, ou seja, pela quantidade unidades solicitadas em cada solicitação dos medicamentos nos postos.
     - View relacionadas: Página de gerar relatórios do protótipo do sistema.
 
-![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Prot%C3%B3tipos/view%20gerar%20relat%C3%B3rios.png)
+![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Prot%C3%B3tipos/view%20gerar%20relat%C3%B3rios.png)<br><br>
 
 
 ```sql
@@ -961,7 +962,7 @@ OBS: Incluir para os tópicos 9.2 e 9.3 as instruções SQL + imagens (print da 
     medicamentos em cada solicitação.
     - View relacionadas: Página de gerar relatórios do protótipo do sistema.
 
-![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Prot%C3%B3tipos/view%20gerar%20relat%C3%B3rios.png)
+![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Prot%C3%B3tipos/view%20gerar%20relat%C3%B3rios.png)<br><br>
 
 
 ```sql
@@ -1103,7 +1104,7 @@ parâmetro.
     
     SELECT * FROM filtrar_dependentes_pelo_idtitular(32514);
     ```
-![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Functions%2C%20Triggers%20e%20Assertions/Function%20filtrar_dependentes_pelo_idtitular.png)<br>
+<p align="center"><img src="https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Functions%2C%20Triggers%20e%20Assertions/Function%20filtrar_dependentes_pelo_idtitular.png"></p><br>
 
 
 ## Data de Entrega: (27/09/2018)

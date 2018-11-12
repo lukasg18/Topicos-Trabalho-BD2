@@ -1104,7 +1104,7 @@ parâmetro.
     
     SELECT * FROM filtrar_dependentes_pelo_idtitular(32514);
     ```
-![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Functions%2C%20Triggers%20e%20Assertions/Function%20filtrar_dependentes_pelo_idtitular.png)<br>
+<p align="center"><img src="https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Functions%2C%20Triggers%20e%20Assertions/Function%20filtrar_dependentes_pelo_idtitular.png"></p><br>
 
 
 ## Data de Entrega: (27/09/2018)

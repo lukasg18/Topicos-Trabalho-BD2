@@ -1,0 +1,5 @@
+Exemplos de triggers/asserções:
+- Para quando dar update para estado Atendido da solicitação cria um recebimento;
+- Quando for inserir um novo dependente relacionado a pessoa se for maior 3 não deixa inserir novo dependente;
+- Uma pessoa pode ter no máximo 5 solicitações no estado comunicado. Acima disso não pode deixar inserir mais;
+- Uma pessoa só pode solicitar 10 medicamentos por solicitação. Acima disso não deixa inserir ou dar update;

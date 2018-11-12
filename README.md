@@ -914,6 +914,7 @@ OBS: Incluir para os tópicos 9.2 e 9.3 as instruções SQL + imagens (print da 
 
     OBS.: Note que na tabela do banco a coluna estado da solicitação possui valores de 1 a 3, onde estes são redenrizados 
     na data table do front em comunicado, atendido e experido.
+<br><br>
 
 ```sql
     SELECT * FROM view_medicamentos_mais_retirados_por_quantidade LIMIT 10;
@@ -924,7 +925,7 @@ OBS: Incluir para os tópicos 9.2 e 9.3 as instruções SQL + imagens (print da 
     por quantidade, ou seja, pela quantidade unidades retiradas em cada retirada dos medicamentos nos postos.
     - View relacionadas: Página de gerar relatórios do protótipo do sistema.
 
-![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Prot%C3%B3tipos/view%20gerar%20relat%C3%B3rios.png)
+![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Prot%C3%B3tipos/view%20gerar%20relat%C3%B3rios.png)<br><br>
 
 ```sql
     SELECT * FROM view_medicamentos_mais_retirados_por_numero_retiradas LIMIT 10;
@@ -936,7 +937,7 @@ OBS: Incluir para os tópicos 9.2 e 9.3 as instruções SQL + imagens (print da 
     medicamentos em cada retirada.
     - View relacionadas: Página de gerar relatórios do protótipo do sistema.
 
-![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Prot%C3%B3tipos/view%20gerar%20relat%C3%B3rios.png)
+![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Prot%C3%B3tipos/view%20gerar%20relat%C3%B3rios.png)<br><br>
 
 
 ```sql
@@ -948,7 +949,7 @@ OBS: Incluir para os tópicos 9.2 e 9.3 as instruções SQL + imagens (print da 
     por quantidade, ou seja, pela quantidade unidades solicitadas em cada solicitação dos medicamentos nos postos.
     - View relacionadas: Página de gerar relatórios do protótipo do sistema.
 
-![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Prot%C3%B3tipos/view%20gerar%20relat%C3%B3rios.png)
+![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Prot%C3%B3tipos/view%20gerar%20relat%C3%B3rios.png)<br><br>
 
 
 ```sql
@@ -961,7 +962,7 @@ OBS: Incluir para os tópicos 9.2 e 9.3 as instruções SQL + imagens (print da 
     medicamentos em cada solicitação.
     - View relacionadas: Página de gerar relatórios do protótipo do sistema.
 
-![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Prot%C3%B3tipos/view%20gerar%20relat%C3%B3rios.png)
+![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Prot%C3%B3tipos/view%20gerar%20relat%C3%B3rios.png)<br><br>
 
 
 ```sql

@@ -1004,7 +1004,7 @@ resultado da query.
     ```
 ![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Functions%2C%20Triggers%20e%20Assertions/Function%20get_solicitacoes_pelo_estado.png)<br>
 
-
+<br>
 - OBJETIVO: Pegar a quantidade de medicamentos solicitados pelo Titular a partir do estado da solicitação 
 (comunicado(1), expirado(2), atendido(3)), passando como parâmetro o estado da solicitação e a quantidade
 de linhas limites retornadas.
@@ -1025,7 +1025,7 @@ de linhas limites retornadas.
     ```
 ![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Functions%2C%20Triggers%20e%20Assertions/Function%20verifica_qntSolicitacao_pelo_estado.png)<br>
 
-
+<br>
 - OBJETIVO: Pegar a quantidade de recebimentos realizados por atendente no posto em que ele está alocado
 a partir do id do posto passado como parâmetro da função.
     
@@ -1049,7 +1049,7 @@ a partir do id do posto passado como parâmetro da função.
     ```
 ![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Functions%2C%20Triggers%20e%20Assertions/Function%20quantidade_recebimento_por_atendente.png)<br>
 
-
+<br>
 - OBJETIVO: Pegar os medicamentos e sua quantidade em estoque a partir do id do posto passado como
 parâmetro.
     
@@ -1068,7 +1068,7 @@ parâmetro.
     ```
 ![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Functions%2C%20Triggers%20e%20Assertions/Function%20medicamentos_postos.png)<br>
 
-
+<br>
 - OBJETIVO: Filtrar pessoas registradas no banco de dados passando como parâmetro o nome.
     
     ```sql
@@ -1085,7 +1085,7 @@ parâmetro.
     ```
 ![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Functions%2C%20Triggers%20e%20Assertions/Function%20filtrar_pessoa.png)<br>
 
-
+<br>
 - OBJETIVO: Filtrar os dependentes pelo id do titular passado como parâmetro.
     
     ```sql

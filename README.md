@@ -1139,8 +1139,6 @@ parâmetro.
     EXECUTE PROCEDURE isValidMudancaEstado();
     ```
 - Testes da Assertion:
-    * Falha: O update não é realizado lançando a exceção da não possibilidade de atualização do estado do medicamento,
-    lembrando que estadomedicamento = 1 é indisponível e estadomedicamento = 2 é disponível. 
     
     ```sql
     /* Tentativa de atualizar o estado do medicamento para Indisponível(1) para todos medicamentos que possui 
@@ -1164,8 +1162,56 @@ parâmetro.
     UPDATE medicamento_posto SET estadomedicamento = 2 WHERE quantidade > 0;
     UPDATE medicamento_posto SET estadomedicamento = 1 WHERE quantidade = 0;
     ```
-    <p align="center"><img src="https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Functions%2C%20Triggers%20e%20Assertions/Assertion%20Update%20OK%20isvalidMudancaEstado().png"></p><br>
+    <p align="center"><img src="https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Functions%2C%20Triggers%20e%20Assertions/Assertion%20Update%20OK%20isvalidMudancaEstado().png"></p><br><br>
     
+
+- OBJETIVO: É uma Assertion que só permite a inserção de um novo dependente ao titular caso este não 
+tenha 3 dependentes que é o máximo definido nas regras de negócio do sistema.
+
+   OBS.: Lembrando que assertions não é implementada no Postgresql, logo é utilizada conjunto de triggers com functions
+   para criar e simular uma Assertion.
+    
+    ```sql
+    DROP FUNCTION IF EXISTS novo_dependente() CASCADE;
+    CREATE FUNCTION novo_dependente() RETURNS TRIGGER AS
+    $$ BEGIN
+    IF EXISTS(
+	   SELECT COUNT(idtitular) FROM dependente
+	   WHERE idtitular = NEW.idtitular
+	   GROUP BY idtitular
+	   HAVING COUNT(idtitular) > 3
+	) THEN 
+		RAISE EXCEPTION 'Erro: O titular associado a este dependente já possui o número máximo de dependentes, ou seja, 3.';
+	END IF;
+	RETURN NULL;
+     END; $$
+     LANGUAGE plpgsql;
+
+     -- Trigger que chama a função que permite a inserção ou não de um novo dependente
+     CREATE TRIGGER tr_novo_dependente
+     AFTER INSERT ON dependente
+     FOR EACH ROW 
+     EXECUTE PROCEDURE novo_dependente();
+    ```    
+- Testes da Assertion:
+
+```sql
+/* Não é possível fazer a inserção de um novo dependente associado a titular com id 79030 porque este já contém
+três dependentes associados a ele */
+
+INSERT INTO dependente(idpessoa, idtitular) VALUES(3, 79030);
+```
+<p align="center"><img src=""></p><br>
+
+```sql
+/* Nesse caso é possível inserir o novo dependente associado ao titular com id 86580 porque este
+não contém três dependentes associados a ele */
+
+INSERT INTO dependente(idpessoa, idtitular) VALUES(3, 86580);
+```
+<p align="center"><img src=""></p><br>
+
+
 
 ## Data de Entrega: (27/09/2018)
 

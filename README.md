@@ -1250,7 +1250,7 @@ podendo realizar uma nova solicitação */
 INSERT INTO solicitacao(idsolicitacao, data_hora, quantidademedicamento, estadosolicitacao, idtitular, idmedicamentoposto)
 VALUES(1500005, now(), 3, 1, 86190, 54);
 ```
-<p align="center"><img src=""></p><br>
+<p align="center"><img src="https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Functions%2C%20Triggers%20e%20Assertions/Assertion%20Falha%20verifica_solicitado_estado_comunicado.png"></p><br>
 
 ```sql
 /* O titular de id 68230 possui menos que 5 solicitações no estado comunicado, logo ele pode fazer uma nova solicitação */
@@ -1258,7 +1258,7 @@ VALUES(1500005, now(), 3, 1, 86190, 54);
 INSERT INTO solicitacao(idsolicitacao, data_hora, quantidademedicamento, estadosolicitacao, idtitular, idmedicamentoposto)
 VALUES(1500006, now(), 43, 1, 68230, 23);
 ```
-<p align="center"><img src=""></p><br>
+<p align="center"><img src="https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Functions%2C%20Triggers%20e%20Assertions/Assertion%20OK%20Assertion%20Falha%20verifica_solicitado_estado_comunicado().png"></p><br>
 
 
 - OBJETIVO: É uma trigger que quando a quantidade é alterada de zero para maior que zero e vice-versa é mudado
@@ -1294,7 +1294,7 @@ EXECUTE PROCEDURE muda_estado_medicamento_basedon_quantidade();
 
 SELECT idmedicamentoposto, estadomedicamento, quantidade FROM medicamento_posto WHERE idmedicamentoposto >= 1 AND idmedicamentoposto <= 5;
 ```
-<p align="center"><img src=""></p><br>
+<p align="center"><img src="https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Functions%2C%20Triggers%20e%20Assertions/Trigger%20estado%20inicial%20da%20tabela%20medicamento_posto.png"></p><br>
 
 ```sql
 /* Quando a quantidade muda de zero para maior que zero então o estadomedicamento muda para disponível automaticamente
@@ -1303,7 +1303,7 @@ devido a trigger, onde muda o estadomedicamento para disponível(2) do idmedicam
 UPDATE medicamento_posto SET quantidade = 45 WHERE idmedicamentoposto = 2;
 SELECT idmedicamentoposto, estadomedicamento, quantidade FROM medicamento_posto WHERE idmedicamentoposto >= 1 AND idmedicamentoposto <= 5;
 ```
-<p align="center"><img src=""></p><br>
+<p align="center"><img src="https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Functions%2C%20Triggers%20e%20Assertions/Trigger%20mudan%C3%A7a%20de%20estado%201.png"></p><br>
 
 ```sql
 /* Quando a quantidade muda um valor maior que zero para zero então o estadomedicamento muda automaticamente para
@@ -1312,8 +1312,7 @@ indisponível devido a trigger, onde muda o estadomedicamento para indisponível
 UPDATE medicamento_posto SET quantidade = 0 WHERE idmedicamentoposto = 1;
 SELECT idmedicamentoposto, estadomedicamento, quantidade FROM medicamento_posto WHERE idmedicamentoposto >= 1 AND idmedicamentoposto <= 5;
 ```
-<p align="center"><img src=""></p><br>
-
+<p align="center"><img src="https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Functions%2C%20Triggers%20e%20Assertions/Trigger%20mudan%C3%A7a%20de%20estado%202.png"></p><br>
 
 
 

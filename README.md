@@ -1212,6 +1212,110 @@ INSERT INTO dependente(idpessoa, idtitular) VALUES(3, 86580);
 <p align="center"><img src="https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Functions%2C%20Triggers%20e%20Assertions/Assertion%20OK%20Insert%20novo_dependente.png"></p><br>
 
 
+- OBJETIVO: Assertion que só permite a inserção de dados caso o titular tenha menos que 5 solicitações no estado 
+COMUNICADO(1).
+
+   OBS.: Lembrando que assertions não é implementada no Postgresql, logo é utilizada conjunto de triggers com functions
+   para criar e simular uma Assertion.
+    
+```sql
+DROP FUNCTION IF EXISTS verifica_solicitacao_estado_comunicado() CASCADE;
+    
+CREATE FUNCTION verifica_solicitacao_estado_comunicado() RETURNS TRIGGER AS
+$$ BEGIN
+	IF EXISTS(
+	   SELECT COUNT(idtitular) FROM solicitacao
+	   WHERE idtitular = NEW.idtitular AND estadosolicitacao = 1
+	   GROUP BY idtitular
+	   HAVING COUNT(idtitular) > 5
+	) THEN 
+		RAISE EXCEPTION 'Erro: Este titular já possui 5 solicitações no estado comunicado realizadas.';
+	END IF;
+	RETURN NULL;
+END; $$
+LANGUAGE plpgsql;
+
+-- Trigger que chama a função que permite a nova solicitação da pessoa
+CREATE TRIGGER tr_verifica_solicitacao_estado_comunicado
+AFTER INSERT ON solicitacao
+FOR EACH ROW
+EXECUTE PROCEDURE verifica_solicitacao_estado_comunicado();
+```    
+- Testes da Assertion:
+
+```sql
+/* O titular de id 86190 já possui o número de solicitações máximas definidas como regra de negócio do sistema, não
+podendo realizar uma nova solicitação */
+
+INSERT INTO solicitacao(idsolicitacao, data_hora, quantidademedicamento, estadosolicitacao, idtitular, idmedicamentoposto)
+VALUES(1500005, now(), 3, 1, 86190, 54);
+```
+<p align="center"><img src=""></p><br>
+
+```sql
+/* O titular de id 68230 possui menos que 5 solicitações no estado comunicado, logo ele pode fazer uma nova solicitação */
+
+INSERT INTO solicitacao(idsolicitacao, data_hora, quantidademedicamento, estadosolicitacao, idtitular, idmedicamentoposto)
+VALUES(1500006, now(), 43, 1, 68230, 23);
+```
+<p align="center"><img src=""></p><br>
+
+
+- OBJETIVO: É uma trigger que quando a quantidade é alterada de zero para maior que zero e vice-versa é mudado
+o estadomedicamento automaticamente. Nesse caso, quando quantidade é zero o estadomedicamento vai para 1, ou seja,
+indisponível. Caso contrário o estadomedicamento se torna 2, ou seja, disponível.
+    
+```sql
+CREATE FUNCTION muda_estado_medicamento_basedon_quantidade() RETURNS TRIGGER AS
+$$ BEGIN
+	IF (NEW.quantidade > 0) THEN 
+	    IF (NEW.estadomedicamento = 1) THEN
+		UPDATE medicamento_posto SET estadomedicamento = 2 WHERE NEW.idmedicamentoposto = idmedicamentoposto;
+	    END IF;
+	ELSE
+	    IF (NEW.estadomedicamento = 2) THEN
+	        UPDATE medicamento_posto SET estadomedicamento = 1 WHERE NEW.idmedicamentoposto = idmedicamentoposto;
+	    END IF;
+	END IF;
+	RETURN NEW;
+END; $$
+LANGUAGE plpgsql;
+
+-- Trigger que chama a função responsável pelo update do estado medicamento com a mudança da quantidade
+CREATE TRIGGER tr_muda_estado_medicamento_basedon_quantidade
+AFTER INSERT OR UPDATE OF quantidade ON medicamento_posto
+FOR EACH ROW
+EXECUTE PROCEDURE muda_estado_medicamento_basedon_quantidade();
+```    
+- Testes da Trigger:
+
+```sql
+/* Select de 5 medicamentos posto em seu estado inicial sem mudança de medicamentos */
+
+SELECT idmedicamentoposto, estadomedicamento, quantidade FROM medicamento_posto WHERE idmedicamentoposto >= 1 AND idmedicamentoposto <= 5;
+```
+<p align="center"><img src=""></p><br>
+
+```sql
+/* Quando a quantidade muda de zero para maior que zero então o estadomedicamento muda para disponível automaticamente
+devido a trigger, onde muda o estadomedicamento para disponível(2) do idmedicamentoposto 2 */
+
+UPDATE medicamento_posto SET quantidade = 45 WHERE idmedicamentoposto = 2;
+SELECT idmedicamentoposto, estadomedicamento, quantidade FROM medicamento_posto WHERE idmedicamentoposto >= 1 AND idmedicamentoposto <= 5;
+```
+<p align="center"><img src=""></p><br>
+
+```sql
+/* Quando a quantidade muda um valor maior que zero para zero então o estadomedicamento muda automaticamente para
+indisponível devido a trigger, onde muda o estadomedicamento para indisponível(1) do idmedicamentoposto 1 */
+
+UPDATE medicamento_posto SET quantidade = 0 WHERE idmedicamentoposto = 1;
+SELECT idmedicamentoposto, estadomedicamento, quantidade FROM medicamento_posto WHERE idmedicamentoposto >= 1 AND idmedicamentoposto <= 5;
+```
+<p align="center"><img src=""></p><br>
+
+
+
 
 ## Data de Entrega: (27/09/2018)
 

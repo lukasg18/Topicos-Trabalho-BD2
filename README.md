@@ -1201,7 +1201,7 @@ três dependentes associados a ele */
 
 INSERT INTO dependente(idpessoa, idtitular) VALUES(3, 79030);
 ```
-<p align="center"><img src=""></p><br>
+<p align="center"><img src="https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Functions%2C%20Triggers%20e%20Assertions/Assertion%20Erro%20Insertion%20novo_dependente().png"></p><br>
 
 ```sql
 /* Nesse caso é possível inserir o novo dependente associado ao titular com id 86580 porque este
@@ -1209,7 +1209,7 @@ não contém três dependentes associados a ele */
 
 INSERT INTO dependente(idpessoa, idtitular) VALUES(3, 86580);
 ```
-<p align="center"><img src=""></p><br>
+<p align="center"><img src="https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Functions%2C%20Triggers%20e%20Assertions/Assertion%20OK%20Insert%20novo_dependente.png"></p><br>
 
 
 

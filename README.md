@@ -1105,8 +1105,67 @@ parâmetro.
     
     SELECT * FROM filtrar_dependentes_pelo_idtitular(32514);
     ```
-<p align="center"><img src="https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Functions%2C%20Triggers%20e%20Assertions/Function%20filtrar_dependentes_pelo_idtitular.png"></p><br>
+<p align="center"><img src="https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Functions%2C%20Triggers%20e%20Assertions/Function%20filtrar_dependentes_pelo_idtitular.png"></p><br><br>
 
+- OBJETIVO: É uma Assertion que só permite a atualização do estado do medicamento da tabela medicamento_posto para:
+	Disponível: caso exista medicamentos no estoque, ou seja, coluna medicamento maior que zero;
+	Indisponível: caso não exista medicamentos no estoque, ou seja, coluna medicamento igual a zero;
+    
+    OBS.: Lembrando que assertions não é implementada no Postgresql, logo é utilizada conjunto de triggers com functions
+    para criar e simular uma Assertion.
+    
+    ```sql
+    DROP FUNCTION IF EXISTS isValidMudancaEstado() CASCADE;
+    
+    CREATE FUNCTION isValidMudancaEstado() RETURNS TRIGGER AS
+    $$ BEGIN
+        IF (NEW.estadomedicamento = 1) THEN 
+            IF (NEW.quantidade > 0) THEN
+                RAISE EXCEPTION 'Erro: Não pode modificar estado do medicamento para INDISPONÍVEL porque existem medicamentos no estoque';
+            END IF;
+        ELSE
+            IF (NEW.quantidade = 0) THEN
+                RAISE EXCEPTION 'Erro: Não pode modificar estado do medicamento para DISPONÍVEL porque não existem medicamentos no estoque';
+            END IF;
+        END IF;
+        RETURN NEW;
+     END; $$
+     LANGUAGE plpgsql;
+
+    --Trigger que chama a função que permite ou não a mudança do estado de disponibilidade do medicamento
+    CREATE TRIGGER tr_estado_medicamento
+    BEFORE UPDATE OF estadomedicamento ON medicamento_posto
+    FOR EACH ROW
+    EXECUTE PROCEDURE isValidMudancaEstado();
+    ```
+- Testes da Assertion:
+    * Falha: O update não é realizado lançando a exceção da não possibilidade de atualização do estado do medicamento,
+    lembrando que estadomedicamento = 1 é indisponível e estadomedicamento = 2 é disponível. 
+    
+    ```sql
+    /* Tentativa de atualizar o estado do medicamento para Indisponível(1) para todos medicamentos que possui 
+    quantidade em estoque maior que zero, logo sendo algo incoerente que não pode ser permitido */
+    
+    UPDATE medicamento_posto SET estadomedicamento = 1 WHERE quantidade > 0;
+    ```
+    <p align="center"><img src=""></p><br>
+    
+    ```sql
+    /* Mesma tentativa que a anterior, porém tentando atualizar para Disponível(2) para todos medicamentos que
+    não possui medicamentos disponíveis em estoque, ou seja, quantidade = 0 */
+    
+    UPDATE medicamento_posto SET estadomedicamento = 2 WHERE quantidade = 0;
+    ```
+    <p align="center"><img src=""></p><br>
+    
+    ```sql
+    -- O Update é realizado com sucesso porque segue as restrições discutidas anteriormente
+    
+    UPDATE medicamento_posto SET estadomedicamento = 2 WHERE quantidade > 0;
+    UPDATE medicamento_posto SET estadomedicamento = 1 WHERE quantidade = 0;
+    ```
+    <p align="center"><img src=""></p><br>
+    
 
 ## Data de Entrega: (27/09/2018)
 

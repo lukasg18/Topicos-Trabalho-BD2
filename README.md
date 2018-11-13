@@ -1148,7 +1148,7 @@ parâmetro.
     
     UPDATE medicamento_posto SET estadomedicamento = 1 WHERE quantidade > 0;
     ```
-    <p align="center"><img src=""></p><br>
+    <p align="center"><img src="https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Functions%2C%20Triggers%20e%20Assertions/Assertion%20Erro%20Update%201%20isvalidMudancaEstado().png"></p><br>
     
     ```sql
     /* Mesma tentativa que a anterior, porém tentando atualizar para Disponível(2) para todos medicamentos que
@@ -1156,7 +1156,7 @@ parâmetro.
     
     UPDATE medicamento_posto SET estadomedicamento = 2 WHERE quantidade = 0;
     ```
-    <p align="center"><img src=""></p><br>
+    <p align="center"><img src="https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Functions%2C%20Triggers%20e%20Assertions/Assertion%20Erro%20Update%202%20isvalidMudancaEstado().png"></p><br>
     
     ```sql
     -- O Update é realizado com sucesso porque segue as restrições discutidas anteriormente
@@ -1164,7 +1164,7 @@ parâmetro.
     UPDATE medicamento_posto SET estadomedicamento = 2 WHERE quantidade > 0;
     UPDATE medicamento_posto SET estadomedicamento = 1 WHERE quantidade = 0;
     ```
-    <p align="center"><img src=""></p><br>
+    <p align="center"><img src="https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Functions%2C%20Triggers%20e%20Assertions/Assertion%20Update%20OK%20isvalidMudancaEstado().png"></p><br>
     
 
 ## Data de Entrega: (27/09/2018)

@@ -791,77 +791,78 @@ OBS: Incluir para os tópicos 9.2 e 9.3 as instruções SQL + imagens (print da 
 ```sql 
     SELECT * FROM atendente limit 10;
 ```    
-![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Selects%2010%20primeiros%20registros/atendente.png)
+<p align="center"><img src="https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Selects%2010%20primeiros%20registros/atendente.png"></p><br><br>
 
 ```sql
     SELECT * FROM bairro limit 10;
 ```
-![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Selects%2010%20primeiros%20registros/bairro.png)
+<p align="center"><img src="https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Selects%2010%20primeiros%20registros/bairro.png"></p><br><br>
 
 ```sql
     SELECT * FROM dependente limit 10;
 ```
-![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Selects%2010%20primeiros%20registros/depedente.png)
+<p align="center"><img src="https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Selects%2010%20primeiros%20registros/depedente.png"></p><br><br>
 
 ```sql
     SELECT * FROM estado limit 10;
 ```
-![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Selects%2010%20primeiros%20registros/estado.png)
+<p align="center"><img src="https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Selects%2010%20primeiros%20registros/estado.png"></p><br><br>
 
 ```sql
     SELECT * FROM laboratorio limit 10;
 ```
-![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Selects%2010%20primeiros%20registros/laboratorio.png)
+<p align="center"><img src="https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Selects%2010%20primeiros%20registros/laboratorio.png"></p><br><br>
 
 ```sql
     SELECT * FROM medicamento limit 10;
 ```
-![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Selects%2010%20primeiros%20registros/medicamento.png)
+<p align="center"><img src="https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Selects%2010%20primeiros%20registros/medicamento.png"></p><br><br>
 
 ```sql
     SELECT * FROM medicamento_laboratorio limit 10;
 ```
-![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Selects%2010%20primeiros%20registros/medicamento_laboratorio.png)
+<p align="center"><img src="https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Selects%2010%20primeiros%20registros/medicamento_laboratorio.png"></p><br><br>
 
 ```sql
     SELECT * FROM medicamento_posto limit 10;
 ```
-![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Selects%2010%20primeiros%20registros/medicamento_posto.png)
+<p align="center"><img src="https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Selects%2010%20primeiros%20registros/medicamento_posto.png"></p><br><br>
 
 ```sql
     SELECT * FROM municipio limit 10;
 ```
-![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Selects%2010%20primeiros%20registros/municipio.png)
+<p align="center"><img src="https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Selects%2010%20primeiros%20registros/municipio.png"></p><br><br>
 
 ```sql
     SELECT * FROM pessoa limit 10;
 ```
-![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Selects%2010%20primeiros%20registros/pessoa.png)
+<p align="center"><img src="https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Selects%2010%20primeiros%20registros/pessoa.png"></p><br><br>
 
 ```sql
     SELECT * FROM posto limit 10;
 ```
-![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Selects%2010%20primeiros%20registros/posto.png)
+<p align="center"><img src="https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Selects%2010%20primeiros%20registros/posto.png"></p><br><br>
 
 ```sql
     SELECT * FROM recebimento limit 10;
 ```
-![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Selects%2010%20primeiros%20registros/recebimento.png)
+<p align="center"><img src="https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Selects%2010%20primeiros%20registros/recebimento.png"></p><br><br>
 
 ```sql
     SELECT * FROM registro_medicamento limit 10;
 ```
-![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Selects%2010%20primeiros%20registros/registro_medicamento.png)
+<p align="center"><img src="https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Selects%2010%20primeiros%20registros/registro_medicamento.png"></p><br><br>
 
 ```sql
     SELECT * FROM solicitacao limit 10;
 ```
-![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Selects%2010%20primeiros%20registros/solicitacao.png)
+<p align="center"><img src="https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Selects%2010%20primeiros%20registros/solicitacao.png"></p><br><br>
 
 ```sql
     SELECT * FROM titular limit 10;
 ```
-![Alt text](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Selects%2010%20primeiros%20registros/titular.png)
+<p align="center"><img src="https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Selects%2010%20primeiros%20registros/titular.png"></p><br><br>
+
 
 #### 9.3	SELECT DAS VISÕES COM PRIMEIROS 10 REGISTROS DA VIEW <br>
         a) Descrição da view sobre que grupos de usuários (operacional/estratégico) <br>

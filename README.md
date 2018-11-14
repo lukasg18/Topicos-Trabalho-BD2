@@ -842,7 +842,7 @@ OBS: Incluir para os tópicos 9.2 e 9.3 as instruções SQL + imagens (print da 
     SELECT * FROM posto limit 10;
 ```
 <p align="center"><img src="https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Selects%2010%20primeiros%20registros/posto.png"></p><br><br>
-
+Link para os slides de teste<br>
 ```sql
     SELECT * FROM recebimento limit 10;
 ```
@@ -1359,26 +1359,8 @@ SELECT idmedicamentoposto, estadomedicamento, quantidade FROM medicamento_posto 
     obtendo-se a media dos outros valores como resultado médio final.
 <br>
 
-```sql
-    create index index_idtitular on solicitacao (idtitular)    
-    create index index_idmedicamentoposto on solicitacao (idmedicamentoposto)
-    create index index_pessoa on titular (idpessoa)
-    create index index_idmedicamento on medicamento_posto (idmedicamento)
-```
+[Link para os slides de teste](https://docs.google.com/presentation/d/1bFxgpgsGh83c7K-gBaM3n10NNMuObWcPCHcmBPjvCrw/edit#slide=id.g47dff6cf27_0_47)<br>
 
-## Performances
-### Query de teste base
-
-```sql
-    SELECT p.nome AS Titular, po.nome AS "Nome do posto", me.nome AS Medicamento, s.quantidademedicamento "Quantidade de Medicamentos" FROM pessoa AS p
-    INNER JOIN titular AS t ON (p.idpessoa = t.idpessoa)
-    INNER JOIN solicitacao AS s ON (s.idtitular = t.idpessoa)
-    INNER JOIN medicamento_posto AS mp ON (mp.idmedicamentoposto = s.idmedicamentoposto)
-    INNER JOIN posto AS po ON (po.idposto = mp.idposto)
-    INNER JOIN medicamento AS me ON (me.idmedicamento = mp.idmedicamento)
-    ORDER BY p.nome, po.nome 
-```
-### Query com indices
 
 ## Data de Entrega: (22/11/2018)
 

@@ -1,3 +1,16 @@
+SELECT * FROM pg_constraint WHERE contype ='p'
+SELECT * FROM pg_class
+
+CREATE index index_idtitular ON titular (idpessoa);
+CREATE index index_estadosolicitacao ON solicitacao (estadosolicitacao);
+CREATE index index_pkidsolicitacao ON solicitacao (idsolicitacao);
+CREATE index index_pkpessoa ON pessoa (idpessoa);
+CREATE index index_pkmedicamentoposto ON medicamento_posto (idmedicamentoposto);
+CREATE index index_pkmedicamento ON medicamento (idmedicamento);
+CREATE index index_pkrecebimento ON recebimento (idrecebimento);
+
+vacuum analyse
+
 ﻿/*CREATE VIEW view_retirar_medicamentos_solicitados AS*/
 EXPLAIN ANALYSE SELECT pe.nome AS "Paciente", me.nome AS "Medicamento", mp.quantidade AS "Quantidade", so.estadosolicitacao AS "Estado" FROM pessoa AS pe
 INNER JOIN titular AS ti ON (ti.idpessoa = pe.idpessoa)
@@ -5,20 +18,6 @@ INNER JOIN solicitacao AS so ON (so.idtitular = ti.idpessoa)
 INNER JOIN medicamento_posto AS mp ON (mp.idmedicamentoposto = so.idmedicamentoposto)
 INNER JOIN medicamento AS me ON (me.idmedicamento = mp.idmedicamento)
 where estadosolicitacao = 2 and ti.idpessoa =1000 
-
-select * from pg_constraint where contype ='p'
-select * from pg_class
-
-create index index_idtitular on titular (idpessoa);
-create index index_estadosolicitacao on solicitacao (estadosolicitacao);
-create index index_pkidsolicitacao on solicitacao (idsolicitacao);
-create index index_pkpessoa on pessoa (idpessoa);
-create index index_pkmedicamentoposto on medicamento_posto (idmedicamentoposto);
-create index index_pkmedicamento on medicamento (idmedicamento);
-create index index_pkrecebimento on recebimento (idrecebimento);
-
-
-vacuum analyse
 
 /* CREATE VIEW view_medicamentos_mais_retirados_por_quantidade AS*/
 EXPLAIN ANALYSE SELECT me.nome, SUM(re.quantidademedicamentos) AS "Quantidade" FROM medicamento AS me

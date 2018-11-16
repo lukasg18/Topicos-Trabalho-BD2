@@ -1360,9 +1360,9 @@ SELECT idmedicamentoposto, estadomedicamento, quantidade FROM medicamento_posto 
 <br>
 
 Todos os testes de performance que inclui a criação de índices estão presentes no link da apresentação abaixo:<br>
-[Link para os slides de teste](https://docs.google.com/presentation/d/1bFxgpgsGh83c7K-gBaM3n10NNMuObWcPCHcmBPjvCrw/edit#slide=id.g47dff6cf27_0_47)<br>
+[Link dos slides dos testes de perfomance.](https://docs.google.com/presentation/d/1bFxgpgsGh83c7K-gBaM3n10NNMuObWcPCHcmBPjvCrw/edit#slide=id.g47dff6cf27_0_47)<br>
 
-<p align="center"><a href="https://docs.google.com/presentation/d/1bFxgpgsGh83c7K-gBaM3n10NNMuObWcPCHcmBPjvCrw/edit#slide=id.g47dff6cf27_0_47"><img src="https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Apresenta%C3%A7%C3%A3o%20Perfomances%20%C3%8Dndices.png"><figcaption style="text-align: center; font-size: 13px; font-weight: bold;">Slides dos Testes de Perfomance.</figcaption></a></p><br>
+<p align="center"><a href="https://docs.google.com/presentation/d/1bFxgpgsGh83c7K-gBaM3n10NNMuObWcPCHcmBPjvCrw/edit#slide=id.g47dff6cf27_0_47"><img src="https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Apresenta%C3%A7%C3%A3o%20Perfomances%20%C3%8Dndices.png"></a><figcaption style="text-align: center; font-size: 13px; font-weight: bold;">Slides dos Testes de Perfomance.</figcaption></p><br>
 
 ## Data de Entrega: (22/11/2018)
 

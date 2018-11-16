@@ -1359,8 +1359,9 @@ SELECT idmedicamentoposto, estadomedicamento, quantidade FROM medicamento_posto 
     obtendo-se a media dos outros valores como resultado médio final.
 <br>
 
-[Link para os slides de teste](https://docs.google.com/presentation/d/1bFxgpgsGh83c7K-gBaM3n10NNMuObWcPCHcmBPjvCrw/edit#slide=id.g47dff6cf27_0_47)<br>
+[Link para os slides de teste](https://docs.google.com/presentation/d/1bFxgpgsGh83c7K-gBaM3n10NNMuObWcPCHcmBPjvCrw/edit#slide=id.g47dff6cf27_0_47)<br><br>
 
+<p align="center"><a href="https://docs.google.com/presentation/d/1bFxgpgsGh83c7K-gBaM3n10NNMuObWcPCHcmBPjvCrw/edit#slide=id.g47dff6cf27_0_47"><img src=""></a></p><br>
 
 ## Data de Entrega: (22/11/2018)
 

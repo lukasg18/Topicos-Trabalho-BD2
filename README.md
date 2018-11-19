@@ -197,7 +197,8 @@ Subsistema para Atendente do posto
 
 ### 6.2	Padrões de Projeto<br>
 #### Método Fábrica
-Foi utilizado o padrão método fábrica, neste caso o NestFactory para a criação genérica de objetos do modelo. Dessa forma, é possível adicionar, facilmente, novos objetos do modelo sem grandes impactos ao sistema.
+Foi utilizado o padrão método fábrica para a criação genérica de objetos do modelo. Através da importação da classe NestFactory que, como pode ser visto nos códigos abaixo(figura xx), utiliza um método create, recebendo como parametro módulos desejados. Dessa forma, é possível adicionar, facilmente, novos objetos do modelo sem grandes impactos ao sistema.
+
 
 ```typescript
     import { NestFactory } from '@nestjs/core';
@@ -243,7 +244,7 @@ Foi utilizado o padrão método fábrica, neste caso o NestFactory para a criaç
     })
     export class PooModule {}
 ```
-<figcaption style="text-align: center;">Fig.1 - Implementação do padrão Fábrica</figcaption>
+				Fig.1 - Implementação do padrão Fábrica
 
 #### Padrão injeção de depedencia
 O padrão de injeção de dependência visa remover dependências desnecessárias entre as classes ou torná-las mais suaves, contribuindo para um design de software que seja fácil de manter e evoluir.

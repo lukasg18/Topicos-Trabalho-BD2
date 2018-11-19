@@ -197,7 +197,7 @@ Subsistema para Atendente do posto
 
 ### 6.2	Padrões de Projeto<br>
 #### Método Fábrica
-Foi utilizado o padrão método fábrica para a criação genérica de objetos do modelo. Através da importação da classe NestFactory que, como pode ser visto nos códigos abaixo(figura xx), utiliza um método create, recebendo como parametro módulos desejados. Dessa forma, é possível adicionar, facilmente, novos objetos do modelo sem grandes impactos ao sistema.
+Foi utilizado o padrão método fábrica para a criação genérica de objetos do modelo, através da importação da classe NestFactory que recebe como parâmetro do método de criação(create) os módulos desejados, nesse caso um objeto appModule. Nesse objeto estão contidos indiretamente os módulos de serviço, controladores e provedores da base de dados necessários. Dessa forma, é possível adicionar, facilmente, novos objetos ao modelo sem grandes impactos ao sistema.
 
 
 ```typescript

@@ -1325,7 +1325,7 @@ SELECT idmedicamentoposto, estadomedicamento, quantidade FROM medicamento_posto 
 ## Data de Entrega: (27/09/2018)
 
 #### 9.5	Administração do banco de dados<br>
-        Descrição detalhada sobre como serão executadas no banco de dados as <br>
+        Descrição detalhada sobre como serão executadas no banco de dados as
         seguintes atividades.
         a) Segurança e autorização de acesso: especificação básica de configurações de acesso remoto
         b) Estimativas de aquisição de recursos para armazenamento e processamento da informação
@@ -1333,13 +1333,26 @@ SELECT idmedicamentoposto, estadomedicamento, quantidade FROM medicamento_posto 
         d) Plano com frequencia de análises visando otimização de performance
 <br>
 
+<p>
+a) Para evitar perdas ou degradação da integridade, confiabilidade e disponibilidade dos dados, é necessário permitir que determinados usuários tenha acesso limitado a partes selecionadas do banco de dados, através de alguns métodos como controle de acesso e criptografia. Uma das soluções é utilizar o protocolo SSH que detecta casos em que o servidor tenha sido trocado por outro, situações nas quais se tenta injetar dados na conexão e técnicas de ocultação de pacotes.
+</p>
+<p>
+b) PLACEHOLDER
+</p>
+<p>
+c) PLACEHOLDER
+</p>
+<p>
+d) PLACEHOLDER
+</p>
+
 #### 9.6	GERACAO DE DADOS (MÍNIMO DE 1,5 MILHÃO DE REGISTROS PARA PRINCIPAL RELAÇAO)<br>
         a) principal tabela do sistema deve ter no mínimo 1,5 milhão de registros
         b) tabelas diretamente relacionadas a tabela principal 100 mil registros
         c) tabelas auxiliares de relacao multivalorada mínimo de 10 registros
         d) registrar o tempo de inserção em cada uma das tabelas do banco de dados
         e) especificar a quantidade de registros inseridos em cada tabela
-        Para melhor compreensão verifiquem o exemplo na base de testes:<br>
+        Para melhor compreensão verifiquem o exemplo na base de testes:
         https://github.com/discipbd2/base-de-testes-locadora
         
 ## Data de Entrega: (31/10/2018)

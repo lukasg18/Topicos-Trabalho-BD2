@@ -243,7 +243,7 @@ Foi utilizado o padrão método fábrica, neste caso o NestFactory para a criaç
     })
     export class PooModule {}
 ```
-				Fig.1 - Implementação do padrão Fábrica
+<figcaption style="text-align: center;">Fig.1 - Implementação do padrão Fábrica</figcaption>
 
 #### Padrão injeção de depedencia
 O padrão de injeção de dependência visa remover dependências desnecessárias entre as classes ou torná-las mais suaves, contribuindo para um design de software que seja fácil de manter e evoluir.

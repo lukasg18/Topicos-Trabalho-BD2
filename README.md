@@ -197,7 +197,7 @@ Subsistema para Atendente do posto
 
 ### 6.2	Padrões de Projeto<br>
 #### Método Fábrica
-Foi utilizado o padrão método fábrica para a criação genérica de objetos do modelo. Dessa forma, permitesse facilmente adicionar novos objetos do modelo sem grandes impactos ao sistema.
+Foi utilizado o padrão método fábrica, neste caso o NestFactory para a criação genérica de objetos do modelo. Dessa forma, é possível adicionar, facilmente, novos objetos do modelo sem grandes impactos ao sistema.
 
 ```typescript
     import { NestFactory } from '@nestjs/core';
@@ -243,8 +243,10 @@ Foi utilizado o padrão método fábrica para a criação genérica de objetos d
     })
     export class PooModule {}
 ```
+				Fig.1 - Implementação do padrão Fábrica
+
 #### Padrão injeção de depedencia
-O padrão de injeção de dependência visa remover dependências desnecessárias entre as classes ou torná-las mais suaves e ter um design de software que seja fácil de manter e evoluir.
+O padrão de injeção de dependência visa remover dependências desnecessárias entre as classes ou torná-las mais suaves, contribuindo para um design de software que seja fácil de manter e evoluir.
 
 ```typescript
     import { Injectable, Inject } from '@nestjs/common';
@@ -262,6 +264,8 @@ O padrão de injeção de dependência visa remover dependências desnecessária
         }
         ...
 ```
+				Fig.2 - Implementação do padrão injeção de dependência
+
 #### Padrão Repository
 O padrão  Repository faz a mediação entre o domínio e as camadas de mapeamento de dados, agindo como uma coleção de objetos de domínio em memória. Um repositório encapsula o conjunto de objetos persistidos em um armazenamento de dados e as operações realizadas sobre eles, fornecendo uma visão mais orientada a objetos da camada de persistência.
 
@@ -286,6 +290,8 @@ O padrão  Repository faz a mediação entre o domínio e as camadas de mapeamen
     static getRepository<T extends BaseEntity>(this: ObjectType<T>): Repository<T>;
     ....
 ```
+				Fig.3 - Implementação do padrão Repository
+
 
 ### 7	MODELO FÍSICO<br>
 [Link modelo físico](https://raw.githubusercontent.com/lukasg18/Topicos-Trabalho-BD2/master/Modelagens/Modelo_Fisico.sql)

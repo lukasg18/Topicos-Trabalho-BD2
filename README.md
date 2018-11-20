@@ -1348,13 +1348,9 @@ d) PLACEHOLDER
 </p>
 
 #### 9.6	GERACAO DE DADOS (MÍNIMO DE 1,5 MILHÃO DE REGISTROS PARA PRINCIPAL RELAÇAO)<br>
-        a) principal tabela do sistema deve ter no mínimo 1,5 milhão de registros
-        b) tabelas diretamente relacionadas a tabela principal 100 mil registros
-        c) tabelas auxiliares de relacao multivalorada mínimo de 10 registros
-        d) registrar o tempo de inserção em cada uma das tabelas do banco de dados
-        e) especificar a quantidade de registros inseridos em cada tabela
-        Para melhor compreensão verifiquem o exemplo na base de testes:
-        https://github.com/discipbd2/base-de-testes-locadora
+<p align="center"><img src="https://raw.githubusercontent.com/lukasg18/Topicos-Trabalho-BD2/master/testes%20Perfoemance/estatisticas.png"></p><br>
+Tempo de inserção dos dados de todas as tabelas.  <br>
+<p align="center"><img src="https://raw.githubusercontent.com/lukasg18/Topicos-Trabalho-BD2/master/Imagens/tempo-insert.png"></p><br>
         
 ## Data de Entrega: (31/10/2018)
 

@@ -849,7 +849,7 @@ OBS: Incluir para os tópicos 9.2 e 9.3 as instruções SQL + imagens (print da 
     SELECT * FROM posto limit 10;
 ```
 <p align="center"><img src="https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Tabelas%20e%20Principais%20Consultas/Selects%2010%20primeiros%20registros/posto.png"></p><br><br>
-Link para os slides de teste<br>
+
 ```sql
     SELECT * FROM recebimento limit 10;
 ```
@@ -872,15 +872,6 @@ Link para os slides de teste<br>
 
 
 #### 9.3	SELECT DAS VISÕES COM PRIMEIROS 10 REGISTROS DA VIEW <br>
-        a) Descrição da view sobre que grupos de usuários (operacional/estratégico) <br>
-        e necessidade ela contempla.
-        b) Descrição das permissões de acesso e usuários correlacionados (após definição <br>
-        destas características)
-        c) as funcionalidades informadas no minimundo ou nos mockups(protótipos), que representarem 
-        views do sistema (relatórios, informações disponíveis para os usuários, etc) devem estar 
-        presentes aqui. 
-<br>
-
 [Criação das views](https://raw.githubusercontent.com/lukasg18/Topicos-Trabalho-BD2/master/Queries/Principais_Views.sql) <br>
 [Selects de todas as views](https://raw.githubusercontent.com/lukasg18/Topicos-Trabalho-BD2/master/Queries/Selects%20das%20Principais%20views.sql)
 
@@ -991,13 +982,6 @@ Link para os slides de teste<br>
 
 
 #### 9.4	LISTA DE CODIGOS DAS FUNÇÕES, ASSERÇOES E TRIGGERS<br>
-        Detalhamento sobre funcionalidade de cada código.
-        a) Objetivo
-        b) Código do objeto (função/trigger/asserção)
-        c) exemplo de dados para aplicação
-        d) resultados em forma de tabela/imagem
-<br>
-
 [Criação e Select das Functions](https://raw.githubusercontent.com/lukasg18/Topicos-Trabalho-BD2/master/Queries/functions.sql)<br>
 [Criação das Triggers e Assertions](https://github.com/lukasg18/Topicos-Trabalho-BD2/raw/master/Queries/triggers_assertions.sql)<br>
 
@@ -1366,15 +1350,6 @@ Tempo de inserção dos dados de todas as tabelas.  <br>
 
 
 #### 9.8	APLICAÇAO DE ÍNDICES E TESTES DE PERFORMANCE<br>
-    a) Lista de índices, tipos de índices com explicação de porque foram implementados nas consultas 
-    b) Performance esperada VS Resultados obtidos
-    c) Tabela de resultados comparando velocidades antes e depois da aplicação dos índices (constando velocidade esperada com planejamento, sem indice e com índice Vs velocidade de execucao real com índice e sem índice).
-    d) Escolher as consultas mais complexas para serem analisadas (consultas com menos de 2 joins não serão aceitas)
-    e) As imagens do Explain devem ser inclusas no trabalho, bem como explicações sobre os resultados obtidos.
-    f) Inclusão de tabela mostrando as 10 execuções, excluindo-se o maior e menor tempos para cada consulta e 
-    obtendo-se a media dos outros valores como resultado médio final.
-<br>
-
 Todos os testes de performance que inclui a criação de índices estão presentes no link da apresentação abaixo:<br>
 [Link dos slides dos testes de perfomance.](https://docs.google.com/presentation/d/1bFxgpgsGh83c7K-gBaM3n10NNMuObWcPCHcmBPjvCrw/edit#slide=id.g47dff6cf27_0_47)<br>
 

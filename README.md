@@ -244,7 +244,7 @@ Foi utilizado o padrão método fábrica para a criação genérica de objetos d
     })
     export class PooModule {}
 ```
-				Fig.x - Implementação do padrão Fábrica
+				Fig.1 - Implementação do padrão Fábrica
 
 #### Padrão injeção de depedencia
 O padrão de injeção de dependência visa remover dependências desnecessárias entre as classes ou torná-las mais suaves, contribuindo para um design de software que seja fácil de manter e evoluir.
@@ -265,7 +265,7 @@ O padrão de injeção de dependência visa remover dependências desnecessária
         }
         ...
 ```
-				Fig.x - Implementação do padrão injeção de dependência
+				Fig.2 - Implementação do padrão injeção de dependência
 
 #### Padrão Repository
 O padrão  Repository faz a mediação entre o domínio e as camadas de mapeamento de dados, agindo como uma coleção de objetos de domínio em memória. Um repositório encapsula o conjunto de objetos persistidos em um armazenamento de dados e as operações realizadas sobre eles, fornecendo uma visão mais orientada a objetos da camada de persistência.
@@ -291,7 +291,7 @@ O padrão  Repository faz a mediação entre o domínio e as camadas de mapeamen
     static getRepository<T extends BaseEntity>(this: ObjectType<T>): Repository<T>;
     ....
 ```
-				Fig.x - Implementação do padrão Repository
+				Fig.3 - Implementação do padrão Repository
 
 
 ### 7	MODELO FÍSICO<br>
@@ -1319,16 +1319,16 @@ SELECT idmedicamentoposto, estadomedicamento, quantidade FROM medicamento_posto 
 <br>
 
 <p>
-a) Para evitar perdas ou degradação da integridade, confiabilidade e disponibilidade dos dados, é necessário permitir que determinados usuários tenha acesso limitado a partes selecionadas do banco de dados, através de alguns métodos como controle de acesso e criptografia. Uma das soluções é utilizar o protocolo SSH que detecta casos em que o servidor tenha sido trocado por outro, situações nas quais se tenta injetar dados na conexão e técnicas de ocultação de pacotes.
+A) A população do município de Fundão, região em que a primeira versão do sistema está focada, está estimada em 20.757 habitantes. Considerando todos esses cidadãos como potenciais utilizadores do sistema, deve ser tratada a questão da segurança dos dados e de acesso ao sistema com as devidas autorizações de acesso e administração dos cadastros. Funcionários do Sistema Único de Saúde deverão ter acesso a uma área do sistema que administra a entrada e saída dos medicamentos, assim como autorização da retirada destes. Cidadãos titulares poderão fazer a requisição e retirada do medicamento e dependentes terão apenas autorização de retirada dos remédios.
 </p>
 <p>
-b) PLACEHOLDER
+B) Visto que são feitas em média (X TODO) consultas (MENSAIS TODO) no Sistema Único de Saúde, espera-se um tráfego de dados que acompanhe essa estatística, portanto recursos para o processamento de busca de remedios e abertura e fechamento de requisições deve levar esses dados em conta, para evitar o mal funcionamento do serviço, ou negação de serviço devido ao tráfego de dados elevado.
 </p>
 <p>
-c) PLACEHOLDER
+C) PLACEHOLDER
 </p>
 <p>
-d) PLACEHOLDER
+D) PLACEHOLDER
 </p>
 
 #### 9.6	GERACAO DE DADOS (MÍNIMO DE 1,5 MILHÃO DE REGISTROS PARA PRINCIPAL RELAÇAO)<br>
@@ -1339,288 +1339,13 @@ Tempo de inserção dos dados de todas as tabelas.  <br>
 ## Data de Entrega: (31/10/2018)
 
 #### 9.7	Backup do Banco de Dados<br>
-        
-	Detalhamento do backup:
-        Tempo - 8.903 segundos
-        Tamanho - 21,3 MB
-
-       
-	pg_dump: last built-in OID is 16383
-	pg_dump: reading extensions
-	pg_dump: identifying extension members
-	pg_dump: reading schemas
-	pg_dump: reading user-defined tables
-	pg_dump: reading user-defined functions
-	pg_dump: reading user-defined types
-	pg_dump: reading procedural languages
-	pg_dump: reading user-defined aggregate functions
-	pg_dump: reading user-defined operators
-	pg_dump: reading user-defined access methods
-	pg_dump: reading user-defined operator classes
-	pg_dump: reading user-defined operator families
-	pg_dump: reading user-defined text search parsers
-	pg_dump: reading user-defined text search templates
-	pg_dump: reading user-defined text search dictionaries
-	pg_dump: reading user-defined text search configurations
-	pg_dump: reading user-defined foreign-data wrappers
-	pg_dump: reading user-defined foreign servers
-	pg_dump: reading default privileges
-	pg_dump: reading user-defined collations
-	pg_dump: reading user-defined conversions
-	pg_dump: reading type casts
-	pg_dump: reading transforms
-	pg_dump: reading table inheritance information
-	pg_dump: reading event triggers
-	pg_dump: finding extension tables
-	pg_dump: finding inheritance relationships
-	pg_dump: reading column info for interesting tables
-	pg_dump: finding the columns and types of table "public.atendente"
-	pg_dump: finding the columns and types of table "public.bairro"
-	pg_dump: finding the columns and types of table "public.dependente"
-	pg_dump: finding the columns and types of table "public.estado"
-	pg_dump: finding the columns and types of table "public.laboratorio"
-	pg_dump: finding the columns and types of table "public.medicamento"
-	pg_dump: finding the columns and types of table "public.medicamento_laboratorio"
-	pg_dump: finding the columns and types of table "public.medicamento_posto"
-	pg_dump: finding the columns and types of table "public.municipio"
-	pg_dump: finding the columns and types of table "public.pessoa"
-	pg_dump: finding the columns and types of table "public.posto"
-	pg_dump: finding the columns and types of table "public.recebimento"
-	pg_dump: finding the columns and types of table "public.registro_medicamento"
-	pg_dump: finding the columns and types of table "public.solicitacao"
-	pg_dump: finding the columns and types of table "public.titular"
-	pg_dump: flagging inherited columns in subtables
-	pg_dump: reading indexes
-	pg_dump: reading indexes for table "public.atendente"
-	pg_dump: reading indexes for table "public.bairro"
-	pg_dump: reading indexes for table "public.dependente"
-	pg_dump: reading indexes for table "public.estado"
-	pg_dump: reading indexes for table "public.laboratorio"
-	pg_dump: reading indexes for table "public.medicamento"
-	pg_dump: reading indexes for table "public.medicamento_laboratorio"
-	pg_dump: reading indexes for table "public.medicamento_posto"
-	pg_dump: reading indexes for table "public.municipio"
-	pg_dump: reading indexes for table "public.pessoa"
-	pg_dump: reading indexes for table "public.posto"
-	pg_dump: reading indexes for table "public.recebimento"
-	pg_dump: reading indexes for table "public.registro_medicamento"
-	pg_dump: reading indexes for table "public.solicitacao"
-	pg_dump: reading indexes for table "public.titular"
-	pg_dump: reading extended statistics
-	pg_dump: reading constraints
-	pg_dump: reading foreign key constraints for table "public.atendente"
-	pg_dump: reading foreign key constraints for table "public.bairro"
-	pg_dump: reading foreign key constraints for table "public.dependente"
-	pg_dump: reading foreign key constraints for table "public.estado"
-	pg_dump: reading foreign key constraints for table "public.laboratorio"
-	pg_dump: reading foreign key constraints for table "public.medicamento"
-	pg_dump: reading foreign key constraints for table "public.medicamento_laboratorio"
-	pg_dump: reading foreign key constraints for table "public.medicamento_posto"
-	pg_dump: reading foreign key constraints for table "public.municipio"
-	pg_dump: reading foreign key constraints for table "public.pessoa"
-	pg_dump: reading foreign key constraints for table "public.posto"
-	pg_dump: reading foreign key constraints for table "public.recebimento"
-	pg_dump: reading foreign key constraints for table "public.registro_medicamento"
-	pg_dump: reading foreign key constraints for table "public.solicitacao"
-	pg_dump: reading foreign key constraints for table "public.titular"
-	pg_dump: reading triggers
-	pg_dump: reading triggers for table "public.atendente"
-	pg_dump: reading triggers for table "public.bairro"
-	pg_dump: reading triggers for table "public.dependente"
-	pg_dump: reading triggers for table "public.estado"
-	pg_dump: reading triggers for table "public.laboratorio"
-	pg_dump: reading triggers for table "public.medicamento"
-	pg_dump: reading triggers for table "public.medicamento_laboratorio"
-	pg_dump: reading triggers for table "public.medicamento_posto"
-	pg_dump: reading triggers for table "public.municipio"
-	pg_dump: reading triggers for table "public.pessoa"
-	pg_dump: reading triggers for table "public.posto"
-	pg_dump: reading triggers for table "public.recebimento"
-	pg_dump: reading triggers for table "public.registro_medicamento"
-	pg_dump: reading triggers for table "public.solicitacao"
-	pg_dump: reading triggers for table "public.titular"
-	pg_dump: reading rewrite rules
-	pg_dump: reading policies
-	pg_dump: reading row security enabled for table "public.atendente"
-	pg_dump: reading policies for table "public.atendente"
-	pg_dump: reading row security enabled for table "public.bairro"
-	pg_dump: reading policies for table "public.bairro"
-	pg_dump: reading row security enabled for table "public.dependente"
-	pg_dump: reading policies for table "public.dependente"
-	pg_dump: reading row security enabled for table "public.estado"
-	pg_dump: reading policies for table "public.estado"
-	pg_dump: reading row security enabled for table "public.laboratorio"
-	pg_dump: reading policies for table "public.laboratorio"
-	pg_dump: reading policies for table "public.medicamento"
-	pg_dump: reading row security enabled for table "public.medicamento_laboratorio"
-	pg_dump: reading policies for table "public.medicamento_laboratorio"
-	pg_dump: reading row security enabled for table "public.medicamento_posto"
-	pg_dump: reading policies for table "public.medicamento_posto"
-	pg_dump: reading row security enabled for table "public.municipio"
-	pg_dump: reading policies for table "public.municipio"
-	pg_dump: reading row security enabled for table "public.pessoa"
-	pg_dump: reading policies for table "public.pessoa"
-	pg_dump: reading row security enabled for table "public.posto"
-	pg_dump: reading policies for table "public.posto"
-	pg_dump: reading row security enabled for table "public.recebimento"
-	pg_dump: reading policies for table "public.recebimento"
-	pg_dump: reading row security enabled for table "public.registro_medicamento"
-	pg_dump: reading policies for table "public.registro_medicamento"
-	pg_dump: reading row security enabled for table "public.solicitacao"
-	pg_dump: reading policies for table "public.solicitacao"
-	pg_dump: reading row security enabled for table "public.titular"
-	pg_dump: reading policies for table "public.titular"
-	pg_dump: reading publications
-	pg_dump: reading publication membership
-	pg_dump: reading subscriptions
-	pg_dump: reading large objects
-	pg_dump: reading dependency data
-	pg_dump: saving encoding = UTF8
-	pg_dump: saving standard_conforming_strings = on
-	pg_dump: saving search_path = 
-	pg_dump: saving database definition
-	pg_dump: dumping contents of table "public.atendente"
-	pg_dump: dumping contents of table "public.bairro"
-	pg_dump: dumping contents of table "public.dependente"
-	pg_dump: dumping contents of table "public.estado"
-	pg_dump: dumping contents of table "public.laboratorio"
-	pg_dump: dumping contents of table "public.medicamento"
-	pg_dump: dumping contents of table "public.medicamento_laboratorio"
-	pg_dump: dumping contents of table "public.medicamento_posto"
-	pg_dump: dumping contents of table "public.municipio"
-	pg_dump: dumping contents of table "public.pessoa"
-	pg_dump: dumping contents of table "public.posto"
-	pg_dump: dumping contents of table "public.recebimento"
-	pg_dump: dumping contents of table "public.registro_medicamento"
-	pg_dump: dumping contents of table "public.solicitacao"
-	pg_dump: dumping contents of table "public.titular"
-	pg_dump: reading policies for table "public.medicamento"
-	pg_dump: reading row security enabled for table "public.medicamento_laboratorio"
-	pg_dump: reading policies for table "public.medicamento_laboratorio"
-	pg_dump: reading row security enabled for table "public.medicamento_posto"
-	pg_dump: reading policies for table "public.medicamento_posto"
-	pg_dump: reading row security enabled for table "public.municipio"
-	pg_dump: reading policies for table "public.municipio"
-	pg_dump: reading row security enabled for table "public.pessoa"
-	pg_dump: reading policies for table "public.pessoa"
-	pg_dump: reading row security enabled for table "public.posto"
-	pg_dump: reading policies for table "public.posto"
-	pg_dump: reading row security enabled for table "public.recebimento"
-	pg_dump: reading policies for table "public.recebimento"
-	pg_dump: reading row security enabled for table "public.registro_medicamento"
-	pg_dump: reading policies for table "public.registro_medicamento"
-	pg_dump: reading row security enabled for table "public.solicitacao"
-	pg_dump: reading policies for table "public.solicitacao"
-	pg_dump: reading row security enabled for table "public.titular"
-	pg_dump: reading policies for table "public.titular"
-	pg_dump: reading publications
-	pg_dump: reading publication membership
-	pg_dump: reading subscriptions
-	pg_dump: reading large objects
-	pg_dump: reading dependency data
-	pg_dump: saving encoding = UTF8
-	pg_dump: saving standard_conforming_strings = on
-	pg_dump: saving search_path = 
-	pg_dump: saving database definition
-	pg_dump: dumping contents of table "public.atendente"
-	pg_dump: dumping contents of table "public.bairro"
-	pg_dump: dumping contents of table "public.dependente"
-	pg_dump: dumping contents of table "public.estado"
-	pg_dump: dumping contents of table "public.laboratorio"
-	pg_dump: dumping contents of table "public.medicamento"
-	pg_dump: dumping contents of table "public.medicamento_laboratorio"
-	pg_dump: dumping contents of table "public.medicamento_posto"
-	pg_dump: dumping contents of table "public.municipio"
-	pg_dump: dumping contents of table "public.pessoa"
-	pg_dump: dumping contents of table "public.posto"
-	pg_dump: dumping contents of table "public.recebimento"
-	pg_dump: dumping contents of table "public.registro_medicamento"
-	pg_dump: dumping contents of table "public.solicitacao"
-	pg_dump: dumping contents of table "public.titular"
-
-
-				Figura x - Script sql de backup do banco
-				
-	
-	Tempo de restauração - 24.970678
-	
-	
-	pg_restore: connecting to database for restore
-	pg_restore: creating SCHEMA "public"
-	pg_restore: creating COMMENT "SCHEMA public"
-	pg_restore: creating EXTENSION "plpgsql"
-	pg_restore: creating COMMENT "EXTENSION plpgsql"
-	pg_restore: creating TABLE "public.atendente"
-	pg_restore: creating TABLE "public.bairro"
-	pg_restore: creating TABLE "public.dependente"
-	pg_restore: creating TABLE "public.estado"
-	pg_restore: creating TABLE "public.laboratorio"
-	pg_restore: creating TABLE "public.medicamento"
-	pg_restore: creating TABLE "public.medicamento_laboratorio"
-	pg_restore: creating TABLE "public.medicamento_posto"
-	pg_restore: creating TABLE "public.municipio"
-	pg_restore: creating TABLE "public.pessoa"
-	pg_restore: creating TABLE "public.posto"
-	pg_restore: creating TABLE "public.recebimento"
-	pg_restore: creating TABLE "public.registro_medicamento"
-	pg_restore: creating TABLE "public.solicitacao"
-	pg_restore: creating TABLE "public.titular"
-	pg_restore: processing data for table "public.atendente"
-	pg_restore: processing data for table "public.bairro"
-	pg_restore: processing data for table "public.dependente"
-	pg_restore: processing data for table "public.estado"
-	pg_restore: processing data for table "public.laboratorio"
-	pg_restore: processing data for table "public.medicamento"
-	pg_restore: processing data for table "public.medicamento_laboratorio"
-	pg_restore: processing data for table "public.medicamento_posto"
-	pg_restore: processing data for table "public.municipio"
-	pg_restore: processing data for table "public.pessoa"
-	pg_restore: processing data for table "public.posto"
-	pg_restore: processing data for table "public.recebimento"
-	pg_restore: processing data for table "public.registro_medicamento"
-	pg_restore: processing data for table "public.solicitacao"
-	pg_restore: processing data for table "public.titular"
-	pg_restore: creating CONSTRAINT "public.pessoa PK_103e8f7f4ebf0ca871bbe4f8a3c"
-	pg_restore: creating CONSTRAINT "public.bairro PK_4fdaa48a8d5b79bfc8f5959251a"
-	pg_restore: creating CONSTRAINT "public.titular PK_52a860fd27254e95d135301b989"
-	pg_restore: creating CONSTRAINT "public.medicamento_posto PK_55f589d48cf08820e62c4218619"
-	pg_restore: creating CONSTRAINT "public.recebimento PK_746650b7410a8cea3f66aa08e96"
-	pg_restore: creating CONSTRAINT "public.dependente PK_7b83dfffedd25cb7a7befe84b70"
-	pg_restore: creating CONSTRAINT "public.estado PK_81df0554baeeb3c342378a627ad"
-	pg_restore: creating CONSTRAINT "public.municipio PK_9288f1d12a5d8150c355b5e9b16"
-	pg_restore: creating CONSTRAINT "public.laboratorio PK_a02d191f1adefa1e3c2b21ef553"
-	pg_restore: creating CONSTRAINT "public.atendente PK_a5b0986f6decfe7ce7d287a8afc"
-	pg_restore: creating CONSTRAINT "public.medicamento PK_c9eba17e6634c1e256d21d9ff33"
-	pg_restore: creating CONSTRAINT "public.registro_medicamento PK_caa0afb5240252ec27258f685d5"
-	pg_restore: creating CONSTRAINT "public.posto PK_cc32119736b40c091e8bb97c554"
-	pg_restore: creating CONSTRAINT "public.medicamento_laboratorio PK_df376ac8b15a58f4693f765dbc7"
-	pg_restore: creating CONSTRAINT "public.solicitacao PK_ffd64b9cb2dfb73cf046c16907a"
-	pg_restore: creating CONSTRAINT "public.pessoa UQ_70e82a4695f07a6ce61fc9492b6"
-	pg_restore: creating CONSTRAINT "public.atendente UQ_a134eaf7339d2c607039333f008"
-	pg_restore: creating CONSTRAINT "public.pessoa UQ_ee80cc840596cc1bca8a149bcd5"
-	pg_restore: creating FK CONSTRAINT "public.municipio FK_00033fc05927f355f13fe4aabe6"
-	pg_restore: creating FK CONSTRAINT "public.medicamento_posto FK_34211f805b13249a304d0490fb3"
-	pg_restore: creating FK CONSTRAINT "public.recebimento FK_387e9892097e16f9ddd2ae3bf22"
-	pg_restore: creating FK CONSTRAINT "public.recebimento FK_475829d5c50c3859ce7ccb37646"
-	pg_restore: creating FK CONSTRAINT "public.dependente FK_485eec223866b705db1569e7b3f"
-	pg_restore: creating FK CONSTRAINT "public.titular FK_52a860fd27254e95d135301b989"
-	pg_restore: creating FK CONSTRAINT "public.atendente FK_590cc4410853d91b70266bdfde0"
-	pg_restore: creating FK CONSTRAINT "public.medicamento_laboratorio FK_59f71b7b9ec062ef9be80f527f0"
-	pg_restore: creating FK CONSTRAINT "public.bairro FK_6ac866ccb173b3b7698a49541ff"
-	pg_restore: creating FK CONSTRAINT "public.dependente FK_7b83dfffedd25cb7a7befe84b70"
-	pg_restore: creating FK CONSTRAINT "public.atendente FK_a5b0986f6decfe7ce7d287a8afc"
-	pg_restore: creating FK CONSTRAINT "public.posto FK_c52dd314fd94874d9d261059c2e"
-	pg_restore: creating FK CONSTRAINT "public.registro_medicamento FK_c6c78ca2cfd73ad0dbdafcc5005"
-	pg_restore: creating FK CONSTRAINT "public.solicitacao FK_d38b3913472dde9e8bdd6c7f15f"
-	pg_restore: creating FK CONSTRAINT "public.medicamento_laboratorio FK_d8109f3516752ce13ee32b692ce"
-	pg_restore: creating FK CONSTRAINT "public.recebimento FK_ddf1939ef15cc85d043eecb2d88"
-	pg_restore: creating FK CONSTRAINT "public.medicamento_posto FK_e12054ea5e6bedd76415f02b4bb"
-	pg_restore: creating FK CONSTRAINT "public.registro_medicamento FK_e7076e84095a8abb5cff10db3b0"
-	pg_restore: creating FK CONSTRAINT "public.solicitacao FK_f61371e9c058a6d9c9ab83d99fa"
-	
-				
-				Figura x - Script sql de restauração do banco
-
+        Detalhamento do backup.
+        a) Tempo
+        b) Tamanho
+        c) Teste de restauração (backup)
+        d) Tempo para restauração
+        e) Teste de restauração (script sql)
+        f) Tempo para restauração (script sql)
 <br>
 
 

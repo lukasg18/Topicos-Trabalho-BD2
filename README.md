@@ -1322,13 +1322,13 @@ SELECT idmedicamentoposto, estadomedicamento, quantidade FROM medicamento_posto 
 A) A população do município de Fundão, região em que a primeira versão do sistema está focada, está estimada em 20.757 habitantes. Considerando todos esses cidadãos como potenciais utilizadores do sistema, deve ser tratada a questão da segurança dos dados e de acesso ao sistema com as devidas autorizações de acesso e administração dos cadastros. Funcionários do Sistema Único de Saúde deverão ter acesso a uma área do sistema que administra a entrada e saída dos medicamentos, assim como autorização da retirada destes. Cidadãos titulares poderão fazer a requisição e retirada do medicamento e dependentes terão apenas autorização de retirada dos remédios.
 </p>
 <p>
-B) Visto que são feitas em média (X TODO) consultas (MENSAIS TODO) no Sistema Único de Saúde, espera-se um tráfego de dados que acompanhe essa estatística, portanto recursos para o processamento de busca de remedios e abertura e fechamento de requisições deve levar esses dados em conta, para evitar o mal funcionamento do serviço, ou negação de serviço devido ao tráfego de dados elevado.
+B) Considerando que teriamos acesso ao número de consultas no Sistema Único de Saúde caso o projeto estivesse sendo desenvolvido com colaboração do município, poderiamos analizar o número semanal ou até diário de requisições de remédio do sistema, e por consequência esperar um tráfego de dados que acompanhe essa estatística, portanto recursos para o processamento de busca de remedios e abertura e fechamento de requisições devem levar esses dados em conta, para evitar o mal funcionamento ou até negação de serviço devido ao tráfego de dados elevado.
 </p>
 <p>
-C) PLACEHOLDER
+C) Normalmente procura-se garantir um balanço entre a manutenção correta do banco de dados e um custo reduzido pertinente a frequência dessa manutenção. Visto que a perda de dados referente ao uso de medicamentos pode atrasar e complicar ainda mais a situação de saúde de um paciente, opta-se por um monitoramento diário para evitar essas perdas ao máximo.
 </p>
 <p>
-D) PLACEHOLDER
+D) A análise de performance do banco não necessita ter a mesma frequência de seu monitoramento e manutenção, visto que não causa as mesmas complicações. Uma solução proposta para esse caso é ter uma frequência inicial semanal e espaçar para mensal depois de um periodo de observação.
 </p>
 
 #### 9.6	GERACAO DE DADOS (MÍNIMO DE 1,5 MILHÃO DE REGISTROS PARA PRINCIPAL RELAÇAO)<br>

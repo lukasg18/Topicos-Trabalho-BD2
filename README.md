@@ -247,7 +247,7 @@ Foi utilizado o padrão método fábrica para a criação genérica de objetos d
 				Fig.1 - Implementação do padrão Fábrica
 
 #### Padrão injeção de depedencia
-O padrão de injeção de dependência visa remover dependências desnecessárias entre as classes ou torná-las mais suaves, contribuindo para um design de software que seja fácil de manter e evoluir.
+O padrão de injeção de dependência visa remover dependências desnecessárias entre as classes ou torná-las mais suaves, contribuindo para um design de software que seja fácil de manter e evoluir. A figura 2 mostra a classe de serviço da entidade bairro que através da blablabla Inject, faz com que qualquer classe que seja sua dependende, não precise conhecer detalhadamente como ela é construída, além de não precisar se inicializada na mesma. Com a implementação desse padrão a classe de serviço é "injetada" na sua respectiva classe controlador sendo passada no construtor da mesma(figura 3).
 
 ```typescript
     import { Injectable, Inject } from '@nestjs/common';

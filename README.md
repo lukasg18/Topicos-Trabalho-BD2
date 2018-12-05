@@ -1341,7 +1341,7 @@ D) A análise de performance do banco não necessita ter a mesma frequência de 
 #### 9.6	GERACAO DE DADOS (MÍNIMO DE 1,5 MILHÃO DE REGISTROS PARA PRINCIPAL RELAÇAO)<br>
 <p align="center"><img src="https://raw.githubusercontent.com/lukasg18/Topicos-Trabalho-BD2/master/testes%20Perfoemance/estatisticas.png"></p><br>
 Tempo de inserção dos dados de todas as tabelas.  <br>
-<p align="center"><img src="https://raw.githubusercontent.com/lukasg18/Topicos-Trabalho-BD2/master/Imagens/tempo-insert.png"></p><br>
+<p align="center"><img src="https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Testes%20de%20performance/estatisticas.png?raw=true"></p><br>
         
 ## Data de Entrega: (31/10/2018)
 

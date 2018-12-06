@@ -197,7 +197,7 @@ Subsistema para Atendente do posto
 
 ### 6.2	Padrões de Projeto<br>
 #### Método Fábrica
-Foi utilizado o padrão método fábrica para a criação genérica de objetos do modelo, através da importação da classe NestFactory que recebe como parâmetro do método de criação(create) os módulos desejados, nesse caso um objeto appModule. Nesse objeto estão contidos indiretamente os módulos de serviço, controladores e provedores da base de dados necessários. Dessa forma, é possível adicionar, facilmente, novos objetos ao modelo sem grandes impactos ao sistema.
+O padrão método fábrica foi utilizado para a criação genérica de objetos do modelo, através da importação da classe NestFactory que recebe como parâmetro do método de criação(create) os módulos desejados, nesse caso um objeto appModule. Nesse objeto estão contidos indiretamente os módulos de serviço, controladores e provedores da base de dados necessários. Dessa forma, é possível adicionar, facilmente, novos objetos ao modelo sem grandes impactos ao sistema.
 
 
 ```typescript
@@ -244,10 +244,11 @@ Foi utilizado o padrão método fábrica para a criação genérica de objetos d
     })
     export class PooModule {}
 ```
-				Fig.1 - Implementação do padrão Fábrica
 
-#### Padrão injeção de depedencia
-O padrão de injeção de dependência visa remover dependências desnecessárias entre as classes ou torná-las mais suaves, contribuindo para um design de software que seja fácil de manter e evoluir. A figura 2 mostra a classe de serviço da entidade bairro que através da blablabla Inject, faz com que qualquer classe que seja sua dependende, não precise conhecer detalhadamente como ela é construída, além de não precisar se inicializada na mesma. Com a implementação desse padrão a classe de serviço é "injetada" na sua respectiva classe controlador sendo passada no construtor da mesma(figura 3).
+#### Padrão injeção de dependência
+O padrão de injeção de dependência visa remover dependências desnecessárias entre as classes ou torná-las mais suaves, contribuindo para um design de software que seja fácil de manter e evoluir. 
+O trecho de código abaixo, mostra uma das classes de serviço (bairro) que através da utilização do decorator Injectable possibilita sua inserção de forma menos dependente em outras classes.
+
 
 ```typescript
     import { Injectable, Inject } from '@nestjs/common';
@@ -265,7 +266,29 @@ O padrão de injeção de dependência visa remover dependências desnecessária
         }
         ...
 ```
-				Fig.2 - Implementação do padrão injeção de dependência
+				
+
+O recurso de injeção é utilizado na classe controller respectiva ao serviço. Como é mostrado no trecho de código a seguir, BairroService é “injetada” sendo passada no construtor da classe, ou seja, não precisando ser instanciado e nem a classe controller precisando “conhecer” como a BairroService é construída.
+
+
+```typescript
+
+	import { Get, Controller, Param, Post, Body } from '@nestjs/common';
+	import { BairroService } from '../service/bairro.service';
+	import { Bairro } from '../model/bairro.entity';
+
+
+	@Controller()
+	export class BairroController {
+	constructor(private readonly bairroService: BairroService) {}
+
+	@Get('/bairro')
+	readAll():any {
+	return this.bairroService.readAll();
+	}
+ 	...
+```
+
 
 #### Padrão Repository
 O padrão  Repository faz a mediação entre o domínio e as camadas de mapeamento de dados, agindo como uma coleção de objetos de domínio em memória. Um repositório encapsula o conjunto de objetos persistidos em um armazenamento de dados e as operações realizadas sobre eles, fornecendo uma visão mais orientada a objetos da camada de persistência.
@@ -291,7 +314,6 @@ O padrão  Repository faz a mediação entre o domínio e as camadas de mapeamen
     static getRepository<T extends BaseEntity>(this: ObjectType<T>): Repository<T>;
     ....
 ```
-				Fig.3 - Implementação do padrão Repository
 
 
 ### 7	MODELO FÍSICO<br>

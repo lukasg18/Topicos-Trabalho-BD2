@@ -1757,7 +1757,7 @@ Todos os testes de performance que inclui a criação de índices estão present
 Todos os testes e relatórios gerados estão presentes no link abaixo:<br>
 [Link dos testes e geração dos relatórios na aplicação Júpiter.](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Relat%C3%B3rio%20J%C3%BApiter/BD2_relatorios.ipynb)<br>
 
-<p align="center"><a href="<p align="center"><a href="https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Relat%C3%B3rio%20J%C3%BApiter/BD2_relatorios.ipynb"><img src="https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Relat%C3%B3rio%20J%C3%BApiter/Relat%C3%B3rio%20J%C3%BApiter.PNG"></a><figcaption style="text-align: center; font-size: 13px; font-weight: bold;"></figcaption></p><br>"><img src=""></a><figcaption style="text-align: center; font-size: 13px; font-weight: bold;"></figcaption></p><br>
+<p align="center"><a href="<p align="center"><a href="https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Relat%C3%B3rio%20J%C3%BApiter/BD2_relatorios.ipynb"><img src="https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Relat%C3%B3rio%20J%C3%BApiter/Relat%C3%B3rio%20J%C3%BApiter.PNG"></a><figcaption style="text-align: center; font-size: 13px; font-weight: bold;"></figcaption></p><br>">
 
 
 ## Data de Entrega: (22/11/2018)

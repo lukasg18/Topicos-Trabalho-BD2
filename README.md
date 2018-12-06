@@ -1441,7 +1441,15 @@ SELECT idmedicamentoposto, estadomedicamento, quantidade FROM medicamento_posto 
 
 <p>
 A) A população do município de Fundão, região em que a primeira versão do sistema está focada, está estimada em 20.757 habitantes. Considerando todos esses cidadãos como potenciais utilizadores do sistema, deve ser tratada a questão da segurança dos dados e de acesso ao sistema com as devidas autorizações de acesso e administração dos cadastros. Funcionários do Sistema Único de Saúde deverão ter acesso a uma área do sistema que administra a entrada e saída dos medicamentos, assim como autorização da retirada destes. Cidadãos titulares poderão fazer a requisição e retirada do medicamento e dependentes terão apenas autorização de retirada dos remédios. Na versão inicial haverá um grupo apenas de fundão, e na eventual inclusão de outros municípios, cada município teria seu próprio grupo no sistema independente um do outro. <br>
-Os papéis dos usuários envolvem as seguintes autorizações:
+Os papéis dos usuários envolvem as seguintes roles:
+	* Atendente: possuem as permissões de administração dos medicamentos, ou seja, registros de medicamentos e pacientes no
+	sistema, assim como controle do fluxo de entrada e saída de medicamentos e também a geração de relatórios importantes do
+	sistema.
+	* Paciente: basicamente possuem permissões de realizar requisições e retirada de medicamentos, onde seus dependentes terão
+	apenas a autorização de retirada de medicamentos.
+	* Superuser: possuem todas as permissões possíveis do sistema, tanto no subsistema de atendimento à população quanto no
+	subsistema de controle de estoque. Logo este tipo de usuário são os programadores que desenvolvem o sistema e necessitam
+	de todas essas permissões.
 </p>
 <p>
 B) Considerando que teriamos acesso ao número de consultas no Sistema Único de Saúde caso o projeto estivesse sendo desenvolvido com colaboração do município, poderiamos analizar o número semanal ou até diário de requisições de remédio do sistema, e por consequência esperar um tráfego de dados que acompanhe essa estatística, portanto recursos para o processamento de busca de remedios e abertura e fechamento de requisições devem levar esses dados em conta, para evitar o mal funcionamento ou até negação de serviço devido ao tráfego de dados elevado.

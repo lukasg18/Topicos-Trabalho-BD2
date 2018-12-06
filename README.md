@@ -248,10 +248,11 @@ Como dito anteriormente, os objetos estão contidos indiretamente os módulos de
 ```
 
 
-#### Padrão injeção de depedencia
-O padrão de injeção de dependência visa remover dependências desnecessárias entre as classes ou torná-las mais suaves, contribuindo para um design de software que seja fácil de manter e evoluir. O trecho de código abaixo mostra a classe de serviço da entidade bairro que através do decorator "@Injectable()", faz com que qualquer classe que seja sua dependende, não precise conhecer detalhadamente como ela é construída, além de não precisar se inicializada na mesma. Com a implementação desse padrão a classe de serviço é "injetada" na sua respectiva classe controladora.
+#### Padrão injeção de depedência
+O padrão de injeção de dependência visa remover dependências desnecessárias entre as classes ou torná-las mais suaves, contribuindo para um design de software que seja fácil de manter e evoluir. O trecho de código abaixo mostra a classe de serviço da entidade bairro que através do decorator "@Injectable()", faz com que qualquer classe que seja sua dependende, não precise conhecer detalhadamente como ela é construída, além de não precisar se inicializada na mesma. Com a implementação desse padrão a classe de serviço é "injetada" na sua respectiva classe controladora
 
 ```typescript
+	// Service de Bairro
     import { Injectable, Inject } from '@nestjs/common';
     import { Bairro } from '../model/bairro.entity';
 
@@ -267,6 +268,36 @@ O padrão de injeção de dependência visa remover dependências desnecessária
         }
         ...
 ```
+
+```typescript
+	// Controller do Bairro onde é injetado o Service de Bairro
+	import { Get, Controller, Param, Post, Body } from '@nestjs/common';
+	import { BairroService } from '../service/bairro.service';
+	import { Bairro } from '../model/bairro.entity';
+	import { ApiUseTags } from '@nestjs/swagger';
+
+	@ApiUseTags('poo')
+	@Controller()
+	export class BairroController {
+	  constructor(private readonly bairroService: BairroService) {}
+
+	  @Get('/bairro')
+	  readAll():any {
+		return this.bairroService.readAll();
+	  }
+
+	  @Get('/bairro/:id')
+	  readOne(@Param() param):any {
+		return this.bairroService.readOne(param.id);
+	  }
+
+	  @Post('/bairro')
+	  Create(@Body() body):any {
+		return this.bairroService.Create(body);
+	  }
+```
+
+Como pode perceber na constructor de BairroController é injetado o BairroService não havendo a necessidade de saber como é construído o BairroService tendo a preocupação de somente usá-lo na classe, o qual retira dependências entre classes e torna a aplicação fácil fazer manuntenções.
 
 #### Padrão Active Record
 Active Record é um padrão de projeto que trabalha com a técnica ORM (Object Relational Mapper). Este padrão consiste em mapear um objeto a uma tabela do Banco da dados, a fim de tornar o trabalho com os dados persistido em um banco de dados, totalmente orientado a objetos.

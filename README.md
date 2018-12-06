@@ -197,7 +197,7 @@ Subsistema para Atendente do posto
 
 ### 6.2	Padrões de Projeto<br>
 #### Método Fábrica
-Foi utilizado o padrão método fábrica para a criação genérica de objetos do modelo, através da importação da classe NestFactory que recebe como parâmetro do método de criação(create) os módulos desejados, nesse caso um objeto appModule. Nesse objeto estão contidos indiretamente os módulos de serviço, controladores e provedores da base de dados necessários. Dessa forma, é possível adicionar, facilmente, novos objetos ao modelo sem grandes impactos ao sistema.
+Foi utilizado o padrão método fábrica para a criação genérica de objetos do modelo, através da importação da classe NestFactory que recebe como parâmetro do método de criação(create) os módulos desejados, nesse caso um objeto appModule, mostrado no código abaixo. 
 
 
 ```typescript
@@ -210,6 +210,7 @@ Foi utilizado o padrão método fábrica para a criação genérica de objetos d
         const app = await NestFactory.create(AppModule);
     ...
 ```
+No código abaixo, a clsse AppModule importa diretamente um outro modulo do sistema, denominado de PooModule, onde o mesmo contém todas os controllers e serviços utilizados no projeto. A vantagem de se utilizar varios módulos separados é que o sistema fica mais facil de manutenção.
 
 ```typescript
     import { Module } from '@nestjs/common';
@@ -219,6 +220,7 @@ Foi utilizado o padrão método fábrica para a criação genérica de objetos d
     })
     export class AppModule {}
 ```
+Como dito anteriormente, os objetos estão contidos indiretamente os módulos de serviço, controladores e provedores da base de dados necessários. Dessa forma, é possível adicionar, facilmente, novos objetos ao modelo sem grandes impactos ao sistema.
 
 ```typescript
 
@@ -244,10 +246,10 @@ Foi utilizado o padrão método fábrica para a criação genérica de objetos d
     })
     export class PooModule {}
 ```
-				Fig.1 - Implementação do padrão Fábrica
+
 
 #### Padrão injeção de depedencia
-O padrão de injeção de dependência visa remover dependências desnecessárias entre as classes ou torná-las mais suaves, contribuindo para um design de software que seja fácil de manter e evoluir. A figura 2 mostra a classe de serviço da entidade bairro que através da blablabla Inject, faz com que qualquer classe que seja sua dependende, não precise conhecer detalhadamente como ela é construída, além de não precisar se inicializada na mesma. Com a implementação desse padrão a classe de serviço é "injetada" na sua respectiva classe controlador sendo passada no construtor da mesma(figura 3).
+O padrão de injeção de dependência visa remover dependências desnecessárias entre as classes ou torná-las mais suaves, contribuindo para um design de software que seja fácil de manter e evoluir. O trecho de código abaixo mostra a classe de serviço da entidade bairro que através do decorator "@Injectable()", faz com que qualquer classe que seja sua dependende, não precise conhecer detalhadamente como ela é construída, além de não precisar se inicializada na mesma. Com a implementação desse padrão a classe de serviço é "injetada" na sua respectiva classe controladora.
 
 ```typescript
     import { Injectable, Inject } from '@nestjs/common';
@@ -265,11 +267,10 @@ O padrão de injeção de dependência visa remover dependências desnecessária
         }
         ...
 ```
-				Fig.2 - Implementação do padrão injeção de dependência
 
-#### Padrão Repository
-O padrão  Repository faz a mediação entre o domínio e as camadas de mapeamento de dados, agindo como uma coleção de objetos de domínio em memória. Um repositório encapsula o conjunto de objetos persistidos em um armazenamento de dados e as operações realizadas sobre eles, fornecendo uma visão mais orientada a objetos da camada de persistência.
-
+#### Padrão Active Record
+Active Record é um padrão de projeto que trabalha com a técnica ORM (Object Relational Mapper). Este padrão consiste em mapear um objeto a uma tabela do Banco da dados, a fim de tornar o trabalho com os dados persistido em um banco de dados, totalmente orientado a objetos.
+BaseEntity é a classe que você deve estender para associar seu modelo com a tabela no Banco de Dados. Veja o trecho abaixo.
 
 ```typescript
     @Entity()
@@ -291,7 +292,96 @@ O padrão  Repository faz a mediação entre o domínio e as camadas de mapeamen
     static getRepository<T extends BaseEntity>(this: ObjectType<T>): Repository<T>;
     ....
 ```
-				Fig.3 - Implementação do padrão Repository
+
+No Active Record, a instância da entidade sabe como e onde persistir. É por isso que você pode simplesmente chamar "user.save()" e ele persiste, mostrado no trecho de codigo abaixo.
+
+```typescript
+async Create(body: any): Promise<Pessoa> {
+    let pessoa = new Pessoa();
+    try {
+      pessoa.nome = body.nome;
+      pessoa.sexo = body.sexo;
+      pessoa.cpf = body.cpf;
+      pessoa.datanascimento = body.datanascimento;
+      pessoa.rg = body.rg;
+      return await Pessoa.save(pessoa);
+    } catch (err) {
+      throw new Error(
+        `Erro ao salvar pessoa \n Erro: ${err.name}\n Mensagem: ${
+          err.message
+        }\n Os parametros estao certos?`,
+      );
+    }
+  }
+```
+
+#### Método Paginação
+Paginação é um padrão para projeto de interação de  nterface com usuário. É indicado quando o usuário necessita visualizar um subconjunto de dados que não serão  áceis de mostrar dentro de uma única página. Esse problema é solucionado com a adição de um mecanismo de paginação.
+No código abaixo utilizamos o padrão paginação a classe SolicitacaoService, onde chamamos duas funções para nos auxiliar, sendo elas: O função ".offset()" que indica o início da leitura, e o ".limit()" que é o máximo de registros a serem lidos.
+
+```typescript
+export class SolicitacaoService {
+  async readAll(pag: number): Promise<Solicitacao[] | any> {
+    return Solicitacao.createQueryBuilder('solicitacao')
+      .select(
+        'solicitacao.idsolicitacao, solicitacao.data_hora, solicitacao.quantidademedicamento, solicitacao.estadosolicitacao, titular.idpessoa as idtitular, pessoa.nome as pessoa, titular.numerosus, depedente.idpessoa as iddepedente, medicamentoPosto.datavencimento, medicamentoPosto.idmedicamentoposto, posto.idposto, posto.nome as posto, medicamento.idmedicamento, medicamento.nome as medicamento',
+      )
+      .innerJoin('solicitacao.titular', 'titular')
+      .innerJoin('solicitacao.medicamentoPosto', 'medicamentoPosto')
+      .innerJoin('titular.pessoa', 'pessoa')
+      .innerJoin('titular.depedente', 'depedente')
+      .innerJoin('medicamentoPosto.posto', 'posto')
+      .innerJoin('medicamentoPosto.medicamento', 'medicamento')
+      .innerJoin('medicamento.laboratorio', 'laboratorio')
+      .offset(pag * 10)
+      .limit(10)
+      .getRawMany();
+  }
+
+```
+#### Método Cache
+O Cache define a estratégia de manter uma cópia, na memória local, de objetos buscados de fora de um programa, como num servidor remoto ou banco de dados. Além disso, permite o acesso rápido ao objeto reduzindo o custo de sua construção no processo de busca.
+Para utilizar o cache, é necessário importamos uma biblioteca chamada "CacheModule" fornecida pelo nestjs, mostrado no código abaixo. Depois de importamos, podemos configurar nosso cache passando alguns parametros, como o "ttl", que significa o tempo(tempo em segundos) de vida ou o tempo em que ele vai armazenar as informações em memória. E o parametro "max", que é a quantidade de informações armazenadas, neste caso ele armazena até 10 informações/dados
+
+```typescript
+import { CacheModule, Module } from '@nestjs/common';
+
+@Module({
+  imports: [CacheModule.register({
+    ttl: 10,
+    max: 10, 
+  })],
+  providers: [...modelProvider, ...modelService],
+  controllers: [...modelController],
+})
+export class PooModule {}
+
+```
+Depois de configurarmos o cache, basta chamarmos no controller desejado, veja o código abaixo.
+Repare que usamos um decorator "@UseInterceptors(CacheInterceptor)", significa que todas as nossas rotas do controller de solicitação vão ser colocadas em cache a medida que forem chamadas.
+
+```typescript
+@Controller()
+@UseInterceptors(CacheInterceptor)
+export class SolicitacaoController {
+  constructor(private readonly solicitacaoService: SolicitacaoService) {}
+  @Get('/solicitacao/:id')
+  async readOne(@Res() res, @Param() id) {
+    try {
+      let solicitacao: Solicitacao[] = await this.solicitacaoService.readOne(id.id);
+      if (solicitacao != undefined) {
+        res.status(HttpStatus.OK).send(solicitacao);
+      } else {
+        res
+          .status(HttpStatus.NOT_FOUND)
+          .send('Nenhum solicitacao encontrado na busca');
+      }
+    } catch (err) {
+      res.status(HttpStatus.BAD_GATEWAY).send(err.message);
+    }
+  }
+```
+
 
 
 ### 7	MODELO FÍSICO<br>

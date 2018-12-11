@@ -1442,12 +1442,12 @@ SELECT idmedicamentoposto, estadomedicamento, quantidade FROM medicamento_posto 
 <p>
 A) A população do município de Fundão, região em que a primeira versão do sistema está focada, está estimada em 20.757 habitantes. Considerando todos esses cidadãos como potenciais utilizadores do sistema, deve ser tratada a questão da segurança dos dados e de acesso ao sistema com as devidas autorizações de acesso e administração dos cadastros. Funcionários do Sistema Único de Saúde deverão ter acesso a uma área do sistema que administra a entrada e saída dos medicamentos, assim como autorização da retirada destes. Cidadãos titulares poderão fazer a requisição e retirada do medicamento e dependentes terão apenas autorização de retirada dos remédios. Na versão inicial haverá um grupo apenas de fundão, e na eventual inclusão de outros municípios, cada município teria seu próprio grupo no sistema independente um do outro. <br>
 Os papéis dos usuários envolvem as seguintes roles:
-	* Atendente: possuem as permissões de administração dos medicamentos, ou seja, registros de medicamentos e pacientes no
+	<br>* Atendente: possuem as permissões de administração dos medicamentos, ou seja, registros de medicamentos e pacientes no
 	sistema, assim como controle do fluxo de entrada e saída de medicamentos e também a geração de relatórios importantes do
 	sistema.
-	* Paciente: basicamente possuem permissões de realizar requisições e retirada de medicamentos, onde seus dependentes terão
+	<br>* Paciente: basicamente possuem permissões de realizar requisições e retirada de medicamentos, onde seus dependentes terão
 	apenas a autorização de retirada de medicamentos.
-	* Superuser: possuem todas as permissões possíveis do sistema, tanto no subsistema de atendimento à população quanto no
+	<br>* Superuser: possuem todas as permissões possíveis do sistema, tanto no subsistema de atendimento à população quanto no
 	subsistema de controle de estoque. Logo este tipo de usuário são os programadores que desenvolvem o sistema e necessitam
 	de todas essas permissões.
 </p>
@@ -1756,9 +1756,9 @@ pg_restore: creating FK CONSTRAINT "public.solicitacao FK_f61371e9c058a6d9c9ab83
 
 #### 9.8	APLICAÇAO DE ÍNDICES E TESTES DE PERFORMANCE<br>
 Todos os testes de performance que inclui a criação de índices estão presentes no link da apresentação abaixo:<br>
-[Link dos slides dos testes de perfomance.](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Apresenta%C3%A7%C3%B5es/Apresenta%C3%A7%C3%A3o%20BD2.pdf)<br>
+[Link dos slides dos testes de perfomance.](https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Apresenta%C3%A7%C3%B5es/Apresenta%C3%A7%C3%A3o%20BD2%20-%20Perfomances%20Indices.pdf)<br>
 
-<p align="center"><a href="https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Apresenta%C3%A7%C3%B5es/Apresenta%C3%A7%C3%A3o%20BD2.pdf"><img src="https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Apresenta%C3%A7%C3%A3o%20Perfomances%20%C3%8Dndices.png"></a><figcaption style="text-align: center; font-size: 13px; font-weight: bold;"></figcaption></p><br>
+<p align="center"><a href="https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Apresenta%C3%A7%C3%B5es/Apresenta%C3%A7%C3%A3o%20BD2%20-%20Perfomances%20Indices.pdf"><img src="https://github.com/lukasg18/Topicos-Trabalho-BD2/blob/master/Imagens/Apresenta%C3%A7%C3%A3o%20Perfomances%20%C3%8Dndices.png"></a><figcaption style="text-align: center; font-size: 13px; font-weight: bold;"></figcaption></p><br>
 
 
 #### 9.85	RELATÓRIOS COM JÚPITER<br>

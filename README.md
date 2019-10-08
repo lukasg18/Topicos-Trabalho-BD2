@@ -1,6 +1,6 @@
 # TRABALHO 01 : Sistema de Gerenciamento de Medicamentos para População de Fundão
 
-Trabalho desenvolvido durante a disciplina de BD
+Trabalho desenvolvido durante a disciplina de Banco de Dados 2
 
     O referido projeto poderá ser:
         a) Um novo sistema/projeto 
